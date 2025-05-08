@@ -28,15 +28,17 @@ namespace SmartHotel.Domain.Entities
 
         public DateTime FechaFinal { get; set; }
 
-        #endregion
         // Precio final esperado
-        public endPrice { get; set; }
+        public Price endPrice { get; set; }
+        #endregion
+ 
 
-        public Agrement(string clientname, string clientemail,DateTime fechaInicio, DateTime fechaFinal, Guid id) : base(id)
+        public Agrement(string clientname, string clientemail,DateTime fechaInicio, DateTime fechaFinal, Price precio, Guid id) : base(id)
         {   ClientName = clientname;
             Clientemail = clientemail;
                 FechaInicio = fechaInicio;
                 FechaFinal = fechaFinal;
+                precio = precio;
             }
 
             public TimeSpan DuracionRenta()
@@ -45,14 +47,16 @@ namespace SmartHotel.Domain.Entities
            
         }
 
-        public int SetPrice()
+
+        public Price SetPrice (MoneyType moneyType)
         {
             // Obtener la duración de la renta en días.
             TimeSpan duracion = DuracionRenta();
 
             // Se utiliza la propiedad .Days para obtener los días completos.
-            int dias = duracion.Days;
-            return dias * 200;
+            double dias = duracion.Days;
+            monto = new Price(dias *200 , moneyType);
+            return monto;
         }
 
 
