@@ -19,11 +19,11 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// La habitacion esta lista para ser alquilada
         /// </summary>
-        bool IsRentable { get; set; }
+        bool IsRentable { get; set; }  = true;
         /// <summary>
         /// Ya fue alquilada actualmente
         /// </summary>
-        bool IsOcupated { get; set; }
+        bool IsOcupated { get; set; } 
         /// <summary>
         /// Precio al que se alquila la habitación
         /// </summary>
