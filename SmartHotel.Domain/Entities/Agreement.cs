@@ -13,7 +13,7 @@ using SmartHotel.Domain.ValueObjects;
 
 namespace SmartHotel.Domain.Entities
 {
-    public class Agrement : Entity
+    public class Agreement : Entity
     {
         #region Properties
 
@@ -41,11 +41,12 @@ namespace SmartHotel.Domain.Entities
         #endregion
 
 
-        protected Agrement(string clientname, string clientemail,DateTime fechaInicio, DateTime fechaFinal, MoneyType moneytype, double cash, Guid id) : base(id)
-        {   ClientName = clientname;
-            Clientemail = clientemail;
+        protected Agreement(string clientname, string clientemail,DateTime fechaInicio, DateTime fechaFinal, MoneyType moneytype, double cash, Guid id) : base(id)
+        {       ClientName = clientname;
+                Clientemail = clientemail;
                 FechaInicio = fechaInicio;
                 FechaFinal = fechaFinal;
+                Cash = cash;
                 MoneyType = moneytype;
             }
 
@@ -55,7 +56,7 @@ namespace SmartHotel.Domain.Entities
            
         }
 
-        public static Result<Agrement> Create(string clientname, string clientemail, DateTime fechaInicio, DateTime fechaFinal, MoneyType moneytype, double cash, Guid id) {
+        public static Result<Agreement> Create(string clientname, string clientemail, DateTime fechaInicio, DateTime fechaFinal, MoneyType moneytype, double cash, Guid id) {
             ClientName = clientname;
             Clientemail = clientemail;
             FechaInicio = fechaInicio;
@@ -99,10 +100,10 @@ namespace SmartHotel.Domain.Entities
              // Logica para comprobar el precio
             if (dias>Cash)
             {
-                return Result.Fail<Agrement>("Debe pagar una monto mayor");
+                return Result.Fail<Agreement>("Debe pagar una monto mayor");
             }
             else
-                return Result.Ok(new Agrement(ClientName, Clientemail, FechaInicio, FechaFinal, MoneyType, Cash, Id));
+                return Result.Ok(new Agreement(ClientName, Clientemail, FechaInicio, FechaFinal, MoneyType, Cash, Id));
             }
             }
 }
