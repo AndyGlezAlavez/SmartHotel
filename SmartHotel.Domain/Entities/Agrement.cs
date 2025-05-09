@@ -34,17 +34,19 @@ namespace SmartHotel.Domain.Entities
         public static DateTime FechaFinal { get; set; }
        
         //Precio pagado 
-        private static Price Prices { get; set; }
+        public static MoneyType MoneyType { get; set; }
+
+        public static double Cash {  get; set; }
 
         #endregion
 
 
-        protected Agrement(string clientname, string clientemail,DateTime fechaInicio, DateTime fechaFinal, Price prices, Guid id) : base(id)
+        protected Agrement(string clientname, string clientemail,DateTime fechaInicio, DateTime fechaFinal, MoneyType moneytype, double cash, Guid id) : base(id)
         {   ClientName = clientname;
             Clientemail = clientemail;
                 FechaInicio = fechaInicio;
                 FechaFinal = fechaFinal;
-                Price Prices= prices;
+                MoneyType = moneytype;
             }
 
             public static TimeSpan DuracionRenta()
@@ -53,49 +55,54 @@ namespace SmartHotel.Domain.Entities
            
         }
 
-        public static Result<Agrement> Create(string clientname, string clientemail, DateTime fechaInicio, DateTime fechaFinal, Price prices, Guid id) {
+        public static Result<Agrement> Create(string clientname, string clientemail, DateTime fechaInicio, DateTime fechaFinal, MoneyType moneytype, double cash, Guid id) {
             ClientName = clientname;
             Clientemail = clientemail;
             FechaInicio = fechaInicio;
             FechaFinal = fechaFinal;
-            Prices = prices;
-            Id = id;
+            MoneyType = moneytype;
+            Cash = cash;
+            Guid Id = id;
 
-                        if (!CheckPrice ())
-            {
-                return Result.Fail<Agrement>("Debe pagar una monto mayor");
-            }
-            else
-                return Result.Ok(new Agrement(ClientName, Clientemail, FechaInicio, FechaFinal, Prices, Id));
-            }
-        public static bool CheckPrice()
-        {
             // Obtener la duración de la renta en días.
             TimeSpan duracion = DuracionRenta();
 
             // Se utiliza la propiedad .Days para obtener los días completos.
             double dias = duracion.Days;
-            if ()
-            Price thisprice = new Price(dias, MoneyType = "1");     
-            
-        }
-            public bool Equals(Price other)
-            {
-                if (ReferenceEquals(this, other))
-                    return true;
-            else 
-                return  false;
-            }
 
-            // Sobrecarga de los operadores de igualdad.
-            public static bool operator ==(Price prices, Price pay)
+            //Logica para generar el precio
+            switch (MoneyType)
             {
-                return prices.Equals(pay);
+                case 0:
+                    Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 4.");
+                    break;
+                case (MoneyType)1:
+                    dias = dias*250;
+                    Console.WriteLine("Se seleccionó la opción *1");
+                    break;
+                case (MoneyType)2:
+                    Console.WriteLine("Se seleccionó la opción *1.2");
+                    dias = dias * 250*1.2;
+                    break;
+                case (MoneyType)3:
+                    Console.WriteLine("Se seleccionó la opción *380");
+                    dias = dias * 250 * 380;
+                    break;
+                case (MoneyType)4:
+                    Console.WriteLine("Se seleccionó la opción *1.5");
+                    dias = dias * 250 * 1.5;
+                    break;
+                default:
+                    Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 4.");
+                    break;
             }
-
-            public static bool operator !=(Price prices, Price pay)
+             // Logica para comprobar el precio
+            if (dias>Cash)
             {
-                return !(prices == pay);
+                return Result.Fail<Agrement>("Debe pagar una monto mayor");
             }
-    }
+            else
+                return Result.Ok(new Agrement(ClientName, Clientemail, FechaInicio, FechaFinal, MoneyType, Cash, Id));
+            }
+            }
 }
