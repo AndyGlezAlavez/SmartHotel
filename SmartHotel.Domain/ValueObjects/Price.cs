@@ -36,4 +36,5 @@ namespace SmartHotel.Domain.ValueObjects
             return new object[] { value, moneyType };
         }
     }
+
 }
