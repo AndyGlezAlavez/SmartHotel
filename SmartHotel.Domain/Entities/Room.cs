@@ -8,39 +8,37 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Entities
 {
-    public class Room : Entity
+    public abstract class Room : Entity 
     {
+        public int NumeroHabitacion { get; set; }
+        public decimal Precio { get; set; }
+        public bool Ocupada { get; set; }
+        public bool Rentada { get; set; }
+        public bool ClimatizacionEncendida { get; set; }
+        public bool IluminacionEncendida { get; set; }
 
-        #region Properties
-        /// <summary>
-        /// numero de la habitación
-        /// </summary>
-        int Number {  get; set; }
-        /// <summary>
-        /// La habitacion esta lista para ser alquilada
-        /// </summary>
-        bool IsRentable { get; set; }  = true;
-        /// <summary>
-        /// Ya fue alquilada actualmente
-        /// </summary>
-        bool IsOcupated { get; set; } 
-        /// <summary>
-        /// Precio al que se alquila la habitación
-        /// </summary>
-        Price RentalPrice { get; set; }
-        /// <summary>
-        /// Esta encendida la climatización
-        /// </summary>
-        bool IsClimatizationOn { get; set; }
-        /// <summary>
-        /// Estan encendidas las luces 
-        /// </summary>
-        bool IsIluminationOn { get; set; }
-        #endregion
+        public List<ISensor> Sensores { get; set; } ;
+        public List<IActuador> Actuadores { get; set; };
 
-        public Room(Guid id, int number, Price rentalPrice) : base(id)
+        public Room(int NumeroHabitacion, decimal Precio, bool Ocupada, bool Rentada, bool ClimatizacionEncendida, bool IlumicacionEncendida, List <ISensor>, List <IActuador>, Guid id) {
+            NumeroHabitacion = numerohabitacion;
+            Precio = precio;
+            Ocupada = ocupada;
+            Rentada = rentada;
+            ClimatizacionEncendida = climatizacionencendida;
+            Actuadores = new List<IActuador>();
+            Sensores = = new List<ISensor>();
+        }
+
+        public void AgregarSensor(ISensor sensor)
         {
-            Number = number;
+            Sensores.Add(sensor);
+        }
+
+        public void AgregarActuador(IActuador actuador)
+        {
+            Actuadores.Add(actuador);
         }
     }
+
 }
