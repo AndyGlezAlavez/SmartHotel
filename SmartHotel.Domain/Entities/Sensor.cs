@@ -41,7 +41,7 @@ namespace SmartHotel.Domain.Entities
         {
             Variable = variable;
             Value = 0;
-            OutputSignal = Signal.Volts;
+            OutputSignal = Signal.miliAmperes;
         }
 
     }
