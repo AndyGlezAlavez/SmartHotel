@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Entities
 {
-    internal class Light : Variable
+    public class Light : Variable
     {
-        LightUnit unit { get; set; }
+        LightUnit unit { get; set; } = 0;
         public Light(Guid id, int number, LightUnit unit) : base(id, number)
         {
         }

@@ -36,11 +36,13 @@ namespace SmartHotel.Domain.Entities
         /// Estan encendidas las luces 
         /// </summary>
         bool IsIluminationOn { get; set; }
+        RoomType RoomType { get; set; }
         #endregion
 
-        public Room(Guid id, int number, Price rentalPrice) : base(id)
+        public Room(Guid id, int number, Price  RentalPrice, RoomType roomType) : base(id)
         {
             Number = number;
+            RoomType = roomType;
         }
     }
 }

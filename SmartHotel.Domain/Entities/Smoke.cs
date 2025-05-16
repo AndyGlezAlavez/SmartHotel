@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Entities
 {
-    internal class Smoke : Variable
+    public class Smoke : Variable
     {
-        SmokeUnit unit { get; set; }
-        public Smoke(Guid id, int number, SmokeUnit unit) : base(id, number)
+        SmokeUnit unit { get; set; } = 0;
+        public Smoke(Guid id, int number, SmokeUnit unit= 0) : base(id, number)
         {
         }
     }
