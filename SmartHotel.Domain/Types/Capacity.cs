@@ -6,24 +6,19 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Types
 {
-    public enum MoneyType
+    public enum Capacity
     {
         /// <summary>
-        /// Moneda Europea
+        /// 1 Persona
         /// </summary>
-        euro,
+        Sencilla,
         /// <summary>
-        /// Moneda estadounidense
+        /// 2 personas
         /// </summary>
-        USD,
+        Doble,
         /// <summary>
-        /// Moneda cubana
+        /// +2
         /// </summary>
-        Peso,
-        /// <summary>
-        /// Moneda cubana 
-        /// </summary>
-        MLC
+        Familiar,
     }
 }
-    
