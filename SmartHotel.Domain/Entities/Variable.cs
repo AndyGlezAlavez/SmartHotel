@@ -24,6 +24,14 @@ namespace SmartHotel.Domain.Entities
         string IActuador.TipoSeñalEntrada => throw new NotImplementedException();
 
         bool IActuador.Estado { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        string ISensor.NombreVariable => throw new NotImplementedException();
+
+        string ISensor.UnidadMedida => throw new NotImplementedException();
+
+        double ISensor.ValorMedido { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        string ISensor.TipoSeñalSalida => throw new NotImplementedException();
         #endregion
 
         public Variable(Guid id, int number, int reference) : base(id)
