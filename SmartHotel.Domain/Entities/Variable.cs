@@ -16,12 +16,16 @@ namespace SmartHotel.Domain.Entities
         /// valor
         /// </summary>
         int number { get; set; }
-
+        /// <summary>
+        /// Valor deseado
+        /// </summary>
+        int reference { get; set; }
         #endregion
 
-        public Variable(Guid id, int number) : base(id)
+        public Variable(Guid id, int number, int reference) : base(id)
         {
             this.number = number;
+            this.reference = reference;
         }
     }
 }

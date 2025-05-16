@@ -10,7 +10,7 @@ namespace SmartHotel.Domain.Entities
     public class Temperature : Variable
     {
         TempUnit unit { get; set; } = 0;
-        public Temperature(Guid id, int number, TempUnit unit) : base(id, number)
+        public Temperature(Guid id, int number, int reference, TempUnit unit) : base(id, number, reference)
         {
         }
     }
