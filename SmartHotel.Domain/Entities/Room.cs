@@ -23,7 +23,7 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Ya fue alquilada actualmente
         /// </summary>
-        bool IsOcupated { get; set; }
+        bool IsRenteable { get; set; }
         /// <summary>
         /// Precio al que se alquila la habitación
         /// </summary>
@@ -37,12 +37,32 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         bool IsIluminationOn { get; set; }
         RoomType RoomType { get; set; }
+        public List<ISensor> Sensores { get; set; }
+        public List<IActuador> Actuadores { get; set; }
         #endregion
 
-        public Room(Guid id, int number, Price  RentalPrice, RoomType roomType) : base(id)
+        public Room(Guid id, int number, Price  RentalPrice, RoomType roomType, List<ISensor> sensors, List<IActuador> actuadors, bool IsRenteable, bool IsCliamtizationOn, bool IsIluminationON) : base(id)
         {
             Number = number;
             RoomType = roomType;
+            this.Actuadores = new List<IActuador>();
+            this.Sensores = new List<ISensor>();
+            this.IsRentable = IsRentable;
+            this.IsClimatizationOn = IsClimatizationOn;
+            this.IsIluminationOn = IsIluminationOn;
+        }
+       
+        public void AgregarSensor(ISensor sensor)
+        {
+            Sensores.Add(sensor);
+        }
+
+        public void AgregarActuador(IActuador actuador)
+        {
+            Actuadores.Add(actuador);
         }
     }
-}
+
+}      
+
+
