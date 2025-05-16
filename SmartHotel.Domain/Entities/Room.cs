@@ -17,17 +17,17 @@ namespace SmartHotel.Domain.Entities
         public bool ClimatizacionEncendida { get; set; }
         public bool IluminacionEncendida { get; set; }
 
-        public List<ISensor> Sensores { get; set; } ;
-        public List<IActuador> Actuadores { get; set; };
+        public List<ISensor> Sensores { get; set; } 
+        public List<IActuador> Actuadores { get; set; }
 
-        public Room(int NumeroHabitacion, decimal Precio, bool Ocupada, bool Rentada, bool ClimatizacionEncendida, bool IlumicacionEncendida, List <ISensor>, List <IActuador>, Guid id) {
-            NumeroHabitacion = numerohabitacion;
-            Precio = precio;
-            Ocupada = ocupada;
-            Rentada = rentada;
-            ClimatizacionEncendida = climatizacionencendida;
-            Actuadores = new List<IActuador>();
-            Sensores = = new List<ISensor>();
+        public Room(int NumeroHabitacion, decimal Precio, bool Ocupada, bool Rentada, bool ClimatizacionEncendida, bool IlumicacionEncendida, List <ISensor> sensors, List <IActuador> actuadors, Guid id) : base(id) {
+            this.NumeroHabitacion = NumeroHabitacion;
+            this.Precio = Precio;
+            this.Ocupada = Ocupada;
+            this.Rentada = Rentada;
+            this.ClimatizacionEncendida = ClimatizacionEncendida;
+            this.Actuadores = new List<IActuador>();
+            this.Sensores = new List<ISensor>();
         }
 
         public void AgregarSensor(ISensor sensor)
