@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Entities
 {
-    public class Variable: Entity
+    public class Variable: Entity, IActuador, ISensor
     {
 
         #region Properties
@@ -20,6 +20,10 @@ namespace SmartHotel.Domain.Entities
         /// Valor deseado
         /// </summary>
         int reference { get; set; }
+
+        string IActuador.TipoSeñalEntrada => throw new NotImplementedException();
+
+        bool IActuador.Estado { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         #endregion
 
         public Variable(Guid id, int number, int reference) : base(id)
