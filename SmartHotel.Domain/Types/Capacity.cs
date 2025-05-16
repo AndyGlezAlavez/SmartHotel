@@ -19,6 +19,6 @@ namespace SmartHotel.Domain.Types
         /// <summary>
         /// +2
         /// </summary>
-        Familiar,
+        Familiar
     }
 }

@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Types
 {
-    public enum Category
+    public enum LightUnit
     {
         /// <summary>
         /// Normal
         /// </summary>
-        Estandar,
+        LUX,
         /// <summary>
-        /// + confortable
+        /// Candela
         /// </summary>
-        Suit,
+        Candela,
         /// <summary>
-        /// VIP
+        /// PAR 
         /// </summary>
-        VIP
+        PAR
     }
 }

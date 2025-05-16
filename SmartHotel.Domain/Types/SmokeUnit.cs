@@ -6,19 +6,15 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Types
 {
-    public enum Category
+    public enum SmokeUnit
     {
         /// <summary>
-        /// Normal
+        /// *trillion
         /// </summary>
-        Estandar,
+        ppt,
         /// <summary>
-        /// + confortable
+        /// *millon
         /// </summary>
-        Suit,
-        /// <summary>
-        /// VIP
-        /// </summary>
-        VIP
+        ppm
     }
 }

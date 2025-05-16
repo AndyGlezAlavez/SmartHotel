@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Types
 {
-    public enum Category
+    public enum TempUnit
     {
         /// <summary>
         /// Normal
         /// </summary>
-        Estandar,
+        Celsius,
         /// <summary>
-        /// + confortable
+        /// 0 absoluto
         /// </summary>
-        Suit,
+        Kelivn,
         /// <summary>
-        /// VIP
+        /// Usado en paises del primer mundo
         /// </summary>
-        VIP
+        Farenheit
     }
 }
