@@ -9,9 +9,10 @@ namespace SmartHotel.Domain.Entities
 {
     public class Light : Variable
     {
-        LightUnit unit { get; set; } = 0;
+        LightUnit Unit { get; set; } = 0;
         public Light(Guid id, int number, int reference, LightUnit unit) : base(id, number, reference)
         {
+            Unit = unit;
         }
     }
 }

@@ -14,11 +14,11 @@ namespace SmartHotel.Domain.ValueObjects
         /// <summary>
         /// valor del precio
         /// </summary>
-        double value;
+        double Value { get; set; }
         /// <summary>
         /// Simbolo de la moneda 
         /// </summary>
-        MoneyType moneyType;
+        MoneyType MoneyType { get; set; }
         #endregion
         /// <summary>
         /// Inicializa un precio
@@ -27,13 +27,13 @@ namespace SmartHotel.Domain.ValueObjects
         /// <param name="moneyType"></param>
         public Price(double value, MoneyType moneyType)
         {
-            this.value = value;
-            this.moneyType = moneyType;
+            this.Value = value;
+            this.MoneyType = moneyType;
         }
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            return new object[] { value, moneyType };
+            return new object[] { Value, MoneyType };
         }
     }
 }

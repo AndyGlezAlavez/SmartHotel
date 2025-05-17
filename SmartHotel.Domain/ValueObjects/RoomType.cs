@@ -14,11 +14,11 @@ namespace SmartHotel.Domain.ValueObjects
         /// <summary>
         /// valor del precio
         /// </summary>
-        Category Category;
+        Category Category { get; set; }
         /// <summary>
         /// Simbolo de la moneda 
         /// </summary>
-        Capacity Capacity;
+        Capacity Capacity { get; set; }
         #endregion
         /// <summary>
         /// Inicializa un precio
