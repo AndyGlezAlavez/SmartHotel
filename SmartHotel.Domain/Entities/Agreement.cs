@@ -86,20 +86,20 @@ namespace SmartHotel.Domain.Entities
                     Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 4.");
                     break;
                 case (MoneyType)1:
-                    dias *= 250;
+                    dias *= 100;
                     Console.WriteLine("Se seleccionó la opción *1");
                     break;
                 case (MoneyType)2:
                     Console.WriteLine("Se seleccionó la opción *1.2");
-                    dias = dias * 250 * 1.2;
+                    dias = dias * 100 * 1.2;
                     break;
                 case (MoneyType)3:
                     Console.WriteLine("Se seleccionó la opción *380");
-                    dias = dias * 250 * 380;
+                    dias = dias * 100 * 380;
                     break;
                 case (MoneyType)4:
                     Console.WriteLine("Se seleccionó la opción *1.5");
-                    dias = dias * 250 * 1.5;
+                    dias = dias * 100 * 1.5;
                     break;
                 default:
                     Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 4.");

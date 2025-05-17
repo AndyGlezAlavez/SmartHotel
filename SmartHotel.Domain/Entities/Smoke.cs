@@ -27,7 +27,7 @@ namespace SmartHotel.Domain.Entities
                 case (SmokeUnit)1:
                      return numero > referencia;
                 case (SmokeUnit)2:
-                    return numero > 1000 * referencia;
+                    return numero > 1000000 * referencia;
                 default:
                     Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 2.");
                     return true;
