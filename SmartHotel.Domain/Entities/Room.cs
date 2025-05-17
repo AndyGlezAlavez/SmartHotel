@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SmartHotel.Domain.Common;
+using SmartHotel.Domain.Entities;
+using SmartHotel.Domain.Types;
+using SmartHotel.Domain.ValueObjects;
 
 namespace SmartHotel.Domain.Entities
 {
