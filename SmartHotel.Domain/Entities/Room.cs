@@ -5,10 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SmartHotel.Domain.Common;
 using SmartHotel.Domain.Entities;
 using SmartHotel.Domain.Types;
-using SmartHotel.Domain.ValueObjects;
+using System.ComponentModel.Design;
 
 namespace SmartHotel.Domain.Entities
 {
@@ -19,7 +18,7 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// numero de la habitación
         /// </summary>
-        int Number {  get; set; }
+        int Number { get; set; }
         /// <summary>
         /// La habitacion esta lista para ser alquilada
         /// </summary>
@@ -43,9 +42,12 @@ namespace SmartHotel.Domain.Entities
         RoomType RoomType { get; set; }
         public List<ISensor> Sensores { get; set; }
         public List<IActuador> Actuadores { get; set; }
+        Smoke Smoke { get; set; }
+        Temperature Temperature { get; set; }
+        Light Light { get; set; } 
         #endregion
 
-        public Room(Guid id, int number, Price  RentalPrice, RoomType roomType, List<ISensor> sensors, List<IActuador> actuadors, bool IsRenteable, bool IsCliamtizationOn, bool IsIluminationON) : base(id)
+        public Room(Guid id, int number, Price RentalPrice, RoomType roomType, List<ISensor> sensors, List<IActuador> actuadors, bool IsRenteable, bool IsCliamtizationOn, bool IsIluminationON, Temperature temperature, Smoke smoke, Light light) : base(id)
         {
             Number = number;
             RoomType = roomType;
@@ -54,8 +56,11 @@ namespace SmartHotel.Domain.Entities
             this.IsRentable = IsRentable;
             this.IsClimatizationOn = IsClimatizationOn;
             this.IsIluminationOn = IsIluminationOn;
+            this.Smoke = smoke;
+            this.Temperature = temperature;
+            this.Light = light;
         }
-       
+
         public void AgregarSensor(ISensor sensor)
         {
             Sensores.Add(sensor);
@@ -65,8 +70,10 @@ namespace SmartHotel.Domain.Entities
         {
             Actuadores.Add(actuador);
         }
-    }
-
-}      
+        public bool IsRentabled() {
+            if (Smoke.Danger()) return false;
+            else return true;
+        }
+    } }
 
 

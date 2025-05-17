@@ -62,7 +62,7 @@ namespace SmartHotel.Domain.Entities
 
         }
 
-        public static Result<Agreement> Create(string clientname, string clientemail, DateTime fechaInicio, DateTime fechaFinal, MoneyType moneytype, double cash, Room room, Guid id)
+        public static Result<Agreement> Create(string clientname, string clientemail, DateTime fechaInicio, DateTime fechaFinal, MoneyType moneytype, double cash, Room room, Guid id, Capacity capacity, Category category)
         {
             ClientName = clientname;
             Clientemail = clientemail;
@@ -108,25 +108,24 @@ namespace SmartHotel.Domain.Entities
 
             // Logica para la capacidad de la habitacion
 
-            switch (Capacity)
+            switch (capacity)
             {
                 case 0:
                     Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 3.");
                     break;
 
                     case (Capacity)1:
-                    dias = dias;
                     Console.WriteLine("Se seleccionó la habitacion sencilla");
                     break;
 
                 case (Capacity)2:
-                    dias = dias * 1.5;
+                    dias *= 1.5;
                     Console.WriteLine("Se seleccionó la habitacion doble");
                     break;
 
 
                 case (Capacity)3:
-                    dias = dias * 2;
+                    dias *= 2;
                     Console.WriteLine("Se seleccionó la habitacion familiar");
                     break;
 
@@ -137,25 +136,24 @@ namespace SmartHotel.Domain.Entities
 
             // Logica para la categoria de la habitacion
 
-            switch (Category)
+            switch (category)
             {
                 case 0:
                     Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 3.");
                     break;
 
                 case (Category)1:
-                    dias = dias;
                     Console.WriteLine("Se seleccionó la habitacion estandar");
                     break;
 
                 case (Category)2:
-                    dias = dias * 2;
+                    dias *= 2;
                     Console.WriteLine("Se seleccionó la habitacion suite");
                     break;
 
 
                 case (Category)3:
-                    dias = dias * 5;
+                    dias *= 5;
                     Console.WriteLine("Se seleccionó la habitacion vip");
                     break;
 
@@ -172,13 +170,15 @@ namespace SmartHotel.Domain.Entities
             }
 
             // logica para ver si se puede rentar
-            if (SmartHotel.Domain.Entities.Room.IsRentable)== 0
+            bool analisys = room.IsRentabled();
+            if (!analisys)
             {
                 return Result.Fail<Agreement>("La habitacion se encuentra rentada en la fecha seleccionada");
             }
-
             else
-                return Result.Ok(new Agreement(ClientName, Clientemail, FechaInicio, FechaFinal, MoneyType, Cash, Id));
+            {
+                return Result.Ok(new Agreement(ClientName, Clientemail, FechaInicio, FechaFinal, MoneyType, Cash, Room, Id));
+            }
         }
     }
 }

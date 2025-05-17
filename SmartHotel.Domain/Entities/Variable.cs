@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Entities
 {
-    public class Variable: Entity, IActuador, ISensor
+    public abstract class Variable: Entity, IActuador, ISensor
     {
 
         #region Properties
@@ -39,5 +39,7 @@ namespace SmartHotel.Domain.Entities
             this.number = number;
             this.reference = reference;
         }
+        public int getnumber( ) => number;
+        public int getreference( ) => reference;
     }
 }
