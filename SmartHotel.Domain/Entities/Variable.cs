@@ -15,11 +15,11 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// valor
         /// </summary>
-        int number { get; set; }
+        int Number { get; set; }
         /// <summary>
         /// Valor deseado
         /// </summary>
-        int reference { get; set; }
+        int Reference { get; set; }
 
         string IActuador.TipoSeñalEntrada => throw new NotImplementedException();
 
@@ -36,10 +36,10 @@ namespace SmartHotel.Domain.Entities
 
         public Variable(Guid id, int number, int reference) : base(id)
         {
-            this.number = number;
-            this.reference = reference;
+            this.Number = number;
+            this.Reference = reference;
         }
-        public int getnumber( ) => number;
-        public int getreference( ) => reference;
+        public int Getnumber( ) => Number;
+        public int Getreference( ) => Reference;
     }
 }
