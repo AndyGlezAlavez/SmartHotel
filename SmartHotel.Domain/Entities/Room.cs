@@ -76,6 +76,9 @@ namespace SmartHotel.Domain.Entities
             Number = number;
             RentalPrice = rentalPrice;
             RoomType = roomType;
+            Temperature = temperature;
+            Light = light;
+            Smoke = smoke;
             IsRentable = !Smoke.Danger();
             IsClimatizationOn = Temperature.TurnOn();
             IsIluminationOn = Light.TurnOn();

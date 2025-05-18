@@ -23,7 +23,7 @@ namespace SmartHotel.Domain.Entities
         }
 
 
-        //*****PONER CONVERSIONES!!!!!!
+        
         //Enciende las luces
         public bool TurnOn()
         {
