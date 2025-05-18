@@ -22,7 +22,10 @@ namespace SmartHotel.Domain.Entities
             Unit = unit;
         }
 
-        //Enciende el aire acondicionado
+        /// <summary>
+        /// Indica si está encendido o no el clima en la habitación.
+        /// </summary>
+        /// <returns></returns>
         public bool TurnOn()
         {
             if (Unit is TempUnit.Celsius)

@@ -24,7 +24,10 @@ namespace SmartHotel.Domain.Entities
         }
         
         
-        //Alarma para cuando es detectada una concentración de humo superior a lo normal.
+        /// <summary>
+        /// Indica si la concentración de humo en la habitación supera el valor normal. 
+        /// </summary>
+        /// <returns></returns>
         public bool Danger()
         {
             if (Unit  is SmokeUnit.ppt)

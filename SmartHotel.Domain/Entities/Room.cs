@@ -90,6 +90,13 @@ namespace SmartHotel.Domain.Entities
             IsIluminationOn = Light.TurnOn();
             IsOcupated = false;
         }
+
+        /// <summary>
+        /// Devuelve si es posible rentar la habitación para los días deseados.
+        /// </summary>
+        /// <param name="startDate">Fecha de inicio deseada.</param>
+        /// <param name="finalDate">Fecha de fin deseada.</param>
+        /// <returns></returns>
         public bool IsRentabled(DateTime startDate, DateTime finalDate)
         {
             if (Smoke.Danger())

@@ -24,7 +24,10 @@ namespace SmartHotel.Domain.Entities
 
 
         
-        //Enciende las luces
+        /// <summary>
+        /// Indica si están encendidas o no las luces de la habitación.
+        /// </summary>
+        /// <returns></returns>
         public bool TurnOn()
         {
             if (Unit == LightUnit.LUX)
