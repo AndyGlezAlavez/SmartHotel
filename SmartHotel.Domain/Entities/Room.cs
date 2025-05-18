@@ -26,7 +26,7 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Ya fue alquilada actualmente
         /// </summary>
-        bool IsRenteable { get; set; }
+        /// bool IsRenteable { get; set; }
         /// <summary>
         /// Precio al que se alquila la habitación
         /// </summary>

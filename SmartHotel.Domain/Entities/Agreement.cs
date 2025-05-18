@@ -65,7 +65,7 @@ namespace SmartHotel.Domain.Entities
         public static Result<Agreement> Create(string clientname, string clientemail, DateTime fechaInicio, DateTime fechaFinal, MoneyType moneytype, double cash, Room room, Guid id, Capacity capacity, Category category)
         {
             ClientName = clientname;
-            Clientemail = clientemail;
+            Clientemail = clientemail+"@gmail.com";
             FechaInicio = fechaInicio;
             FechaFinal = fechaFinal;
             MoneyType = moneytype;
