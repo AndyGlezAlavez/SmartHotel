@@ -9,11 +9,11 @@ namespace SmartHotel.Domain.Types
     public enum MoneyType
     {
         /// <summary>
-        /// Moneda Europea
+        /// Moneda europea.
         /// </summary>
         euro,
         /// <summary>
-        /// Moneda estadounidense
+        /// Moneda estadounidense.
         /// </summary>
         USD,
         /// <summary>
@@ -21,7 +21,7 @@ namespace SmartHotel.Domain.Types
         /// </summary>
         Peso,
         /// <summary>
-        /// Moneda cubana 
+        /// Moneda cubana convertible.
         /// </summary>
         MLC
     }

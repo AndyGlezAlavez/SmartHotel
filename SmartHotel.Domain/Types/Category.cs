@@ -12,10 +12,12 @@ namespace SmartHotel.Domain.Types
         /// Normal
         /// </summary>
         Estandar,
+
         /// <summary>
         /// + confortable
         /// </summary>
         Suit,
+
         /// <summary>
         /// VIP
         /// </summary>

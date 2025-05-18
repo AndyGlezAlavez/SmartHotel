@@ -12,10 +12,12 @@ namespace SmartHotel.Domain.Types
         /// Normal
         /// </summary>
         Celsius,
+
         /// <summary>
         /// 0 absoluto
         /// </summary>
         Kelivn,
+
         /// <summary>
         /// Usado en paises del primer mundo
         /// </summary>

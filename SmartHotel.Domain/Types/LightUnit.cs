@@ -12,10 +12,12 @@ namespace SmartHotel.Domain.Types
         /// Normal
         /// </summary>
         LUX,
+
         /// <summary>
         /// Candela
         /// </summary>
         Candela,
+
         /// <summary>
         /// PAR 
         /// </summary>

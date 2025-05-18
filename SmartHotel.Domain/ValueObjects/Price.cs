@@ -11,17 +11,20 @@ namespace SmartHotel.Domain.ValueObjects
     public class Price : ValueObject
     {
         #region Properties
+
         /// <summary>
-        /// valor del precio
+        /// Valor del precio.
         /// </summary>
         double Value { get; set; }
+
         /// <summary>
-        /// Simbolo de la moneda 
+        /// Símbolo de la moneda 
         /// </summary>
         MoneyType MoneyType { get; set; }
+
         #endregion
         /// <summary>
-        /// Inicializa un precio
+        /// Inicializa un precio.
         /// </summary>
         /// <param name="value"></param>
         /// <param name="moneyType"></param>

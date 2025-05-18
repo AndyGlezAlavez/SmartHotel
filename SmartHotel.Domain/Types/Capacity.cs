@@ -9,15 +9,16 @@ namespace SmartHotel.Domain.Types
     public enum Capacity
     {
         /// <summary>
-        /// 1 Persona
+        /// 1 persona en una habitación.
         /// </summary>
         Sencilla,
+
         /// <summary>
-        /// 2 personas
+        /// 2 personas en una habitación.
         /// </summary>
         Doble,
         /// <summary>
-        /// +2
+        /// +2 personas en una habitación.
         /// </summary>
         Familiar
     }

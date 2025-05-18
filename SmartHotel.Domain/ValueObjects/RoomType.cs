@@ -11,17 +11,21 @@ namespace SmartHotel.Domain.ValueObjects
     public class RoomType : ValueObject
     {
         #region Properties
+        
         /// <summary>
-        /// valor del precio
+        /// Categoría de la habitación.
         /// </summary>
         Category Category { get; set; }
+
         /// <summary>
-        /// Simbolo de la moneda 
+        /// Capacidad de la habitación.
         /// </summary>
         Capacity Capacity { get; set; }
+
         #endregion
+
         /// <summary>
-        /// Inicializa un precio
+        /// Inicializa un tipo de habitación.
         /// </summary>
         /// <param name="Category"></param>
         /// <param name="Capacity"></param>

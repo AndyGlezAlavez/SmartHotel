@@ -12,6 +12,7 @@ namespace SmartHotel.Domain.Types
         /// *trillion
         /// </summary>
         ppt,
+
         /// <summary>
         /// *millon
         /// </summary>

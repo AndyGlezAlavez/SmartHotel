@@ -13,44 +13,59 @@ using SmartHotel.Domain.ValueObjects;
 
 namespace SmartHotel.Domain.Entities
 {
+    /// <summary>
+    /// Acuerdo de reserva de una habitación.
+    /// </summary>
     public class Agreement : Entity
     {
+
         #region Properties
 
-        /// Nombre del cliente 
-        /// 
-
+        /// <summary>
+        /// Nombre del cliente.
+        /// </summary>
         public static string ClientName { get; set; }
 
-        /// Correo del cliente
-        /// 
+        /// <summary>
+        /// Correo del cliente.
+        /// </summary>
         public static string Clientemail { get; set; }
 
-        // Fecha de inicio
-        public static DateTime FechaInicio { get; set; }
+        /// <summary>
+        /// Fecha de inicio de la reserva. 
+        /// </summary>
+        public static DateTime StartDate { get; set; }
 
-        // Fecha final
+        
+        /// <summary>
+        /// Fecha final de la reserva.
+        /// </summary>
+        public static DateTime FinalDate { get; set; }
 
-        public static DateTime FechaFinal { get; set; }
-
-        //Precio pagado 
+        /// <summary>
+        /// Moneda de pago.
+        /// </summary>
         public static MoneyType MoneyType { get; set; }
 
+        /// <summary>
+        /// Precio pagado.
+        /// </summary>
         public static double Cash { get; set; }
 
-        // Habitacion seleccionada
-
+        /// <summary>
+        /// Habitación seleccionada
+        /// </summary>
         public static Room Room { get; set; }
 
         #endregion
 
 
-        protected Agreement(string clientname, string clientemail, DateTime fechaInicio, DateTime fechaFinal, MoneyType moneytype, double cash, Room room, Guid id) : base(id)
+        protected Agreement(string clientname, string clientemail, DateTime startDate, DateTime finalDate, MoneyType moneytype, double cash, Room room, Guid id) : base(id)
         {
             ClientName = clientname;
             Clientemail = clientemail;
-            FechaInicio = fechaInicio;
-            FechaFinal = fechaFinal;
+            StartDate = startDate;
+            FinalDate = finalDate;
             MoneyType = moneytype;
             Cash = cash;
             Room = room;
@@ -58,16 +73,16 @@ namespace SmartHotel.Domain.Entities
 
         public static TimeSpan DuracionRenta()
         {
-            return FechaFinal - FechaInicio;
+            return FinalDate - StartDate;
 
         }
 
-        public static Result<Agreement> Create(string clientname, string clientemail, DateTime fechaInicio, DateTime fechaFinal, MoneyType moneytype, double cash, Room room, Guid id, Capacity capacity, Category category)
+        public static Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, MoneyType moneytype, double cash, Room room, Guid id, Capacity capacity, Category category)
         {
             ClientName = clientname;
             Clientemail = clientemail;
-            FechaInicio = fechaInicio;
-            FechaFinal = fechaFinal;
+            StartDate = startDate;
+            FinalDate = finalDate;
             MoneyType = moneytype;
             Cash = cash;
             Room = room;
@@ -177,7 +192,7 @@ namespace SmartHotel.Domain.Entities
             }
             else
             {
-                return Result.Ok(new Agreement(ClientName, Clientemail, FechaInicio, FechaFinal, MoneyType, Cash, Room, Id));
+                return Result.Ok(new Agreement(ClientName, Clientemail, StartDate, FinalDate, MoneyType, Cash, Room, Id));
             }
         }
     }
