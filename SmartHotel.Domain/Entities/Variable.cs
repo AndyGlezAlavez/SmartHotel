@@ -8,38 +8,30 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Entities
 {
-    public abstract class Variable: Entity, IActuador, ISensor
+    /// <summary>
+    /// Variable.
+    /// </summary>
+    public abstract class Variable: Entity
     {
 
         #region Properties
+
         /// <summary>
-        /// valor
+        /// Valor de la variable.
         /// </summary>
-        int Number { get; set; }
+       public double Value { get; set; }
+
         /// <summary>
-        /// Valor deseado
+        /// Valor deseado.
         /// </summary>
-        int Reference { get; set; }
+        public double Reference { get; set; }
 
-        string IActuador.TipoSeñalEntrada => throw new NotImplementedException();
-
-        bool IActuador.Estado { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        string ISensor.NombreVariable => throw new NotImplementedException();
-
-        string ISensor.UnidadMedida => throw new NotImplementedException();
-
-        double ISensor.ValorMedido { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        string ISensor.TipoSeñalSalida => throw new NotImplementedException();
         #endregion
 
-        public Variable(Guid id, int number, int reference) : base(id)
+        public Variable(Guid id, double value, double reference) : base(id)
         {
-            this.Number = number;
-            this.Reference = reference;
+            Value = value;
+            Reference = reference;
         }
-        public int Getnumber( ) => Number;
-        public int Getreference( ) => Reference;
     }
 }

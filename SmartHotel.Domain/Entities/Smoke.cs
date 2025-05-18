@@ -8,31 +8,32 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Entities
 {
+    /// <summary>
+    /// Variable concentración de humo.
+    /// </summary>
     public class Smoke : Variable
     {
-        SmokeUnit Unit { get; set; } = 0;
-        public Smoke(Guid id, int number, int reference=1, SmokeUnit Unit = 0) : base(id, number, reference)
+        /// <summary>
+        /// Unidad de medida de la concentración de humo.
+        /// </summary>
+        public SmokeUnit Unit { get; set; }
+
+        public Smoke(Guid id, double value, double reference) : base(id, value, reference)
         {
-            this.Unit = Unit;
+            Unit = SmokeUnit.ppt;
         }
+        
+        
+        //Alarma para cuando es detectada una concentración de humo superior a lo normal.
         public bool Danger()
         {
-            int referencia = Getreference(); //sino no se puede acceder a los metodos
-            int numero = Getnumber();
-            switch (Unit)
-            {
-                case (SmokeUnit)0:
-                    Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 3.");
-                      return true;
-                case (SmokeUnit)1:
-                     return numero > referencia;
-                case (SmokeUnit)2:
-                    return numero > 1000000 * referencia;
-                default:
-                    Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 2.");
-                    return true;
-            }
+            if (Unit  is SmokeUnit.ppt)
+                return Value > Reference;
+            else
+                return Value > 1000000 * Reference;
+        }
 
         }
+        
     }
-}
+
