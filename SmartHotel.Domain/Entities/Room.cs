@@ -81,11 +81,12 @@ namespace SmartHotel.Domain.Entities
             IsIluminationOn = Light.TurnOn();
             IsOcupated = false;
         }
-
-
-
-
-    }
+        public bool IsRentabled()
+        {
+            if (Smoke.Danger()) return false;
+            else return true;
+        }
+        }
 }
 
 

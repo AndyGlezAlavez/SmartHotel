@@ -30,9 +30,9 @@ namespace SmartHotel.Domain.Entities
             if (Unit == LightUnit.LUX)
                 return Value < 100 * Reference;
             else if (Unit == LightUnit.Candela)
-                return Value < 100 * Reference;
+                return Value < 100 * (Reference*9);
             else
-                return Value < 100 * Reference;
+                return Value < 100 * (Reference* 0.01);
         }
 
     }

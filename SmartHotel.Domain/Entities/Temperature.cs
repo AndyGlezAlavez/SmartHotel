@@ -22,16 +22,15 @@ namespace SmartHotel.Domain.Entities
             Unit = unit;
         }
 
-        //*****PONER CONVERSIONES!!!!!!
         //Enciende el aire acondicionado
         public bool TurnOn()
         {
             if (Unit is TempUnit.Celsius)
                 return Value > Reference + 2;
             else if (Unit is TempUnit.Farenheit)
-                return Value > Reference + 2;
+                return Value > (Reference*33.8) + 2;
             else 
-                return Value > Reference + 2;
+                return Value > (Reference+275) + 2;
         }
     }
 }
