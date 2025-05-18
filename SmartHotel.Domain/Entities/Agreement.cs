@@ -24,38 +24,38 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Nombre del cliente.
         /// </summary>
-        public static string ClientName { get; set; }
+        public string ClientName { get; set; }
 
         /// <summary>
         /// Correo del cliente.
         /// </summary>
-        public static string Clientemail { get; set; }
+        public string Clientemail { get; set; }
 
         /// <summary>
         /// Fecha de inicio de la reserva. 
         /// </summary>
-        public static DateTime StartDate { get; set; }
+        public DateTime StartDate { get; set; }
 
         
         /// <summary>
         /// Fecha final de la reserva.
         /// </summary>
-        public static DateTime FinalDate { get; set; }
+        public DateTime FinalDate { get; set; }
 
         /// <summary>
         /// Moneda de pago.
         /// </summary>
-        public static MoneyType MoneyType { get; set; }
+        public MoneyType MoneyType { get; set; }
 
         /// <summary>
         /// Precio pagado.
         /// </summary>
-        public static double Cash { get; set; }
+        public double Cash { get; set; }
 
         /// <summary>
         /// Habitación seleccionada
         /// </summary>
-        public static Room Room { get; set; }
+        public Room Room { get; set; }
 
         #endregion
 
@@ -71,13 +71,13 @@ namespace SmartHotel.Domain.Entities
             Room = room;
         }
 
-        public static TimeSpan DuracionRenta()
+        public TimeSpan DuracionRenta()
         {
             return FinalDate - StartDate;
 
         }
 
-        public static Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, MoneyType moneytype, double cash, Room room, Guid id, Capacity capacity, Category category)
+        public Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, MoneyType moneytype, double cash, Room room, Guid id, Capacity capacity, Category category)
         {
             ClientName = clientname;
             Clientemail = clientemail;
@@ -185,7 +185,7 @@ namespace SmartHotel.Domain.Entities
             }
 
             // logica para ver si se puede rentar
-            bool analisys = room.IsRentabled();
+            bool analisys = room.IsRentabled(StartDate, FinalDate);
             if (!analisys)
             {
                 return Result.Fail<Agreement>("La habitacion se encuentra rentada en la fecha seleccionada");

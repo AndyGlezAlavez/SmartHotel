@@ -68,6 +68,12 @@ namespace SmartHotel.Domain.Entities
         /// Iluminación en la habitación.
         /// </summary>
         public Light Light { get; set; }
+
+        /// <summary>
+        /// Acuerdos de reservas de una habitación.
+        /// </summary>
+        public List<Agreement> Agreements { get; set; } = new();
+
         #endregion
 
        
@@ -84,10 +90,12 @@ namespace SmartHotel.Domain.Entities
             IsIluminationOn = Light.TurnOn();
             IsOcupated = false;
         }
-        public bool IsRentabled()
+        public bool IsRentabled(DateTime startDate, DateTime finalDate)
         {
-            if (Smoke.Danger()) return false;
-            else return true;
+            if (Smoke.Danger())
+                return false;
+            else
+                return !Agreements.Any(a => startDate < a.FinalDate && finalDate > a.StartDate);       
         }
         }
 }
