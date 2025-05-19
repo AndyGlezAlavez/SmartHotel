@@ -86,10 +86,14 @@ namespace SmartHotel.Domain.Entities
             Light = light;
             Smoke = smoke;
             IsRentable = !Smoke.Danger();
-            IsClimatizationOn = Temperature.TurnOn();
-            IsIluminationOn = Light.TurnOn();
+            IsClimatizationOn = Temperature.TemperatureControl();
+            IsIluminationOn = Light.LightControl();
             IsOcupated = false;
         }
+
+
+
+
 
         /// <summary>
         /// Devuelve si es posible rentar la habitación para los días deseados.
@@ -108,6 +112,31 @@ namespace SmartHotel.Domain.Entities
                                                                                                   //Posibilidad 2: Que la nueva solicitud comience antes de que finalice una de las previstas (startDate < a.FinalDate) y termine antes del comienzo de esa prevista (finalDate < a.StartDate). Ej: SOLICITUD: 15/5-20/5, RESERVA ANTES CONFIRMADA: 21/5-24/5. Lo que implicaría que NO coincidieran iguales días de 2 reservaciones diferentes para una misma habitación (JUSTO LO QUE SE BUSCA). Como 1 de las condiciones no se cumplen, la función ´Any´ devolverá FALSE pero la función ´IsRentabled´ devolverá lo contrario (TRUE), indicando de que ES POSIBLE rentar esa habitación para las fechas que se están recibiendo.
                                                                                                   //Posibilidad 3: Que la nueva solicitud comience después de que finalice una de las previstas (startDate > a.FinalDate) y termine después del comienzo de esa prevista (finalDate > a.StartDate). Ej: SOLICITUD: 15/5-20/5, RESERVA ANTES CONFIRMADA: 12/5-14/5.  Lo que implicaría que NO coincidieran iguales días de 2 reservaciones diferentes para una misma habitación (JUSTO LO QUE SE BUSCA). Como 1 de las condiciones no se cumplen, la función ´Any´ devolverá FALSE pero la función ´IsRentabled´ devolverá lo contrario (TRUE), indicando de que ES POSIBLE rentar esa habitación para las fechas que se están recibiendo.
                                                                                                   //Posibilidad 4: Que la nueva solicitud comience después de que finalice una de las previstas (startDate > a.FinalDate) pero termine antes del comienzo de esa prevista (finalDate < a.StartDate). Ej: SOLICITUD: 15/5-20/5, RESERVA ANTES CONFIRMADA: 21/5-14/5. ESTO NO TIENE SENTIDO, no debe haber sido almacendada o intentarse almacenar una reservación donde la fecha de inicio sea posterior a la fecha de fin de la reserva. ES RESPONSABILIDAD DEL PROGRAMADOR QUE ESTO NO OCURRA DURANTE LA IMPLEMENTACIÓN DE ´Agreement´ antes de llegar a ´IsRentabled´. De ocurrir, como las dos condiciones no se están cumpliendo la función ´Any´ devolverá FALSE pero la función ´IsRentabled´ devolverá lo contrario (TRUE), indicando de que ES POSIBLE rentar esa habitación para las fechas que se están recibiendo.
+        }
+
+
+
+
+        /// <summary>
+        /// Enciende/Apaga el sistema de iluminación de la habitación.
+        /// </summary>
+        /// <param name="turnOn">Estado deseado para el sistema de iluminación en la habitación</param>
+        /// <returns></returns>
+        public void TurnOnIlumination(bool turnOn)
+        {
+            Light.TurnOn = turnOn;
+        }
+
+
+
+
+        /// <summary>
+        /// Enciende/Apaga el sistema de climatización de la habitación.
+        /// </summary>
+        /// <param name="turnOn">Estado deseado para el sistema de climatización en la habitación</param>
+        public void TurnOnClimatization(bool turnOn)
+        {
+            Temperature.TurnOn = turnOn;
         }
     }
 }

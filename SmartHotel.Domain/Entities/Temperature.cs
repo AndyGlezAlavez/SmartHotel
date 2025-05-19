@@ -12,10 +12,19 @@ namespace SmartHotel.Domain.Entities
     /// </summary>
     public class Temperature : Variable
     {
+        #region Properties
+
         /// <summary>
         /// Unidad de medida de la temperatura.
         /// </summary>
-        public TempUnit Unit { get; set; } 
+        public TempUnit Unit { get; set; }
+
+        /// <summary>
+        /// Indica si se está realizando o no control en el clima.
+        /// </summary>
+        public bool TurnOn { get; set; } = false;
+
+        #endregion
 
         public Temperature(Guid id, double value, double reference, TempUnit unit) : base(id, value, reference)
         {
@@ -23,12 +32,14 @@ namespace SmartHotel.Domain.Entities
         }
 
         /// <summary>
-        /// Indica si está encendido o no el clima en la habitación.
+        /// Indica si está encendido o no el clima de la habitación actualmente.
         /// </summary>
         /// <returns></returns>
-        public bool TurnOn()
+        public bool TemperatureControl()
         {
-            if (Unit is TempUnit.Celsius)
+            if(!TurnOn)
+                return false;
+            else if (Unit is TempUnit.Celsius)
                 return Value > Reference + 2;
             else if (Unit is TempUnit.Farenheit)
                 return Value > (Reference*33.8) + 2;
