@@ -86,8 +86,8 @@ namespace SmartHotel.Domain.Entities
             Light = light;
             Smoke = smoke;
             IsRentable = !Smoke.Danger();
-            IsClimatizationOn = Temperature.TemperatureControl();
-            IsIluminationOn = Light.LightControl();
+            IsClimatizationOn = temperature.TemperatureControl();
+            IsIluminationOn = light.LightControl();
             IsOcupated = false;
         }
 
@@ -122,7 +122,6 @@ namespace SmartHotel.Domain.Entities
 //Posibilidad 4: Que la nueva solicitud comience después de que finalice una de las previstas (startDate > a.FinalDate) pero termine antes del comienzo de esa prevista (finalDate < a.StartDate).
 //Ej: SOLICITUD: 15/5-20/5, RESERVA ANTES CONFIRMADA: 21/5-14/5. ESTO NO TIENE SENTIDO, no debe haber sido almacendada o intentarse almacenar una reservación donde la fecha de inicio sea posterior a la fecha de fin de la reserva. ES RESPONSABILIDAD DEL PROGRAMADOR QUE ESTO NO OCURRA DURANTE LA IMPLEMENTACIÓN DE ´Agreement´ antes de llegar a ´IsRentabled´. De ocurrir, como las dos condiciones no se están cumpliendo la función ´Any´ devolverá FALSE pero la función ´IsRentabled´ devolverá lo contrario (TRUE), indicando de que ES POSIBLE rentar esa habitación para las fechas que se están recibiendo.
         }
-
 
 
 
