@@ -86,8 +86,8 @@ namespace SmartHotel.Domain.Entities
             Clientemail = clientemail;
             StartDate = startDate;
             FinalDate = finalDate;
-            Price= price;
             Room = room;
+            Price.MoneyType= Room.RentalPrice.MoneyType;
             RoomId = RoomId;
             Guid Id = id;
 
@@ -98,7 +98,7 @@ namespace SmartHotel.Domain.Entities
             double dias = duracion.Days;
 
             //Logica para generar el precio
-            switch (MoneyType)
+            switch (Price.MoneyType)
             {
                 case 0:
                     Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 4.");
@@ -179,10 +179,10 @@ namespace SmartHotel.Domain.Entities
                     Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 3.");
                     break;
             }
-
+            Price.Value = dias;
 
             // Logica para comprobar el precio
-            if (dias > Cash)
+            if (Price.Value > Room.RentalPrice.Value)
             {
                 return Result.Fail<Agreement>("Debe pagar una monto mayor");
             }
@@ -195,7 +195,7 @@ namespace SmartHotel.Domain.Entities
             }
             else
             {
-                return Result.Ok(new Agreement(ClientName, Clientemail, StartDate, FinalDate, MoneyType, Cash, Room, RoomId, Id));
+                return Result.Ok(new Agreement(ClientName, Clientemail, StartDate, FinalDate, Price, Room, RoomId, Id));
             }
         }
     }

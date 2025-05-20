@@ -15,12 +15,12 @@ namespace SmartHotel.Domain.ValueObjects
         /// <summary>
         /// Valor del precio.
         /// </summary>
-        double Value { get; set; }
+        public double Value { get; set; }
 
         /// <summary>
         /// Símbolo de la moneda 
         /// </summary>
-        MoneyType MoneyType { get; set; }
+        public MoneyType MoneyType { get; set; }
 
         #endregion
         /// <summary>
