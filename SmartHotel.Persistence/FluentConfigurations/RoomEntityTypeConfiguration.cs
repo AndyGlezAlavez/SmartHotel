@@ -12,7 +12,10 @@ namespace SmartHotel.Persistence.FluentConfigurations
         {
             base.Configure(builder);
             builder.ToTable("Rooms");
-            //builder.OwnsOne(x => x.Address);       HAY QUE ARREGLAR ESTOOOOO
+            builder.OwnsOne(x => x.Agreements);
+            builder.OwnsOne(x => x.Light);
+            builder.OwnsOne(x => x.Smoke);
+            builder.OwnsOne(x => x.Temperature);
         }
     }
 }
