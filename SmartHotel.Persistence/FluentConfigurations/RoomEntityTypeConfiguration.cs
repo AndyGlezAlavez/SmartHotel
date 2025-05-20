@@ -2,6 +2,7 @@
 using SmartHotel.Persistence.FluentConfigurations.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SmartHotel.Domain.ValueObjects;
 
 namespace SmartHotel.Persistence.FluentConfigurations
 {
@@ -12,10 +13,11 @@ namespace SmartHotel.Persistence.FluentConfigurations
         {
             base.Configure(builder);
             builder.ToTable("Rooms");
-            builder.OwnsOne(x => x.Agreements);
-            builder.OwnsOne(x => x.Light);
-            builder.OwnsOne(x => x.Smoke);
-            builder.OwnsOne(x => x.Temperature);
+            builder.OwnsOne(x => x.RoomType);
+            builder.HasMany(x => x.Agreements).WithOne().HasForeignKey(x => x.RoomId);
+            builder.HasOne(x => x.Smoke);
+            builder.HasOne(x => x.Light);
+            builder.HasOne(x => x.Temperature);
         }
     }
 }

@@ -17,7 +17,8 @@ namespace SmartHotel.Persistence.FluentConfigurations
             {
                 base.Configure(builder);
                 builder.ToTable("Agreements");
-                builder.OwnsOne(x => x.Room);
+                builder.HasOne(x => x.Room).WithMany().HasForeignKey(x => x.Id);
+                
         }
         }
 }

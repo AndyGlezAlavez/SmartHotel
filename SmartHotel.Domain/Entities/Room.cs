@@ -80,8 +80,8 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Requerido por Entity Framework.
         /// </summary>
-        private Room() { }
-        
+        private Room(Guid id) : base(id) { }
+
 
         public Room(Guid id, int number, Price rentalPrice, RoomType roomType, Temperature temperature, Smoke smoke, Light light) : base(id)
         {

@@ -42,15 +42,7 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         public DateTime FinalDate { get; set; }
 
-        /// <summary>
-        /// Moneda de pago.
-        /// </summary>
-        public MoneyType MoneyType { get; set; }
-
-        /// <summary>
-        /// Precio pagado.
-        /// </summary>
-        public double Cash { get; set; }
+        public Price Price { get; set; }
 
         /// <summary>
         /// Habitación del acuerdo de reserva.
@@ -67,18 +59,17 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Requerido por Entity Framework.
         /// </summary>
-        private Agreement() { }
+        private Agreement(Guid id) : base(id) { }
       
 
 
-        protected Agreement(string clientname, string clientemail, DateTime startDate, DateTime finalDate, MoneyType moneytype, double cash, Room room, Guid roomId, Guid id) : base(id)
+        protected Agreement(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Price price, Room room, Guid roomId, Guid id) : base(id)
         {
             ClientName = clientname;
             Clientemail = clientemail;
             StartDate = startDate;
             FinalDate = finalDate;
-            MoneyType = moneytype;
-            Cash = cash;
+            Price = price;
             Room = room;
             RoomId = roomId;
         }
@@ -89,14 +80,13 @@ namespace SmartHotel.Domain.Entities
 
         }
 
-        public Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, MoneyType moneytype, double cash, Room room, Guid roomId, Guid id, Capacity capacity, Category category)
+        public Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Price price, Room room, Guid roomId, Guid id, Capacity capacity, Category category)
         {
             ClientName = clientname;
             Clientemail = clientemail;
             StartDate = startDate;
             FinalDate = finalDate;
-            MoneyType = moneytype;
-            Cash = cash;
+            Price= price;
             Room = room;
             RoomId = RoomId;
             Guid Id = id;

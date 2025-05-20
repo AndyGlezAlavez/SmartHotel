@@ -39,7 +39,7 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Requerido por Entity Framework.
         /// </summary>
-        private Temperature() { }
+        private Temperature(Guid id) : base(id) { }
 
 
         public Temperature(Guid id, double value, double reference, TempUnit unit, Room room, Guid roomId) : base(id, value, reference)
