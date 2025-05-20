@@ -14,7 +14,7 @@ namespace SmartHotel.Persistence.FluentConfigurations
     {
         public override void Configure(EntityTypeBuilder<Smoke> builder)
         {
-            base.Configure(builder);
+            builder.HasBaseType<Variable>();
             builder.ToTable("Smokes");
             //builder.OwnsOne(x => x.Unit); Fix this     
         }

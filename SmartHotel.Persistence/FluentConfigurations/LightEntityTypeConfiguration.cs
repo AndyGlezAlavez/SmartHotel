@@ -14,8 +14,9 @@ namespace SmartHotel.Persistence.FluentConfigurations
     {
         public override void Configure(EntityTypeBuilder<Light> builder)
         {
-            base.Configure(builder);
+            builder.HasBaseType<Variable>();
             builder.ToTable("Lights");
+
           //  builder.OwnsOne(x => x.Unit);  Duda
             }
 }
