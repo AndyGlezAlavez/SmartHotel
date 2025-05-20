@@ -38,8 +38,14 @@ namespace SmartHotel.Domain.Entities
             Room = room;
             RoomId = roomId;
         }
-        
-        
+
+        /// <summary>
+        /// Requerido por Entity Framework.
+        /// </summary>
+        private Smoke() { }
+
+
+
         /// <summary>
         /// Indica si la concentración de humo en la habitación supera el valor normal. 
         /// </summary>

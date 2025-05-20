@@ -64,6 +64,12 @@ namespace SmartHotel.Domain.Entities
 
         #endregion
 
+        /// <summary>
+        /// Requerido por Entity Framework.
+        /// </summary>
+        private Agreement() { }
+      
+
 
         protected Agreement(string clientname, string clientemail, DateTime startDate, DateTime finalDate, MoneyType moneytype, double cash, Room room, Guid roomId, Guid id) : base(id)
         {

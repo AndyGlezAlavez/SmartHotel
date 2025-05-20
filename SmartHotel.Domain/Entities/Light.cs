@@ -36,6 +36,12 @@ namespace SmartHotel.Domain.Entities
 
         #endregion
 
+        /// <summary>
+        /// Requerido por Entity Framework.
+        /// </summary>
+        private Light() { }
+     
+
         public Light(Guid id, double value, double reference, Room room, Guid roomId) : base(id, value, reference)
         {
             Unit = LightUnit.LUX;

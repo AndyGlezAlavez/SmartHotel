@@ -28,6 +28,13 @@ namespace SmartHotel.Domain.Entities
 
         #endregion
 
+
+        /// <summary>
+        /// Requerido por Entity Framework.
+        /// </summary>
+        private Variable() { }
+
+
         public Variable(Guid id, double value, double reference) : base(id)
         {
             Value = value;
