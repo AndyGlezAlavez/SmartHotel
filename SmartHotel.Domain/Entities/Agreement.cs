@@ -61,8 +61,6 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         private Agreement(Guid id) : base(id) { }
       
-
-
         protected Agreement(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Price price, Room room, Guid roomId, Guid id) : base(id)
         {
             ClientName = clientname;
@@ -71,6 +69,7 @@ namespace SmartHotel.Domain.Entities
             FinalDate = finalDate;
             Price = price;
             Room = room;
+            Price.MoneyType = Room.RentalPrice.MoneyType;
             RoomId = roomId;
         }
 
@@ -86,9 +85,10 @@ namespace SmartHotel.Domain.Entities
             Clientemail = clientemail;
             StartDate = startDate;
             FinalDate = finalDate;
+            Price = price;
             Room = room;
             Price.MoneyType= Room.RentalPrice.MoneyType;
-            RoomId = RoomId;
+            RoomId = roomId;
             Guid Id = id;
 
             // Obtener la duración de la renta en días.
