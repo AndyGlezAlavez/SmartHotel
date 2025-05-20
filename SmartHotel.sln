@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Domain", "SmartHotel.Domain\SmartHotel.Domain.csproj", "{2FC2821C-4918-4C1A-BACA-B154466496B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.Domain", "SmartHotel.Domain\SmartHotel.Domain.csproj", "{2FC2821C-4918-4C1A-BACA-B154466496B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Persistence", "SmartHotel.Persistence\SmartHotel.Persistence.csproj", "{A5AF4DF4-5ECE-4DD9-A9A2-A03B6F6E9F0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.Persistence", "SmartHotel.Persistence\SmartHotel.Persistence.csproj", "{A5AF4DF4-5ECE-4DD9-A9A2-A03B6F6E9F0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Contracts", "SmartHotel.Contracts\SmartHotel.Contracts.csproj", "{937C3BEE-24FF-4745-9E92-D2DC10D6CE82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A5AF4DF4-5ECE-4DD9-A9A2-A03B6F6E9F0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5AF4DF4-5ECE-4DD9-A9A2-A03B6F6E9F0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5AF4DF4-5ECE-4DD9-A9A2-A03B6F6E9F0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{937C3BEE-24FF-4745-9E92-D2DC10D6CE82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{937C3BEE-24FF-4745-9E92-D2DC10D6CE82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{937C3BEE-24FF-4745-9E92-D2DC10D6CE82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{937C3BEE-24FF-4745-9E92-D2DC10D6CE82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
