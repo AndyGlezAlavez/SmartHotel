@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartHotel.Contracts.Repositories.Managers
+namespace SmartHotel.Contracts.Repositories
 {
     /// <summary>
     /// Define las funcionalidades de un repositorio de operación.

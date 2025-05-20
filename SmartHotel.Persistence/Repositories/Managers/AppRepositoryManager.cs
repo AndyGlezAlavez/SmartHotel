@@ -1,4 +1,6 @@
 ﻿using SmartHotel.Contracts.Repositories;
+using SmartHotel.Contracts.Repositories.Managers;
+using SmartHotel.Contracts;
 using SmartHotel.Persistence.Repositories;
 using SmartHotel.Persistence.Repositories.Managers;
 using SmartHotel.Persistence.Contexts;
@@ -15,20 +17,18 @@ namespace SmartHotel.Persistence.Repositories.Managers
         {
             get
             {
-                if (_variable is null)
-                    _variable = new VariableRepository(_context);
+                _variable ??= new VariableRepository(_context);
                 return _variable;
             }
         }
 
 
-        private IRoomRepository? _room = null;
-        public IRoomRepository Room
+        private IRoomRepsoitory? _room = null;
+        public IRoomRepsoitory Room
         {
             get
             {
-                if (_room is null)
-                    _room = new RoomRepository(_context);
+                _room ??= new RoomRepository(_context);
                 return _room;
             }
         }
@@ -38,8 +38,7 @@ namespace SmartHotel.Persistence.Repositories.Managers
         {
             get
             {
-                if (_agreement is null)
-                    _agreement = new AgreementRepository(_context);
+                _agreement ??= new AgreementRepository(_context);
                 return _agreement;
             }
         }

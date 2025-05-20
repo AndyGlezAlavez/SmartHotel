@@ -1,7 +1,7 @@
 ﻿using SmartHotel.Domain.Entities;
 using SmartHotel.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
-using SmartHotel.Contracts.Repositories.Managers;
+using SmartHotel.Contracts.Repositories;
 
 namespace SmartHotel.Persistence.Repositories
 {
@@ -31,7 +31,7 @@ namespace SmartHotel.Persistence.Repositories
 
         public async Task<IEnumerable<Room>> GetRoomByUnitAsync(Guid Id)
         {
-            var room = await _context.Rooms.Include(u => u.room).FirstAsync(u => u.Id == Id);
+            var room = await _context.Rooms.Include(u => u.Rooms).FirstAsync(u => u.Id == Id);
             return room.room;
         }
 
