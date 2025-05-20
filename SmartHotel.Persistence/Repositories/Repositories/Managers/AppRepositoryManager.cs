@@ -1,6 +1,6 @@
-﻿using SmartHotel.Contexts;
+﻿using SmartHotel.Contracts.Repositories;
 using SmartHotel.Persistence.Repositories;
-using SmartHotel.Persistence.Managers;
+using SmartHotel.Persistence.Repositories.Managers;
 using SmartHotel.Persistence.Contexts;
 
 namespace SmartHotel.Persistence.Repositories.Managers
@@ -9,17 +9,6 @@ namespace SmartHotel.Persistence.Repositories.Managers
         : IAppRepositoryManager
     {
         private readonly AppDbContext _context;
-
-        private ILightRepository? _lihght = null;
-        public ILightRepository Light
-        {
-            get
-            {
-                if (_light is null)
-                    _light = new LightRepository(_context);
-                return _light;
-            }
-        }
 
         private IVariableRepository? _variable = null;
         public IVariableRepository Variable
@@ -32,16 +21,6 @@ namespace SmartHotel.Persistence.Repositories.Managers
             }
         }
 
-        private ISmokeRepository? _smoke = null;
-        public ISmokeRepository Smoke
-        {
-            get
-            {
-                if (_smoke is null)
-                    _smoke = new SmokeRepository(_context);
-                return _smoke;
-            }
-        }
 
         private IRoomRepository? _room = null;
         public IRoomRepository Room

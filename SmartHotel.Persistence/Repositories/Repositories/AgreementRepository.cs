@@ -19,12 +19,12 @@ namespace SmartHotel.Persistence.Repositories
 
         public async Task AddAsync(AgreementRepository agreementRepository)
         {
-            await _context.AgreementRepository.AddAsync(agreementRepository);
+            await _context.Agreements.AddAsync(agreementRepository);
         }
 
         public async Task<IEnumerable<AgreementRepository>> GetEquipmentStateChangeRecords(DateTime start, DateTime end)
         {
-            return await _context.AgreementRepository
+            return await _context.Agreements
                 .Where(x => x.OccurringTime >= start && x.OccurringTime <= end)
                 .ToListAsync();
         }

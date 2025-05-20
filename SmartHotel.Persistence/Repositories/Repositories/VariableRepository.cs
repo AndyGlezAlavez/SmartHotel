@@ -36,10 +36,10 @@ namespace SmartHotel.Persistence.Repositories
 
         public async Task<IEnumerable<Variable>> GetVariablesByUnitAsync(Guid Id)
         {
-            var unit = await _context.Variables
+            var Variable = await _context.Variables
                 .Include(u => u.Variables)
                 .FirstAsync(u => u.Id == Id);
-            return unit.Variables;
+            return Variable.Variables;
         }
 
         public void Update(Variable variable)
