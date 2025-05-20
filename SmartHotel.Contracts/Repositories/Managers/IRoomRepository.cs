@@ -1,6 +1,11 @@
 ﻿using SmartHotel.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SmartHotel.Contracts.Repositories
+namespace SmartHotel.Contracts.Repositories.Managers
 {
     /// <summary>
     /// Define las funcionalidades de un repositorio de operación.

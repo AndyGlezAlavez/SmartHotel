@@ -1,12 +1,12 @@
-﻿using SmartHotel.Contracts.Repositories;
-using SmartHotel.Domain.Entities;
+﻿using SmartHotel.Domain.Entities;
 using SmartHotel.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
+using SmartHotel.Contracts.Repositories.Managers;
 
 namespace SmartHotel.Persistence.Repositories
 {
     public class RoomRepository
-        : IRoomRepository
+        : IRoomRepsoitory
     {
         private readonly AppDbContext _context;
 

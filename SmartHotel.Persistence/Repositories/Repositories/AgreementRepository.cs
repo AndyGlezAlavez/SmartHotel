@@ -1,7 +1,8 @@
-﻿using SmartHotel.Contracts.Repositories;
+﻿using SmartHotel.Contracts.Repositories.Managers;
 using SmartHotel.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using SmartHotel.Domain.Entities;
+using SmartHotel.Contracts.Repositories;
 
 namespace SmartHotel.Persistence.Repositories
 {
@@ -28,7 +29,7 @@ namespace SmartHotel.Persistence.Repositories
                 .Where(x => x.OccurringTime >= start && x.OccurringTime <= end)
                 .ToListAsync();
         }
-        public async Task<IEnumerable<AgreementRepository> GetAgreementRepositoryByUnitAsync(Guid Id)
+        public async Task<IEnumerable<AgreementRepository> GetAgreementsByUnitAsync(Guid Id)
         {
             var agreementRepository = await _context.Agreements.Include(u => u.agreementRepository).FirstAsync(u => u.Id == Id);
             return agreementRepository.AgreementRepository;
@@ -49,6 +50,26 @@ namespace SmartHotel.Persistence.Repositories
             if (agreementRepository is null)
                 return;
             _context.Agrements.Remove(Agreement);
+        }
+
+        public Task AddAsync(Agreement agreement)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Agreement> GetAgreementsByIdAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<IEnumerable<Agreement>> IAgreementRepository.GetAgreementsByUnitAsync(Guid unitId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Agreement agreement)
+        {
+            throw new NotImplementedException();
         }
     }
 }
