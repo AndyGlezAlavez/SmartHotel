@@ -53,14 +53,19 @@ namespace SmartHotel.Domain.Entities
         public double Cash { get; set; }
 
         /// <summary>
-        /// Habitación seleccionada
+        /// Habitación del acuerdo de reserva.
         /// </summary>
         public Room Room { get; set; }
+
+        /// <summary>
+        /// Identificador de la habitación del acuerdo de reserva.
+        /// </summary>
+        public Guid RoomId { get; set; }
 
         #endregion
 
 
-        protected Agreement(string clientname, string clientemail, DateTime startDate, DateTime finalDate, MoneyType moneytype, double cash, Room room, Guid id) : base(id)
+        protected Agreement(string clientname, string clientemail, DateTime startDate, DateTime finalDate, MoneyType moneytype, double cash, Room room, Guid roomId, Guid id) : base(id)
         {
             ClientName = clientname;
             Clientemail = clientemail;
@@ -69,6 +74,7 @@ namespace SmartHotel.Domain.Entities
             MoneyType = moneytype;
             Cash = cash;
             Room = room;
+            RoomId = roomId;
         }
 
         public TimeSpan DuracionRenta()
@@ -77,7 +83,7 @@ namespace SmartHotel.Domain.Entities
 
         }
 
-        public Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, MoneyType moneytype, double cash, Room room, Guid id, Capacity capacity, Category category)
+        public Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, MoneyType moneytype, double cash, Room room, Guid roomId, Guid id, Capacity capacity, Category category)
         {
             ClientName = clientname;
             Clientemail = clientemail;
@@ -86,6 +92,7 @@ namespace SmartHotel.Domain.Entities
             MoneyType = moneytype;
             Cash = cash;
             Room = room;
+            RoomId = RoomId;
             Guid Id = id;
 
             // Obtener la duración de la renta en días.
@@ -192,7 +199,7 @@ namespace SmartHotel.Domain.Entities
             }
             else
             {
-                return Result.Ok(new Agreement(ClientName, Clientemail, StartDate, FinalDate, MoneyType, Cash, Room, Id));
+                return Result.Ok(new Agreement(ClientName, Clientemail, StartDate, FinalDate, MoneyType, Cash, Room, RoomId, Id));
             }
         }
     }
