@@ -29,12 +29,6 @@ namespace SmartHotel.Persistence.Repositories
             _context.Rooms.Remove(room);
         }
 
-        public async Task<IEnumerable<Room>> GetRoomByUnitAsync(Guid Id)
-        {
-            var room = await _context.Rooms.Include(u => u.Rooms).FirstAsync(u => u.Id == Id);
-            return room.room;
-        }
-
         public async Task<Room> GetByIdAsync(Guid id)
         {
             return await _context.Rooms.FindAsync(id);

@@ -19,7 +19,7 @@ namespace SmartHotel.Persistence.Repositories
 
         public async void DeleteById(Guid id)
         {
-            var agreementRepository = await _context.AgreementRepository.FindAsync(id);
+            var agreementRepository = await _context.Agreements.FindAsync(id);
             if (agreementRepository is null)
                 return;
             _context.Agreements.Remove(agreementRepository);
@@ -37,8 +37,8 @@ namespace SmartHotel.Persistence.Repositories
 
         async Task<IEnumerable<Agreement>> IAgreementRepository.GetAgreementsByUnitAsync(Guid unitId)
         {
-            var agreementRepository = await _context.Agreements.Include(u => u.agreementRepository).FirstAsync(u => u.Id == unitId);
-            return agreementRepository.AgreementRepository;
+            var room = await _context.Rooms.Include(u => u.Agreements).FirstAsync(u => u.Id == unitId);
+            return room.Agreements;
         }
 
         public void Update(Agreement agreement)

@@ -8,28 +8,28 @@ using System.Threading.Tasks;
 namespace SmartHotel.Contracts.Repositories
 {
     /// <summary>
-    /// Define las funcionalidades de un repositorio de operación.
+    /// Define las funcionalidades de un repositorio de agreement.
     /// </summary>
     public interface IAgreementRepository
     {
         /// <summary>
-        /// Añade una operación a base de datos.
+        /// Añade un agreement a base de datos.
         /// </summary>
         Task AddAsync(Agreement agreement);
         /// <summary>
-        /// Obtiene una operación a partir de su Id.
+        /// Obtiene un agreement a partir de su Id.
         /// </summary>
         Task<Agreement> GetAgreementsByIdAsync(Guid id);
         /// <summary>
-        /// Obtiene todas las operaciones a partir de la unidad a la que pertenecen.
+        /// Obtiene todas los agreement a partir de la room a la que pertenecen.
         /// </summary>
         Task<IEnumerable<Agreement>> GetAgreementsByUnitAsync(Guid unitId);
         /// <summary>
-        /// Actualiza la información de una operación.
+        /// Actualiza la información de un agreement.
         /// </summary>
         void Update(Agreement agreement);
         /// <summary>
-        /// Elimina una operación a partir de su Id.
+        /// Elimina un agreement a partir de su Id.
         /// </summary>
         void DeleteById(Guid id);
     }

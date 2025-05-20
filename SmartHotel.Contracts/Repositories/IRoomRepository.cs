@@ -8,28 +8,24 @@ using System.Threading.Tasks;
 namespace SmartHotel.Contracts.Repositories
 {
     /// <summary>
-    /// Define las funcionalidades de un repositorio de operación.
+    /// Define las funcionalidades de un repositorio de room.
     /// </summary>
     public interface IRoomRepsoitory
     {
         /// <summary>
-        /// Añade un dispositivo de automatización a base de datos.
+        /// Añade una room a base de datos.
         /// </summary>
         Task AddAsync(Room room);
         /// <summary>
-        /// Obtiene un dispositivo de automatización a partir de su Id.
+        /// Obtiene una room a partir de su Id.
         /// </summary>
         Task<Room> GetByIdAsync(Guid id);
         /// <summary>
-        /// Obtiene todos los dispositivos de automatización a partir de la unidad a la que se relacionan.
-        /// </summary>
-        Task<IEnumerable<Room>> GetRoomByUnitAsync(Guid unitId);
-        /// <summary>
-        /// Actualiza la información de un dispositivo de automatización.
+        /// Actualiza una room.
         /// </summary>
         void Update(Room room);
         /// <summary>
-        /// Elimina un dispositivo de automatización a partir de su Id.
+        /// Elimina una room a partir de su Id.
         /// </summary>
         void DeleteById(Guid id);
     }
