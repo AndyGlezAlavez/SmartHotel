@@ -34,11 +34,11 @@ namespace SmartHotel.Persistence.Repositories
             return await _context.Variables.FindAsync(id);
         }
 
-        public async Task<IEnumerable<Variable>> GetVariablesByUnitAsync(Guid Id)
+        public async Task<IEnumerable<Variable>> GetVariablesByUnitAsync(Guid unitId)
         {
             var Variable = await _context.Variables
                 .Include(u => u.Variables)
-                .FirstAsync(u => u.Id == Id);
+                .FirstAsync(u => u.Id == unitId);
             return Variable.Variables;
         }
 

@@ -28,9 +28,9 @@ namespace SmartHotel.Persistence.Repositories
                 .Where(x => x.OccurringTime >= start && x.OccurringTime <= end)
                 .ToListAsync();
         }
-        public async Task<IEnumerable<AgreementRepository> GetAgreementRepositoryByUnitAsync(Guid Id)
+        public async Task<IEnumerable<AgreementRepository> GetAgreementRepositoryByUnitAsync(Guid unitId)
         {
-            var agreementRepository = await _context.Agreements.Include(u => u.agreementRepository).FirstAsync(u => u.Id == Id);
+            var agreementRepository = await _context.Agreements.Include(u => u.agreementRepository).FirstAsync(u => u.Id == unitId);
             return agreementRepository.AgreementRepository;
         }
 
