@@ -24,11 +24,17 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         public bool TurnOn { get; set; } = false;
 
+        /// <summary>
+        /// Habitación a la que prtenece la iluminación.
+        /// </summary>
+        public Room Room { get; set; }
+
         #endregion
 
-        public Light(Guid id, double value, double reference) : base(id, value, reference)
+        public Light(Guid id, double value, double reference, Room room) : base(id, value, reference)
         {
             Unit = LightUnit.LUX;
+            Room = room;
         }
 
 

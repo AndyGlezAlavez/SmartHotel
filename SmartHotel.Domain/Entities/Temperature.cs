@@ -22,13 +22,19 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Indica si se está realizando o no control en el clima.
         /// </summary>
-        public bool TurnOn { get; set; } = false;
+        public bool TurnOn { get; set; } = false;  
+
+        /// <summary>
+        /// Habitación a la que pertenece la temperatura. 
+        /// </summary>
+        public Room Room { get; set; }
 
         #endregion
 
-        public Temperature(Guid id, double value, double reference, TempUnit unit) : base(id, value, reference)
+        public Temperature(Guid id, double value, double reference, TempUnit unit, Room room) : base(id, value, reference)
         {
             Unit = unit;
+            Room = room;
         }
 
         /// <summary>

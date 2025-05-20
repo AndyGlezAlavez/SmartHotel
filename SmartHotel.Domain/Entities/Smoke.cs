@@ -18,9 +18,15 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         public SmokeUnit Unit { get; set; }
 
-        public Smoke(Guid id, double value, double reference) : base(id, value, reference)
+        /// <summary>
+        /// Habitación a la que pertenece la concentración de humo.
+        /// </summary>
+        public Room Room { get; set; }
+
+        public Smoke(Guid id, double value, double reference, Room room) : base(id, value, reference)
         {
             Unit = SmokeUnit.ppt;
+            Room = room;
         }
         
         
