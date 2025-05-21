@@ -24,12 +24,12 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Nombre del cliente.
         /// </summary>
-        public string ClientName { get; set; }
+        public string ClientName { get; set; } = string.Empty;
 
         /// <summary>
         /// Correo del cliente.
         /// </summary>
-        public string Clientemail { get; set; }
+        public string Clientemail { get; set; } = string.Empty;
 
         /// <summary>
         /// Fecha de inicio de la reserva. 

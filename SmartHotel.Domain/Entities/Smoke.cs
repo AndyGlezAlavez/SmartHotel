@@ -42,7 +42,7 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Requerido por Entity Framework.
         /// </summary>
-        private Smoke(Guid id) : base(id) { }
+        private Smoke(){ }
 
 
 
