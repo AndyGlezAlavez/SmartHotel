@@ -42,7 +42,7 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         public DateTime FinalDate { get; set; }
 
-        public Price Price { get; set; }
+        public Price Price { get; set; } = (100.00, MoneyType.euro);
 
         /// <summary>
         /// Habitación del acuerdo de reserva.

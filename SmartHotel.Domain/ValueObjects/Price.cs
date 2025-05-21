@@ -20,7 +20,7 @@ namespace SmartHotel.Domain.ValueObjects
         /// <summary>
         /// Símbolo de la moneda 
         /// </summary>
-        public MoneyType MoneyType { get; set; }
+        public MoneyType MoneyType { get; set; } = MoneyType.euro;
 
         #endregion
         /// <summary>
@@ -37,6 +37,14 @@ namespace SmartHotel.Domain.ValueObjects
         protected override IEnumerable<object> GetEqualityComponents()
         {
             return new object[] { Value, MoneyType };
+        }
+
+        public static Price Default => new(100.00, MoneyType.euro);
+
+        // Conversión implícita con valores por defecto
+        public static implicit operator Price((double, MoneyType euro) v)
+        {
+           return new Price(100.00, v.euro);
         }
     }
 }

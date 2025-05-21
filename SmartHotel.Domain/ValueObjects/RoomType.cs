@@ -15,12 +15,12 @@ namespace SmartHotel.Domain.ValueObjects
         /// <summary>
         /// Categoría de la habitación.
         /// </summary>
-        public Category Category { get; set; }
+        public Category Category { get; set; } = Category.Estandar;
 
         /// <summary>
         /// Capacidad de la habitación.
         /// </summary>
-        public Capacity Capacity { get; set; }
+        public Capacity Capacity { get; set; }= Capacity.Sencilla;
 
         #endregion
 
@@ -38,6 +38,14 @@ namespace SmartHotel.Domain.ValueObjects
         protected override IEnumerable<object> GetEqualityComponents()
         {
             return new object[] { Category, Capacity };
+        }
+
+        public static RoomType Default => new (Capacity.Sencilla, Category.Estandar);
+
+        // Conversión implícita con valores por defecto
+        public static implicit operator RoomType((Capacity sencilla, Category estandar) v)
+        {
+            return new RoomType(v.sencilla, v.estandar);
         }
     }
 }
