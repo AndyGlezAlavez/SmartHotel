@@ -15,12 +15,12 @@ namespace SmartHotel.Domain.ValueObjects
         /// <summary>
         /// Categoría de la habitación.
         /// </summary>
-        Category Category { get; set; }
+        public Category Category { get; set; }
 
         /// <summary>
         /// Capacidad de la habitación.
         /// </summary>
-        Capacity Capacity { get; set; }
+        public Capacity Capacity { get; set; }
 
         #endregion
 

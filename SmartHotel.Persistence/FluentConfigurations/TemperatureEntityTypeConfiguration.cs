@@ -16,7 +16,7 @@ namespace SmartHotel.Persistence.FluentConfigurations
         {
             builder.HasBaseType<Variable>();
             builder.ToTable("Temperatures");
-            //  builder.OwnsOne(x => x.Unit);  Duda
+            //builder.HasOne(x => x.Room).WithOne().HasForeignKey(x => x.);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace SmartHotel.Persistence.FluentConfigurations
         {
             builder.HasBaseType<Variable>();
             builder.ToTable("Smokes");
-            //builder.OwnsOne(x => x.Unit); Fix this     
+           // builder.HasOne(x => x.Room).WithOne().HasForeignKey(x => x.);
         }
     }
 }
