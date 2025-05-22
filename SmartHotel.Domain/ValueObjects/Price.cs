@@ -30,8 +30,8 @@ namespace SmartHotel.Domain.ValueObjects
         /// <param name="moneyType"></param>
         public Price(double value, MoneyType moneyType)
         {
-            this.Value = value;
-            this.MoneyType = moneyType;
+            Value = value;
+            MoneyType = moneyType;
         }
 
         protected override IEnumerable<object> GetEqualityComponents()

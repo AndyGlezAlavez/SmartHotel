@@ -32,7 +32,7 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Requerido por Entity Framework.
         /// </summary>
-        private Variable(Guid id) : base(id) { }
+        protected Variable() { }
 
 
         public Variable(Guid id, double value, double reference) : base(id)

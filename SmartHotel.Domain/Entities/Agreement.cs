@@ -59,9 +59,9 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Requerido por Entity Framework.
         /// </summary>
-        private Agreement(Guid id) : base(id) { }
+        private Agreement() { }
       
-        protected Agreement(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Price price, Room room, Guid roomId, Guid id) : base(id)
+        public Agreement(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Price price, Room room, Guid roomId, Guid id) : base(id)
         {
             ClientName = clientname;
             Clientemail = clientemail;
