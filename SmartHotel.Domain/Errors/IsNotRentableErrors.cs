@@ -2,12 +2,13 @@
 
 namespace SmartHotel.Domain.Errors
 {
-    public static class IsNotRentableErrors
+    public class IsNotRentableErrors
     {
-        public static Error CannotExecuteExternalOperation =>
-            new ("This room si not rentabled.");
+        public static Error YouMostPayMoreMoney =>
+            new ("You most pay more money");
 
         public static Error CannotExecuteAgreementOperation =>
-            new ("This room si not rentabled in this period");
-    }
+            new ("This room si not rentabled, try another datetime or a diferent room");
+
+       }
 }
