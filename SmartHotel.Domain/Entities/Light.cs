@@ -42,11 +42,11 @@ namespace SmartHotel.Domain.Entities
         private Light()  { }
 
 
-        public Light(Guid id, double value, double reference, Room room, Guid roomId) : base(id, value, reference)
+        public Light(Guid id, double value, double reference, Room room) : base(id, value, reference)
         {
             Unit = LightUnit.LUX;
             Room = room;
-            RoomId = roomId;
+            RoomId = Room.Id;
         }
 
 
