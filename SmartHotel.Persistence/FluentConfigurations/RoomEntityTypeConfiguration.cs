@@ -13,12 +13,11 @@ namespace SmartHotel.Persistence.FluentConfigurations
         {
             base.Configure(builder);
             builder.ToTable("Rooms");
-            builder.OwnsOne(x => x.RoomType);
-            builder.OwnsOne(x => x.RentalPrice);
-            builder.HasMany(x => x.Agreements).WithOne().HasForeignKey(x => x.RoomId);
-            builder.HasOne(x => x.Smoke);
-            builder.HasOne(x => x.Light);
-            builder.HasOne(x => x.Temperature);
+            builder.OwnsOne(room => room.RoomType);
+            builder.OwnsOne(room => room.RentalPrice);
+            builder.HasMany(r => r.Agreements).WithOne().HasForeignKey(x => x.RoomId);
+            builder.HasOne(r => r.Smoke).WithOne(s => s.Room).HasForeignKey<Room>(r => r.SmokeId);
+            builder.HasOne(r => r.Light).WithOne(s => s.Room).HasForeignKey<Room>(r => r.LightId);
         }
     }
 }
