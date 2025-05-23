@@ -60,14 +60,29 @@ namespace SmartHotel.Domain.Entities
         public Smoke Smoke { get; set; }
 
         /// <summary>
+        /// Identificador de la concentración de humo en la habitación.
+        /// </summary>
+        public Guid SmokeId { get; }
+
+        /// <summary>
         /// Temperatura en la habitación.
         /// </summary>
         public Temperature Temperature { get; set; }
 
         /// <summary>
+        /// Identificador de la temperatura en la habitación.
+        /// </summary>
+        public Guid TemperatureId { get; }
+
+        /// <summary>
         /// Iluminación en la habitación.
         /// </summary>
         public Light Light { get; set; }
+
+        /// <summary>
+        /// Identificador de la iluminación en la habitación.
+        /// </summary>
+        public Guid LightId { get; }
 
         /// <summary>
         /// Acuerdos de reservas de una habitación.
@@ -83,14 +98,17 @@ namespace SmartHotel.Domain.Entities
         private Room() { }
 
 
-        public Room(Guid id, int number, Price rentalPrice, RoomType roomType, Temperature temperature, Smoke smoke, Light light) : base(id)
+        public Room(Guid id, int number, Price rentalPrice, RoomType roomType, Temperature temperature, Guid temperatureId, Smoke smoke, Guid smokeId, Light light, Guid lightId) : base(id)
         {
             Number = number;
             RentalPrice = rentalPrice;
             RoomType = roomType;
             Temperature = temperature;
+            TemperatureId = temperatureId;
             Light = light;
+            LightId = lightId;
             Smoke = smoke;
+            SmokeId = smokeId;
             IsRentable = !Smoke.Danger();
             IsClimatizationOn = temperature.TemperatureControl();
             IsIluminationOn = light.LightControl();

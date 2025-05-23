@@ -25,18 +25,12 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         public Room Room { get; set; }
 
-        /// <summary>
-        /// Identificador de la habitación a la cual pertenece la concentración de humo.
-        /// </summary>
-        public Guid RoomId { get; set; }
-
         #endregion
 
-        public Smoke(Guid id, double value, double reference, Room room, Guid roomId) : base(id, value, reference)
+        public Smoke(Guid id, double value, double reference, Room room) : base(id, value, reference)
         {
             Unit = SmokeUnit.ppt;
             Room = room;
-            RoomId = roomId;
         }
 
         /// <summary>

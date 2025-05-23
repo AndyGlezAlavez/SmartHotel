@@ -29,11 +29,6 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         public Room Room { get; set; }
 
-        /// <summary>
-        /// Identificador de la habitación a la cual pertenece la temperatura.
-        /// </summary>
-        public Guid RoomId { get; set; }
-
         #endregion
 
         /// <summary>
@@ -42,11 +37,10 @@ namespace SmartHotel.Domain.Entities
         private Temperature() { }
 
 
-        public Temperature(Guid id, double value, double reference, TempUnit unit, Room room, Guid roomId) : base(id, value, reference)
+        public Temperature(Guid id, double value, double reference, TempUnit unit, Room room) : base(id, value, reference)
         {
             Unit = unit;
             Room = room;
-            RoomId = roomId;
         }
 
         /// <summary>
