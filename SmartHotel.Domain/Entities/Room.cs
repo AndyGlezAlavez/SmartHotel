@@ -37,7 +37,7 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Precio al que se alquila la habitación.
         /// </summary>
-        public Price RentalPrice { get; set; } = (100.00, MoneyType.euro);
+        public Price RentalPrice { get; set; } //= (100.00, MoneyType.euro);
 
         /// <summary>
         /// Está encendida la climatización.
@@ -52,7 +52,7 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Tipo de habitación.
         /// </summary>
-        public RoomType RoomType { get; set; } = (Capacity.Sencilla, Category.Estandar);
+        public RoomType RoomType { get; set; } //= (Capacity.Sencilla, Category.Estandar);
 
         /// <summary>
         /// Concentración de humo en la habitación.

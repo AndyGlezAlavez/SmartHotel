@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Common
 {
+    /// <summary>
+    /// Define una regla de negocio del dominio.
+    /// </summary>
     public interface IBusinessRule
     {
         /// <summary>

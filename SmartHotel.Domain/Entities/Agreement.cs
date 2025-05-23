@@ -42,7 +42,7 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         public DateTime FinalDate { get; set; }
 
-        public Price Price { get; set; } = (100.00, MoneyType.euro);
+        public Price Price { get; set; } 
 
         /// <summary>
         /// Habitación del acuerdo de reserva.
@@ -61,13 +61,13 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         private Agreement() { }
       
-        public Agreement(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Price price, Room room, Guid roomId, Guid id) : base(id)
+        public Agreement(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Room room, Guid roomId, Guid id) : base(id)
         {
             ClientName = clientname;
             Clientemail = clientemail;
             StartDate = startDate;
             FinalDate = finalDate;
-            Price = price;
+            Price = Room.RentalPrice;
             Room = room;
             Price.MoneyType = Room.RentalPrice.MoneyType;
             RoomId = roomId;
@@ -79,13 +79,13 @@ namespace SmartHotel.Domain.Entities
 
         }
 
-        public Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Price price, Room room, Guid roomId, Guid id, Capacity capacity, Category category)
+        public Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Room room, Guid roomId, Guid id, Capacity capacity, Category category)
         {
             ClientName = clientname;
             Clientemail = clientemail;
             StartDate = startDate;
             FinalDate = finalDate;
-            Price = price;
+            Price = Room.RentalPrice;
             Room = room;
             Price.MoneyType= Room.RentalPrice.MoneyType;
             RoomId = roomId;
@@ -195,7 +195,7 @@ namespace SmartHotel.Domain.Entities
             }
             else
             {
-                return Result.Ok(new Agreement(ClientName, Clientemail, StartDate, FinalDate, Price, Room, RoomId, Id));
+                return Result.Ok(new Agreement(ClientName, Clientemail, StartDate, FinalDate, Room, RoomId, Id));
             }
         }
     }

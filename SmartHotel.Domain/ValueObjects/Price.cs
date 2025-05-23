@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.ValueObjects
 {
+    /// <summary>
+    /// Modela un precio.
+    /// </summary>
     public class Price : ValueObject
     {
         #region Properties
@@ -15,7 +18,7 @@ namespace SmartHotel.Domain.ValueObjects
         /// <summary>
         /// Valor del precio.
         /// </summary>
-        public double Value { get; set; }
+        public double Value { get; set; } = 0;
 
         /// <summary>
         /// Símbolo de la moneda 
@@ -23,6 +26,14 @@ namespace SmartHotel.Domain.ValueObjects
         public MoneyType MoneyType { get; set; } = MoneyType.euro;
 
         #endregion
+       
+        
+        /// <summary>
+        /// Requerido por Entity Framework.
+        /// </summary>
+        private Price() { }
+
+
         /// <summary>
         /// Inicializa un precio.
         /// </summary>
@@ -39,12 +50,12 @@ namespace SmartHotel.Domain.ValueObjects
             return new object[] { Value, MoneyType };
         }
 
-        public static Price Default => new(100.00, MoneyType.euro);
+        /*public static Price Default => new(100.00, MoneyType.euro);
 
         // Conversión implícita con valores por defecto
         public static implicit operator Price((double, MoneyType euro) v)
         {
            return new Price(100.00, v.euro);
-        }
+        }*/
     }
 }
