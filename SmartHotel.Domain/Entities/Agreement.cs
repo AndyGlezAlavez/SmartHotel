@@ -61,7 +61,7 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         private Agreement() { }
       
-        public Agreement(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Room room, Guid roomId, Guid id) : base(id)
+        public Agreement(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Room room, Guid id) : base(id)
         {
             ClientName = clientname;
             Clientemail = clientemail;
@@ -69,8 +69,7 @@ namespace SmartHotel.Domain.Entities
             FinalDate = finalDate;
             Price = Room.RentalPrice;
             Room = room;
-            Price.MoneyType = Room.RentalPrice.MoneyType;
-            RoomId = roomId;
+            RoomId = Room.Id;
         }
 
         public TimeSpan DuracionRenta()
@@ -79,7 +78,7 @@ namespace SmartHotel.Domain.Entities
 
         }
 
-        public Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Room room, Guid roomId, Guid id, Capacity capacity, Category category)
+        public Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Room room, Guid id, Capacity capacity, Category category)
         {
             ClientName = clientname;
             Clientemail = clientemail;
@@ -87,8 +86,7 @@ namespace SmartHotel.Domain.Entities
             FinalDate = finalDate;
             Price = Room.RentalPrice;
             Room = room;
-            Price.MoneyType= Room.RentalPrice.MoneyType;
-            RoomId = roomId;
+            RoomId = Room.Id;
             Guid Id = id;
 
             // Obtener la duración de la renta en días.
@@ -195,7 +193,7 @@ namespace SmartHotel.Domain.Entities
             }
             else
             {
-                return Result.Ok(new Agreement(ClientName, Clientemail, StartDate, FinalDate, Room, RoomId, Id));
+                return Result.Ok(new Agreement(ClientName, Clientemail, StartDate, FinalDate, Room, Id));
             }
         }
     }

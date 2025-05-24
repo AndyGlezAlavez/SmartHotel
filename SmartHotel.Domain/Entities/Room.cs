@@ -98,20 +98,20 @@ namespace SmartHotel.Domain.Entities
         private Room() { }
 
 
-        public Room(Guid id, int number, Price rentalPrice, RoomType roomType, Temperature temperature, Guid temperatureId, Smoke smoke, Guid smokeId, Light light, Guid lightId) : base(id)
+        public Room(Guid id, int number, Price rentalPrice, RoomType roomType, Temperature temperature, Smoke smoke, Light light) : base(id)
         {
             Number = number;
             RentalPrice = rentalPrice;
             RoomType = roomType;
             Temperature = temperature;
-            TemperatureId = temperatureId;
+            TemperatureId = Temperature.Id;
             Light = light;
-            LightId = lightId;
+            LightId = Light.Id;
             Smoke = smoke;
-            SmokeId = smokeId;
+            SmokeId = Smoke.Id;
             IsRentable = !Smoke.Danger();
-            IsClimatizationOn = temperature.TemperatureControl();
-            IsIluminationOn = light.LightControl();
+            IsClimatizationOn = Temperature.TemperatureControl();
+            IsIluminationOn = Light.LightControl();
             IsOcupated = false;
         }
 

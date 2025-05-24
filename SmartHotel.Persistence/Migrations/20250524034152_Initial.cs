@@ -130,7 +130,6 @@ namespace SmartHotel.Persistence.Migrations
                     FinalDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Price_Value = table.Column<double>(type: "double precision", nullable: false),
                     Price_MoneyType = table.Column<int>(type: "integer", nullable: false),
-                    RoomId1 = table.Column<Guid>(type: "uuid", nullable: false),
                     RoomId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
@@ -142,23 +141,12 @@ namespace SmartHotel.Persistence.Migrations
                         principalTable: "Rooms",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Agreements_Rooms_RoomId1",
-                        column: x => x.RoomId1,
-                        principalTable: "Rooms",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Agreements_RoomId",
                 table: "Agreements",
                 column: "RoomId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Agreements_RoomId1",
-                table: "Agreements",
-                column: "RoomId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rooms_LightId",

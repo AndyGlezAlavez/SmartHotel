@@ -42,17 +42,12 @@ namespace SmartHotel.Persistence.Migrations
                     b.Property<Guid>("RoomId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("RoomId1")
-                        .HasColumnType("uuid");
-
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RoomId");
-
-                    b.HasIndex("RoomId1");
 
                     b.ToTable("Agreements", (string)null);
                 });
@@ -156,15 +151,9 @@ namespace SmartHotel.Persistence.Migrations
 
             modelBuilder.Entity("SmartHotel.Domain.Entities.Agreement", b =>
                 {
-                    b.HasOne("SmartHotel.Domain.Entities.Room", null)
+                    b.HasOne("SmartHotel.Domain.Entities.Room", "Room")
                         .WithMany("Agreements")
                         .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SmartHotel.Domain.Entities.Room", "Room")
-                        .WithMany()
-                        .HasForeignKey("RoomId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
