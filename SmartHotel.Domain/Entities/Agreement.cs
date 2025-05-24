@@ -8,7 +8,6 @@ using FluentResults;
 using Microsoft.VisualBasic.FileIO;
 using SmartHotel.Domain.Common;
 using SmartHotel.Domain.Entities;
-using SmartHotel.Domain.Errors;
 using SmartHotel.Domain.Types;
 using SmartHotel.Domain.ValueObjects;
 
@@ -50,9 +49,6 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         public Room Room { get; set; }
 
-        ///Fallos
-        public IsNotRentableErrors Isnotrentablerrors { get; set; }
-
         /// <summary>
         /// Identificador de la habitación del acuerdo de reserva.
         /// </summary>
@@ -65,7 +61,7 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         private Agreement() { }
 
-        public Agreement(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Price price, Room room, IsNotRentableErrors IsNotRentableErrors, Guid id) : base(id)
+        public Agreement(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Price price, Room room, Guid id) : base(id)
         {
             ClientName = clientname;
             Clientemail = clientemail;
@@ -75,7 +71,6 @@ namespace SmartHotel.Domain.Entities
             Room = room;
             Price.MoneyType = Room.RentalPrice.MoneyType;
             RoomId = Room.Id;
-            Isnotrentablerrors = IsNotRentableErrors;
         }
 
         public TimeSpan DuracionRenta()
@@ -84,7 +79,7 @@ namespace SmartHotel.Domain.Entities
 
         }
 
-        public Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Price price, Room room, IsNotRentableErrors IsNotRentableErrors, Guid id, Capacity capacity, Category category)
+        public Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Price price, Room room, Guid id, Capacity capacity, Category category)
         {
             ClientName = clientname;
             Clientemail = clientemail;
@@ -94,7 +89,6 @@ namespace SmartHotel.Domain.Entities
             Room = room;
             Price.MoneyType= Room.RentalPrice.MoneyType;
             RoomId = Room.Id;
-            Isnotrentablerrors = IsNotRentableErrors;
             Guid Id = id;
 
             // Obtener la duración de la renta en días.
@@ -190,18 +184,18 @@ namespace SmartHotel.Domain.Entities
             // Logica para comprobar el precio
             if (Price.Value > Room.RentalPrice.Value)
             {
-                return Result.Fail<Agreement>((IError)IsNotRentableErrors.YouMostPayMoreMoney);
+                return Result.Fail<Agreement>("You Most Pay More Money");
             }
 
             // logica para ver si se puede rentar
             bool analisys = room.IsRentabled(StartDate, FinalDate);
             if (!analisys)
             {
-                return Result.Fail<Agreement>((IError)IsNotRentableErrors.CannotExecuteAgreementOperation);
+                return Result.Fail<Agreement>("Cannot Execute Agreement Operation, try another room or datetime");
             }
             else
             {
-                return Result.Ok(new Agreement(ClientName, Clientemail, StartDate, FinalDate, Price, Room, Isnotrentablerrors, Id));
+                return Result.Ok(new Agreement(ClientName, Clientemail, StartDate, FinalDate, Price, Room, Id));
             }
         }
     }
