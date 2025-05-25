@@ -1,4 +1,4 @@
-﻿﻿syntax = "proto3";
+﻿syntax = "proto3";
 
 option csharp_namespace = "SmartHotel.GrpcProtos";
 
@@ -7,11 +7,36 @@ package GrpcProtos;
 import "google/protobuf/empty.proto";
 import "Common.proto";
 
-service Light{
-	rpc CreateLight (LightCreationDTO) returns (google.protobuf.Empty);
-	rpc GetAllLight (GetRequestDTO) returns (LightDTO);
-	rpc UpdateLight (LightDTO) returns (google.protobuf.Empty);
-	rpc AddVariableToLight (VariableLightRelationDTO) returns (google.protobuf.Empty);
-	rpc RemoveVariableFromLight (VariableLightRelationDTO) returns (google.protobuf.Empty);
-	rpc DeleteLight (DeleteRequestDTO) returns (google.protobuf.Empty);
+service Temperature{
+	rpc CreateTemperature (CreateTemperatureRequest) returns (TemperatureDTO);
+	rpc GetTemperature (GetRequest) returns (NullableTemperatureDTO);
+	rpc GetAllTemperature (google.protobuf.Empty) returns (Temperatures);
+	rpc UpdateTemperature (TemperatureDTO) returns (google.protobuf.Empty);
+	rpc DeleteTemperature (DeleteRequestDTO) returns (google.protobuf.Empty);
+}
+
+message TemperatureDTO{
+	string id = 1;
+	double value = 2;
+	double reference = 3;
+	TempUnit unit = 4;
+	Room room = 5;
+}
+
+message Temperatures{ 
+	   repeated TemperatureDTO
+items = 1;
+}
+
+message NullableTemperatureDTO{
+	oneof kind{
+		LightDTO Temperature = 1;
+	}
+}
+
+message CreateTemperatureRequest{ 
+	double value = 1;
+	double reference = 2;
+	TempUnit unit = 3;
+	Room room = 4;
 }
