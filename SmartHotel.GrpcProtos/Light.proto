@@ -1,4 +1,4 @@
-﻿﻿syntax = "proto3";
+﻿syntax = "proto3";
 
 option csharp_namespace = "SmartHotel.GrpcProtos";
 
@@ -6,6 +6,7 @@ package GrpcProtos;
 
 import "google/protobuf/empty.proto";
 import "Common.proto";
+import "Room.proto";
 
 service Light{
 	rpc CreateLight (CreateLightRequest) returns (LightDTO);
@@ -23,14 +24,19 @@ message LightDTO{
 }
 
 message Lights{ 
-	   repeated LightDTO
-items = 1;
+	   repeated LightDTO items = 1;
 }
 
 message NullableLightDTO{
 	oneof kind{
 		LightDTO light = 1;
+		google.protobuf.Empty null = 2; 
 	}
+}
+
+
+message DeleteRequestDTO {
+    string id = 1;
 }
 
 message CreateLightRequest{ 

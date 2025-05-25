@@ -6,6 +6,7 @@ package GrpcProtos;
 
 import "google/protobuf/empty.proto";
 import "Common.proto";
+import "Room.proto";
 
 service Smoke{
 	rpc CreateSmoke (CreateSmokeRequest) returns (SmokeDTO);
