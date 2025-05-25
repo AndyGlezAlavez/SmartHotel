@@ -1,0 +1,13 @@
+﻿{
+  "profiles": {
+    "SmartHotel.gRPC": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "http://localhost:5047;https://localhost:7293",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
