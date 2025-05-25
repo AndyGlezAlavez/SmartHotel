@@ -6,6 +6,8 @@ package GrpcProtos ;
 
 import "google/protobuf/empty.proto" ;
 import "common.proto";
+import "google/protobuf/timestamp.proto";
+import "Room.proto";
 
 service Agreement{
 	rpc CreateAgreement (AgreementCreationDTO) returns (google.protobuf.Empty) ;
@@ -18,5 +20,28 @@ service Agreement{
 message AgreementDTO{
 	string clientName = 1;
 	string ClientEmail =2;
+	google.protobuf.timestamp startDate = 3;
+	google.protobuf.timestamp finalDate = 4;
+	Price price =5;
+	RoomDTO room =6;
+	string roomId =7;
 
+}
+message Agreements{
+	repeated AgreementDTO item = 1;
+}
+message NullableAgreementDTO {
+	oneof kind{
+		google.protobuf.NullValue null = 1;
+		RoomDTO room = 2;
+	}
+}
+message CreateAgreementRequest {
+	string clientName = 1;
+	string ClientEmail = 2;
+	google.protobuf.timestamp startDate = 3;
+	google.protobuf.timestamp finalDate = 4;
+	Price price = 5;
+	RoomDTO room = 6;
+	string roomId = 7;
 }

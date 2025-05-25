@@ -6,6 +6,9 @@ package GrpcProtos ;
 
 import "google/protobuf/empty.proto" ;
 import "common.proto";
+import "Light.proto";
+import "Smooke.proto";
+import "Temperature.proto";
 
 service Room {
 	rpc CreateRoom (CreateRoomRequest) returns (RoomDTO);

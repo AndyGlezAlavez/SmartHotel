@@ -7,7 +7,7 @@ message GetRequest{
 	string id = 1 ;
 }
 
-message DeleteRequest{
+message DeleteRequestDTO{
 	string id = 1 ;
 }
 message Price{
