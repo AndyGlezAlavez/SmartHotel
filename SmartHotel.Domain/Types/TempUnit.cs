@@ -16,7 +16,7 @@ namespace SmartHotel.Domain.Types
         /// <summary>
         /// 0 absoluto
         /// </summary>
-        Kelivn,
+        Kelvin,
 
         /// <summary>
         /// Usado en paises del primer mundo

@@ -1,0 +1,50 @@
+syntax = "proto3";
+option csharp_namespace = "SmartHotel.GrpcProtos";
+
+package GrpcProtos ;
+
+message GetRequest{
+	string id = 1 ;
+}
+
+message DeleteRequest{
+	string id = 1 ;
+}
+message Price{
+	double value = 1;
+	MoneyTipe moneyType = 2 ;
+}
+message RoomType{
+	Category category =1;
+	Capacity capacity =2;
+}
+enum MoneyTipe {
+	euro = 0 ;
+	USD = 1 ;
+	Peso = 2 ;
+	MLC = 3 ;
+}
+enum Category{
+	Estandar = 9;
+	Suit = 1 ;
+	VIP = 2;
+}
+enum Capacity {
+	Sencilla = 0;
+	Double = 1;
+	Familiar = 2;
+}
+enum LightUnit {
+	LUX = 0;
+	Candela = 1 ;
+	PAR = 2 ;
+}
+enum SmokeUnit {
+	ppt = 0;
+	ppm = 1;
+}
+enum TempUnit {
+	Celsius = 0;
+	Kelvin = 1;
+	Farenheit = 2;
+}
