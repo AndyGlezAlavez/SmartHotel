@@ -17,7 +17,9 @@ service Light{
 
 message LightDTO{
 	LightUnit Unit = 1;
-	Room Room = 2;
+	bool TurnOn = 2;
+	Room Room = 3;
+	string id = 4;
 }
 
 message Lights{ 
