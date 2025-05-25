@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "SmartHotel.GrpcProtos";
+
+package GrpcProtos ;
+
+import "google/protobuf/empty.proto" ;
+import "common.proto";
+
+service Agreement{
+	rpc CreateAgreement (AgreementCreationDTO) returns (google.protobuf.Empty) ;
+	rpc GetAllAgreement (GetRequest) returns (google.protobuf.Empty);
+	rpc UpdateAgreement (AgreementDTO) returns (google.protobuf.Empty);
+	rpc AddAgreement(AgreementDTO) returns (google.protobuf.Empty);
+	rpc	RemoveAgreement (AgreementDTO) returns (google.protobuf.Empty);
+	rpc DeleteAgreement (DeleteRequestDTO) returns (google.protobuf.Empty);
+}
+message AgreementDTO{
+	string clientName = 1;
+	string ClientEmail =2;
+
+}

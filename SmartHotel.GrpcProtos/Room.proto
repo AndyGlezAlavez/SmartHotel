@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option csharp_namespace = "SmartHotel.GrpcProtos";
+
+package GrpcProtos ;
+
+import "google/protobuf/empty.proto" ;
+import "common.proto";
+
+service Room {
+	rpc CreateRoom (CreateRoomRequest) returns (RoomDTO);
+	rpc GetAllRoom (google.protobuf.Empty) returns (Rooms);
+	rpc UpdateUnit(RoomDTO) returns (google.protobuf.Empty);
+	rpc AddRoom(RoomDTO) returns (google.protobuf.Empty);
+	rpc RemoveRoom(RoomDTO) returns (google.protobuf.Empty);
+	rpc DeleteRoom(DeleteRequestDTO) returns (google.protobuf.Empty);
+
+}
+
+message RoomDTO{
+	int32 number = 1;
+	bool isRentable = 2;
+	bool isOcupated = 3;
+	Price rentalPrice =4;
+	bool isClimatization = 5;
+	bool isIlumination = 6;
+	RoomType roomType = 7;
+	SmokeDTO smooke = 8;
+	string smookeId = 9;
+	TemperatureDTO temperature = 10;
+	string temperatureId =11;
+	LightDTO light = 12 ;
+	string lightId = 13;
+
+}
+message Rooms {
+	repeated RoomDTO item = 1;
+}
+message NullableRoomDTO {
+	oneof kind{
+		google.protobuf.NullValue null = 1;
+		RoomDTO room = 2;
+	}
+}
+message CreateRoomRequest{
+	int32 number = 1;
+	Price rentalPrice = 2;
+	RoomType roomType = 3;
+	TemperatureDTO temperature = 4;
+	string temperatureId = 5;
+	LightDTO light = 6;
+	string lightId = 7;
+	SmokeDTO smooke = 8;
+	string smookeId = 9;
+	bool isRentable = 10;
+	bool isClimatization = 13;
+	bool isIlumination = 11;
+	bool isOcupated =12;
+	
+}
