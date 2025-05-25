@@ -16,10 +16,10 @@ service Light{
 }
 
 message LightDTO{
-	double value = 1;
-	double reference = 2;
-	Room room = 3;
-	string id = 4;
+	string id = 1;
+	double value = 2;
+	double reference = 3;
+	Room room = 4;
 }
 
 message Lights{ 

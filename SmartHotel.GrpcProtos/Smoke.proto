@@ -16,25 +16,25 @@ service Smoke{
 }
 
 message SmokeDTO{
-	LightUnit Unit = 1;
-	bool TurnOn = 2;
-	Room Room = 3;
-	string id = 4;
+	string id = 1;
+	double value = 2;
+	double reference = 3;
+	Room room = 4;
 }
 
-message Lights{ 
-	   repeated LightDTO
+message Smokes{ 
+	   repeated SmokeDTO
 items = 1;
 }
 
-message NullableLightDTO{
+message NullableSmokeDTO{
 	oneof kind{
-		LightDTO light = 1;
+		LightDTO Smoke = 1;
 	}
 }
 
-message CreateLightRequest{ 
-	LightUnit Unit = 1;
-	bool TurnOn = 2;
-	Room Room = 3;
+message CreateSmokeRequest{ 
+	double value = 1;
+	double reference = 2;
+	Room room = 3;
 }
