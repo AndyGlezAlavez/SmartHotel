@@ -8,10 +8,33 @@ import "google/protobuf/empty.proto";
 import "Common.proto";
 
 service Smoke{
-	rpc CreateSmoke (SmokeCreationDTO) returns (google.protobuf.Empty);
-	rpc GetAllSmoke (GetRequestDTO) returns (SmokeDTO);
+	rpc CreateSmoke (CreateSmokeRequest) returns (SmokeDTO);
+	rpc GetSmoke (GetRequest) returns (NullableSmokeDTO);
+	rpc GetAllSmoke (google.protobuf.Empty) returns (Smokes);
 	rpc UpdateSmoke (SmokeDTO) returns (google.protobuf.Empty);
-	rpc AddVariableToSmoke (VariableSmokeRelationDTO) returns (google.protobuf.Empty);
-	rpc RemoveVariableFromSmoke (VariableSmokeRelationDTO) returns (google.protobuf.Empty);
 	rpc DeleteSmoke (DeleteRequestDTO) returns (google.protobuf.Empty);
+}
+
+message SmokeDTO{
+	LightUnit Unit = 1;
+	bool TurnOn = 2;
+	Room Room = 3;
+	string id = 4;
+}
+
+message Lights{ 
+	   repeated LightDTO
+items = 1;
+}
+
+message NullableLightDTO{
+	oneof kind{
+		LightDTO light = 1;
+	}
+}
+
+message CreateLightRequest{ 
+	LightUnit Unit = 1;
+	bool TurnOn = 2;
+	Room Room = 3;
 }

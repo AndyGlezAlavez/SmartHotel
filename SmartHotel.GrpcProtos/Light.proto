@@ -16,9 +16,9 @@ service Light{
 }
 
 message LightDTO{
-	LightUnit Unit = 1;
-	bool TurnOn = 2;
-	Room Room = 3;
+	double value = 1;
+	double reference = 2;
+	Room room = 3;
 	string id = 4;
 }
 
@@ -34,7 +34,7 @@ message NullableLightDTO{
 }
 
 message CreateLightRequest{ 
-	LightUnit Unit = 1;
-	bool TurnOn = 2;
-	Room Room = 3;
+	double value = 1;
+	double reference = 2;
+	Room room = 3;
 }
