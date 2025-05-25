@@ -1,0 +1,17 @@
+﻿﻿syntax = "proto3";
+
+option csharp_namespace = "SmartHotel.GrpcProtos";
+
+package GrpcProtos;
+
+import "google/protobuf/empty.proto";
+import "Common.proto";
+
+service Smoke{
+	rpc CreateSmoke (SmokeCreationDTO) returns (google.protobuf.Empty);
+	rpc GetAllSmoke (GetRequestDTO) returns (SmokeDTO);
+	rpc UpdateSmoke (SmokeDTO) returns (google.protobuf.Empty);
+	rpc AddVariableToSmoke (VariableSmokeRelationDTO) returns (google.protobuf.Empty);
+	rpc RemoveVariableFromSmoke (VariableSmokeRelationDTO) returns (google.protobuf.Empty);
+	rpc DeleteSmoke (DeleteRequestDTO) returns (google.protobuf.Empty);
+}
