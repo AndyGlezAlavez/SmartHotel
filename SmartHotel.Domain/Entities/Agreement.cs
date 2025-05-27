@@ -36,8 +36,6 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         public DateTime StartDate { get; set; }
 
-        // Fecha de inicio
-        public static DateTime FechaInicio { get; set; }
         
         /// <summary>
         /// Fecha final de la reserva.
