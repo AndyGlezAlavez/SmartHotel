@@ -67,8 +67,8 @@ namespace SmartHotel.Domain.Entities
             Clientemail = clientemail;
             StartDate = startDate;
             FinalDate = finalDate;
-            Price = Room.RentalPrice;
             Room = room;
+            Price = Room.RentalPrice;
             RoomId = Room.Id;
         }
 
