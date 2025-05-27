@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Types
 {
-    public enum Variable
+    public enum Variable2
     {
        ºC,
        ppm,

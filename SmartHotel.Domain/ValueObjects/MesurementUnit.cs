@@ -14,7 +14,7 @@ namespace SmartHotel.Domain.ValueObjects
             /// <summary>
             /// Unidad de medida
             /// </summary>
-            Variable var;
+            Variable2 var;
            /// <summary>
            /// nombre de la variable 
            /// </summary>
@@ -26,7 +26,7 @@ namespace SmartHotel.Domain.ValueObjects
             /// </summary>
             /// <param name="var"></param>
             /// <param name="value"></param>
-            public MesurementUnit(Variable var)
+            public MesurementUnit(Variable2 var)
             {
                 this.var = var;
                 string stringvar = var.ToString ();
