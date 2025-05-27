@@ -5,7 +5,7 @@ option csharp_namespace = "SmartHotel.GrpcProtos";
 package GrpcProtos;
 
 import "google/protobuf/empty.proto";
-import "Common.proto";
+import "common.proto";
 import "Room.proto";
 
 service Light{
@@ -32,11 +32,6 @@ message NullableLightDTO{
 		LightDTO light = 1;
 		google.protobuf.Empty null = 2; 
 	}
-}
-
-
-message DeleteRequestDTO {
-    string id = 1;
 }
 
 message CreateLightRequest{ 

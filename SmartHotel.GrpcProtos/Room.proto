@@ -7,7 +7,7 @@ package GrpcProtos ;
 import "google/protobuf/empty.proto" ;
 import "common.proto";
 import "Light.proto";
-import "Smooke.proto";
+import "Smoke.proto";
 import "Temperature.proto";
 
 service Room {

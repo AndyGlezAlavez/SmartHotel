@@ -5,7 +5,7 @@ option csharp_namespace = "SmartHotel.GrpcProtos";
 package GrpcProtos;
 
 import "google/protobuf/empty.proto";
-import "Common.proto";
+import "common.proto";
 
 service Variable{
 	rpc CreateVariable (CreateVariableRequest) returns (VariableDTO);
