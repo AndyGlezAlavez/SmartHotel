@@ -6,6 +6,7 @@ package GrpcProtos ;
 
 import "google/protobuf/empty.proto" ;
 import "common.proto";
+import "google/protobuf/struct.proto";
 //import "Light.proto";
 //import "Smoke.proto";
 //import "Temperature.proto";
