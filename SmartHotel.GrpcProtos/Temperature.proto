@@ -25,13 +25,13 @@ message TemperatureDTO{
 }
 
 message Temperatures{ 
-	   repeated TemperatureDTO
-items = 1;
+	   repeated TemperatureDTO items = 1;
 }
 
 message NullableTemperatureDTO{
 	oneof kind{
-		LightDTO Temperature = 1;
+		TemperatureDTO Temperature = 1;
+				google.protobuf.Empty null = 2; 
 	}
 }
 

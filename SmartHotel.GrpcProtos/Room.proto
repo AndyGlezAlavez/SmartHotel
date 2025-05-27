@@ -6,9 +6,9 @@ package GrpcProtos ;
 
 import "google/protobuf/empty.proto" ;
 import "common.proto";
-import "Light.proto";
-import "Smoke.proto";
-import "Temperature.proto";
+//import "Light.proto";
+//import "Smoke.proto";
+//import "Temperature.proto";
 
 service Room {
 	rpc CreateRoom (CreateRoomRequest) returns (RoomDTO);
@@ -28,8 +28,8 @@ message RoomDTO{
 	bool isClimatization = 5;
 	bool isIlumination = 6;
 	RoomType roomType = 7;
-	SmokeDTO smooke = 8;
-	string smookeId = 9;
+	SmokeDTO smoke = 8;
+	string smokeId = 9;
 	TemperatureDTO temperature = 10;
 	string temperatureId =11;
 	LightDTO light = 12 ;
@@ -41,8 +41,8 @@ message Rooms {
 }
 message NullableRoomDTO {
 	oneof kind{
-		google.protobuf.NullValue null = 1;
-		RoomDTO room = 2;
+		RoomDTO room = 1;
+		google.protobuf.NullValue null = 2;
 	}
 }
 message CreateRoomRequest{
@@ -53,8 +53,8 @@ message CreateRoomRequest{
 	string temperatureId = 5;
 	LightDTO light = 6;
 	string lightId = 7;
-	SmokeDTO smooke = 8;
-	string smookeId = 9;
+	SmokeDTO smoke = 8;
+	string smokeId = 9;
 	bool isRentable = 10;
 	bool isClimatization = 13;
 	bool isIlumination = 11;

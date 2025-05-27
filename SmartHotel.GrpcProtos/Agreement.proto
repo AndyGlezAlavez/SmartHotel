@@ -32,8 +32,8 @@ message Agreements{
 }
 message NullableAgreementDTO {
 	oneof kind{
-		google.protobuf.NullValue null = 1;
-		RoomDTO room = 2;
+	AgreementDTO room = 1;	
+	google.protobuf.NullValue null = 2;	
 	}
 }
 message CreateAgreementRequest {

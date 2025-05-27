@@ -24,13 +24,13 @@ message SmokeDTO{
 }
 
 message Smokes{ 
-	   repeated SmokeDTO
-items = 1;
+	   repeated SmokeDTO items = 1;
 }
 
 message NullableSmokeDTO{
 	oneof kind{
-		LightDTO Smoke = 1;
+		SmokeDTO Smoke = 1;
+	    google.protobuf.Empty null = 2; 
 	}
 }
 
