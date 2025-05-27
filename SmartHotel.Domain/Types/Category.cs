@@ -6,24 +6,21 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Types
 {
-    public enum MoneyType
+    public enum Category
     {
         /// <summary>
-        /// Moneda europea.
+        /// Normal
         /// </summary>
-        euro,
+        Estandar,
+
         /// <summary>
-        /// Moneda estadounidense.
+        /// + confortable
         /// </summary>
-        USD,
+        Suit,
+
         /// <summary>
-        /// Moneda cubana
+        /// VIP
         /// </summary>
-        Peso,
-        /// <summary>
-        /// Moneda cubana convertible.
-        /// </summary>
-        MLC
+        VIP
     }
 }
-    

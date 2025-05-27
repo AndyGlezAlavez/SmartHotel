@@ -6,24 +6,21 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Types
 {
-    public enum MoneyType
+    public enum TempUnit
     {
         /// <summary>
-        /// Moneda europea.
+        /// Normal
         /// </summary>
-        euro,
+        Celsius,
+
         /// <summary>
-        /// Moneda estadounidense.
+        /// 0 absoluto
         /// </summary>
-        USD,
+        Kelvin,
+
         /// <summary>
-        /// Moneda cubana
+        /// Usado en paises del primer mundo
         /// </summary>
-        Peso,
-        /// <summary>
-        /// Moneda cubana convertible.
-        /// </summary>
-        MLC
+        Farenheit
     }
 }
-    

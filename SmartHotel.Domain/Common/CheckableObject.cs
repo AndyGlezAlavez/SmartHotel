@@ -8,7 +8,7 @@ namespace SmartHotel.Domain.Common
 
         protected static Result CheckRules(params IBusinessRule[] Rules)
         {
-            List<Result> results = new List<Result>();
+            List<Result> results = new();
             foreach (var rule in Rules)
             {
                 results.Add(rule.CheckRule());

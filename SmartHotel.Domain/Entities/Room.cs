@@ -5,42 +5,172 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SmartHotel.Domain.Entities;
+using SmartHotel.Domain.Types;
+using System.ComponentModel.Design;
 
 namespace SmartHotel.Domain.Entities
 {
+    /// <summary>
+    /// Habitación.
+    /// </summary>
     public class Room : Entity
     {
 
         #region Properties
+
         /// <summary>
-        /// numero de la habitación
+        /// Número de la habitación.
         /// </summary>
-        int Number {  get; set; }
+        public int Number { get; set; }
+
         /// <summary>
-        /// La habitacion esta lista para ser alquilada
+        /// La habitacion está lista para ser alquilada.
         /// </summary>
-        bool IsRentable { get; set; }  = true;
+        public bool IsRentable { get; set; }
+
         /// <summary>
-        /// Ya fue alquilada actualmente
+        /// La habitación ya fue alquilada actualmente.
         /// </summary>
-        bool IsOcupated { get; set; } 
+        public bool IsOcupated { get; set; }
+
         /// <summary>
-        /// Precio al que se alquila la habitación
+        /// Precio al que se alquila la habitación.
         /// </summary>
-        Price RentalPrice { get; set; }
+        public Price RentalPrice { get; set; } //= (100.00, MoneyType.euro);
+
         /// <summary>
-        /// Esta encendida la climatización
+        /// Está encendida la climatización.
         /// </summary>
-        bool IsClimatizationOn { get; set; }
+        public bool IsClimatizationOn { get; set; }
+
         /// <summary>
-        /// Estan encendidas las luces 
+        /// Están encendidas las luces.
         /// </summary>
-        bool IsIluminationOn { get; set; }
+        public bool IsIluminationOn { get; set; }
+
+        /// <summary>
+        /// Tipo de habitación.
+        /// </summary>
+        public RoomType RoomType { get; set; } //= (Capacity.Sencilla, Category.Estandar);
+
+        /// <summary>
+        /// Concentración de humo en la habitación.
+        /// </summary>
+        public Smoke Smoke { get; set; }
+
+        /// <summary>
+        /// Identificador de la concentración de humo en la habitación.
+        /// </summary>
+        public Guid SmokeId { get; }
+
+        /// <summary>
+        /// Temperatura en la habitación.
+        /// </summary>
+        public Temperature Temperature { get; set; }
+
+        /// <summary>
+        /// Identificador de la temperatura en la habitación.
+        /// </summary>
+        public Guid TemperatureId { get; }
+
+        /// <summary>
+        /// Iluminación en la habitación.
+        /// </summary>
+        public Light Light { get; set; }
+
+        /// <summary>
+        /// Identificador de la iluminación en la habitación.
+        /// </summary>
+        public Guid LightId { get; }
+
+        /// <summary>
+        /// Acuerdos de reservas de una habitación.
+        /// </summary>
+        public List<Agreement> Agreements { get; set; } = new();
+
         #endregion
 
-        public Room(Guid id, int number, Price rentalPrice) : base(id)
+       
+        /// <summary>
+        /// Requerido por Entity Framework.
+        /// </summary>
+        private Room() { }
+
+
+        public Room(Guid id, int number, Price rentalPrice, RoomType roomType, Temperature temperature, Smoke smoke, Light light) : base(id)
         {
             Number = number;
+            RentalPrice = rentalPrice;
+            RoomType = roomType;
+            Temperature = temperature;
+            TemperatureId = Temperature.Id;
+            Light = light;
+            LightId = Light.Id;
+            Smoke = smoke;
+            SmokeId = Smoke.Id;
+            IsRentable = !Smoke.Danger();
+            IsClimatizationOn = Temperature.TemperatureControl();
+            IsIluminationOn = Light.LightControl();
+            IsOcupated = false;
+        }
+
+
+
+
+
+        /// <summary>
+        /// Devuelve si es posible rentar la habitación para los días deseados.
+        /// </summary>
+        /// <param name="startDate">Fecha de inicio deseada.</param>
+        /// <param name="finalDate">Fecha de fin deseada.</param>
+        /// <returns></returns>
+        public bool IsRentabled(DateTime startDate, DateTime finalDate)  
+//La función recibe las fecha de inicio y fin deseadas para efectuar una reserva (es llamada mientras se intenta crear un nuevo acuerdo de reserva por la entidad ´Agreement´).  
+        {
+            if (Smoke.Danger()) //Si la concentración de humo en la habitación solicitada supera el valor normal...
+                return false;  //...directamente se indica que no es posible rentar esa habitación.
+            
+            else               //Si la concentración de humo en la habitación esta OK caemos aquí...
+                return !Agreements.Any(a => startDate < a.FinalDate && finalDate > a.StartDate);  
+//...donde se recorre la lista de acuerdos de reservas(´Agreements´) asociados a la habitación. Se comparan las fechas donde la habitación ya está rentada (las de la lista) con las nuevas fechas en que se solicita la reserva (las que recibe esta función). Aquí hay 4 posibilidades...
+//Posibilidad 1: Que la nueva solicitud comience antes de que finalice una de las previstas (startDate < a.FinalDate) pero termine después del comienzo de esa prevista (finalDate > a.StartDate).
+//Ej: SOLICITUD: 15/5-20/5, RESERVA ANTES CONFIRMADA: 18/5-21/5. Lo que implicaría que coincidieran iguales días de 2 reservaciones diferentes (18/5, 19/5 Y 20/5) para una misma habitación (NO PUEDE OCURRIR). Como las 2 condiciones se cumplen, la función ´Any´ devolverá TRUE pero la función ´IsRentabled´ devolverá lo contrario (FALSE), indicando de que NO ES POSIBLE rentar esa habitación para las fechas que se están recibiendo.
+
+//Posibilidad 2: Que la nueva solicitud comience antes de que finalice una de las previstas (startDate < a.FinalDate) y termine antes del comienzo de esa prevista (finalDate < a.StartDate).
+//Ej: SOLICITUD: 15/5-20/5, RESERVA ANTES CONFIRMADA: 21/5-24/5. Lo que implicaría que NO coincidieran iguales días de 2 reservaciones diferentes para una misma habitación (JUSTO LO QUE SE BUSCA). Como 1 de las condiciones no se cumplen, la función ´Any´ devolverá FALSE pero la función ´IsRentabled´ devolverá lo contrario (TRUE), indicando de que ES POSIBLE rentar esa habitación para las fechas que se están recibiendo.
+
+//Posibilidad 3: Que la nueva solicitud comience después de que finalice una de las previstas (startDate > a.FinalDate) y termine después del comienzo de esa prevista (finalDate > a.StartDate).
+//Ej: SOLICITUD: 15/5-20/5, RESERVA ANTES CONFIRMADA: 12/5-14/5.  Lo que implicaría que NO coincidieran iguales días de 2 reservaciones diferentes para una misma habitación (JUSTO LO QUE SE BUSCA). Como 1 de las condiciones no se cumplen, la función ´Any´ devolverá FALSE pero la función ´IsRentabled´ devolverá lo contrario (TRUE), indicando de que ES POSIBLE rentar esa habitación para las fechas que se están recibiendo.
+
+//Posibilidad 4: Que la nueva solicitud comience después de que finalice una de las previstas (startDate > a.FinalDate) pero termine antes del comienzo de esa prevista (finalDate < a.StartDate).
+//Ej: SOLICITUD: 15/5-20/5, RESERVA ANTES CONFIRMADA: 21/5-14/5. ESTO NO TIENE SENTIDO, no debe haber sido almacendada o intentarse almacenar una reservación donde la fecha de inicio sea posterior a la fecha de fin de la reserva. ES RESPONSABILIDAD DEL PROGRAMADOR QUE ESTO NO OCURRA DURANTE LA IMPLEMENTACIÓN DE ´Agreement´ antes de llegar a ´IsRentabled´. De ocurrir, como las dos condiciones no se están cumpliendo la función ´Any´ devolverá FALSE pero la función ´IsRentabled´ devolverá lo contrario (TRUE), indicando de que ES POSIBLE rentar esa habitación para las fechas que se están recibiendo.
+        }
+
+
+
+        /// <summary>
+        /// Enciende/Apaga el sistema de iluminación de la habitación.
+        /// </summary>
+        /// <param name="turnOn">Estado deseado para el sistema de iluminación en la habitación</param>
+        /// <returns></returns>
+        public void TurnOnIlumination(bool turnOn)
+        {
+            Light.TurnOn = turnOn;
+        }
+
+
+
+
+        /// <summary>
+        /// Enciende/Apaga el sistema de climatización de la habitación.
+        /// </summary>
+        /// <param name="turnOn">Estado deseado para el sistema de climatización en la habitación</param>
+        public void TurnOnClimatization(bool turnOn)
+        {
+            Temperature.TurnOn = turnOn;
         }
     }
 }
+
+

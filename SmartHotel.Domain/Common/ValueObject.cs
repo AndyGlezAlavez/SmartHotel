@@ -12,6 +12,12 @@ namespace SmartHotel.Domain.Common
     public abstract class ValueObject
         : CheckableObject
     {
+        /// <summary>
+        /// Requerido por EF.
+        /// </summary>
+        protected ValueObject() { }
+
+
         protected static bool EqualOperator(ValueObject left, ValueObject right)
         {
             if (left is null ^ right is null)

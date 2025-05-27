@@ -21,8 +21,9 @@ namespace SmartHotel.Domain.Common
 
         #endregion
 
-        protected Entity(
-            Guid id)
+        protected Entity() { }
+
+        protected Entity(Guid id)
         {
             Id = id;
         }
