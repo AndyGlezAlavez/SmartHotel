@@ -7,7 +7,7 @@ package GrpcProtos ;
 import "google/protobuf/empty.proto" ;
 import "common.proto";
 import "google/protobuf/timestamp.proto";
-//import "Room.proto";
+import "Room.proto";
 import "google/protobuf/struct.proto";
 
 service Agreement{
