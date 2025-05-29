@@ -11,8 +11,8 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/struct.proto";
 
 service Agreement{
-	rpc CreateAgreement (CreateAgreementRequest) returns (google.protobuf.Empty) ;
-	rpc GetAllAgreement (GetRequest) returns (google.protobuf.Empty);
+	rpc CreateAgreement (CreateAgreementRequest) returns (AgreementDTO) ;
+	rpc GetAllAgreement (google.protobuf.Empty) returns (Agreements);
 	rpc UpdateAgreement (AgreementDTO) returns (google.protobuf.Empty);
 	rpc AddAgreement(AgreementDTO) returns (google.protobuf.Empty);
 	rpc	RemoveAgreement (AgreementDTO) returns (google.protobuf.Empty);
@@ -23,10 +23,10 @@ message AgreementDTO{
 	string ClientEmail =2;
 	google.protobuf.Timestamp startDate = 3;
 	google.protobuf.Timestamp finalDate = 4;
-	Price price =5;
-	RoomDTO room =6;
-	string roomId =7;
-
+	RoomDTO room = 5;
+	Price price = 6;
+	string roomId = 7;
+	string id = 8;
 }
 message Agreements{
 	repeated AgreementDTO item = 1;
@@ -42,7 +42,8 @@ message CreateAgreementRequest {
 	string ClientEmail = 2;
 	google.protobuf.Timestamp startDate = 3;
 	google.protobuf.Timestamp finalDate = 4;
-	Price price = 5;
-	RoomDTO room = 6;
+	RoomDTO room = 5;
+	Price price = 6;
 	string roomId = 7;
+	string id = 8;
 }
