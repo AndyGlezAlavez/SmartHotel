@@ -8,9 +8,9 @@ import "google/protobuf/empty.proto" ;
 import "common.proto";
 import "google/protobuf/struct.proto";
 //import "Agreement.proto";
-//import "Light.proto";
-//import "Smoke.proto";
-//import "Temperature.proto";
+import "Light.proto";
+import "Smoke.proto";
+import "Temperature.proto";
 
 service Room {
 	rpc CreateRoom (CreateRoomRequest) returns (RoomDTO);

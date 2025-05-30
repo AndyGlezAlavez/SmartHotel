@@ -6,11 +6,11 @@ package GrpcProtos;
 
 import "google/protobuf/empty.proto";
 import "common.proto";
-import "Room.proto";
+//import "Room.proto";
 
 service Temperature{
 	rpc CreateTemperature (CreateTemperatureRequest) returns (TemperatureDTO);
-	rpc GetTemperature (GetRequest) returns (NullableTemperatureDTO);
+	rpc GetTemperature (GetRequestDTO) returns (NullableTemperatureDTO);
 	rpc GetAllTemperature (google.protobuf.Empty) returns (Temperatures);
 	rpc UpdateTemperature (TemperatureDTO) returns (google.protobuf.Empty);
 	rpc DeleteTemperature (DeleteRequestDTO) returns (google.protobuf.Empty);
@@ -21,7 +21,7 @@ message TemperatureDTO{
 	double value = 2;
 	double reference = 3;
 	TempUnit unit = 4;
-	Room room = 5;
+	RoomDTO room = 5;
 }
 
 message Temperatures{ 
@@ -36,8 +36,9 @@ message NullableTemperatureDTO{
 }
 
 message CreateTemperatureRequest{ 
-	double value = 1;
-	double reference = 2;
-	TempUnit unit = 3;
-	Room room = 4;
+	string id = 1;	
+	double value = 2;
+	double reference = 3;
+	TempUnit unit = 4;
+	RoomDTO room = 5;
 }

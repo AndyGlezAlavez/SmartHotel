@@ -6,11 +6,11 @@ package GrpcProtos;
 
 import "google/protobuf/empty.proto";
 import "common.proto";
-import "Room.proto";
+//import "Room.proto";
 
 service Light{
 	rpc CreateLight (CreateLightRequest) returns (LightDTO);
-	rpc GetLight (GetRequest) returns (NullableLightDTO);
+	rpc GetLight (GetRequestDTO) returns (NullableLightDTO);
 	rpc GetAllLight (google.protobuf.Empty) returns (Lights);
 	rpc UpdateLight (LightDTO) returns (google.protobuf.Empty);
 	rpc DeleteLight (DeleteRequestDTO) returns (google.protobuf.Empty);
@@ -20,7 +20,8 @@ message LightDTO{
 	string id = 1;
 	double value = 2;
 	double reference = 3;
-	Room room = 4;
+	LightUnit unit = 4;
+	RoomDTO room = 5;
 }
 
 message Lights{ 
@@ -35,7 +36,9 @@ message NullableLightDTO{
 }
 
 message CreateLightRequest{ 
-	double value = 1;
-	double reference = 2;
-	Room room = 3;
+	string id = 1;	
+	double value = 2;
+	double reference = 3;
+	LightUnit unit = 4;
+	RoomDTO room = 5;
 }

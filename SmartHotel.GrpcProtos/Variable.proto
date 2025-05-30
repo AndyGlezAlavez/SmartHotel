@@ -9,7 +9,7 @@ import "common.proto";
 
 service Variable{
 	rpc CreateVariable (CreateVariableRequest) returns (VariableDTO);
-	rpc GetVariable (GetRequest) returns (NullableVariableDTO);
+	rpc GetVariable (GetRequestDTO) returns (NullableVariableDTO);
 	rpc GetAllVariable (google.protobuf.Empty) returns (Variables);
 	rpc UpdateVariable (VariableDTO) returns (google.protobuf.Empty);
 	rpc DeleteVariable (DeleteRequestDTO) returns (google.protobuf.Empty);
@@ -28,7 +28,7 @@ items = 1;
 
 message NullableVariableDTO{
 	oneof kind{
-		LightDTO Variable = 1;
+		VariableDTO Variable = 1;
 	}
 }
 
