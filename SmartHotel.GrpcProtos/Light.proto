@@ -8,37 +8,3 @@ import "google/protobuf/empty.proto";
 import "common.proto";
 //import "Room.proto";
 
-service Light{
-	rpc CreateLight (CreateLightRequest) returns (LightDTO);
-	rpc GetLight (GetRequestDTO) returns (NullableLightDTO);
-	rpc GetAllLight (google.protobuf.Empty) returns (Lights);
-	rpc UpdateLight (LightDTO) returns (google.protobuf.Empty);
-	rpc DeleteLight (DeleteRequestDTO) returns (google.protobuf.Empty);
-}
-
-message LightDTO{
-	string id = 1;
-	double value = 2;
-	double reference = 3;
-	LightUnit unit = 4;
-	RoomDTO room = 5;
-}
-
-message Lights{ 
-	   repeated LightDTO items = 1;
-}
-
-message NullableLightDTO{
-	oneof kind{
-		LightDTO light = 1;
-		google.protobuf.Empty null = 2; 
-	}
-}
-
-message CreateLightRequest{ 
-	string id = 1;	
-	double value = 2;
-	double reference = 3;
-	LightUnit unit = 4;
-	RoomDTO room = 5;
-}

@@ -8,37 +8,3 @@ import "google/protobuf/empty.proto";
 import "common.proto";
 //import "Room.proto";
 
-service Temperature{
-	rpc CreateTemperature (CreateTemperatureRequest) returns (TemperatureDTO);
-	rpc GetTemperature (GetRequestDTO) returns (NullableTemperatureDTO);
-	rpc GetAllTemperature (google.protobuf.Empty) returns (Temperatures);
-	rpc UpdateTemperature (TemperatureDTO) returns (google.protobuf.Empty);
-	rpc DeleteTemperature (DeleteRequestDTO) returns (google.protobuf.Empty);
-}
-
-message TemperatureDTO{
-	string id = 1;
-	double value = 2;
-	double reference = 3;
-	TempUnit unit = 4;
-	RoomDTO room = 5;
-}
-
-message Temperatures{ 
-	   repeated TemperatureDTO items = 1;
-}
-
-message NullableTemperatureDTO{
-	oneof kind{
-		TemperatureDTO Temperature = 1;
-				google.protobuf.Empty null = 2; 
-	}
-}
-
-message CreateTemperatureRequest{ 
-	string id = 1;	
-	double value = 2;
-	double reference = 3;
-	TempUnit unit = 4;
-	RoomDTO room = 5;
-}

@@ -8,37 +8,3 @@ import "google/protobuf/empty.proto";
 import "common.proto";
 //import "Room.proto";
 
-service Smoke{
-	rpc CreateSmoke (CreateSmokeRequest) returns (SmokeDTO);
-	rpc GetSmoke (GetRequestDTO) returns (NullableSmokeDTO);
-	rpc GetAllSmoke (google.protobuf.Empty) returns (Smokes);
-	rpc UpdateSmoke (SmokeDTO) returns (google.protobuf.Empty);
-	rpc DeleteSmoke (DeleteRequestDTO) returns (google.protobuf.Empty);
-}
-
-message SmokeDTO{
-	required string id = 1;
-	required double value = 2;
-	required double reference = 3;
-	required SmokeUnit unit = 4;
-	required RoomDTO room = 5;
-}
-
-message Smokes{ 
-	   repeated SmokeDTO items = 1;
-}
-
-message NullableSmokeDTO{
-	oneof kind{
-		SmokeDTO Smoke = 1;
-	    google.protobuf.Empty null = 2; 
-	}
-}
-
-message CreateSmokeRequest{ 
-	string id = 1;	
-	double value = 2;
-	double reference = 3;
-	SmokeUnit unit = 4;
-	RoomDTO room = 5;
-}

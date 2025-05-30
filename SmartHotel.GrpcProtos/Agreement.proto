@@ -7,7 +7,6 @@ package GrpcProtos ;
 import "google/protobuf/empty.proto" ;
 import "common.proto";
 import "google/protobuf/timestamp.proto";
-import "Room.proto";
 import "google/protobuf/struct.proto";
 
 service Agreement{
@@ -46,4 +45,188 @@ message CreateAgreementRequest {
 	Price price = 6;
 	string roomId = 7;
 	string id = 8;
+}
+service Light{
+	rpc CreateLight (CreateLightRequest) returns (LightDTO);
+	rpc GetLight (GetRequestDTO) returns (NullableLightDTO);
+	rpc GetAllLight (google.protobuf.Empty) returns (Lights);
+	rpc UpdateLight (LightDTO) returns (google.protobuf.Empty);
+	rpc DeleteLight (DeleteRequestDTO) returns (google.protobuf.Empty);
+}
+
+message LightDTO{
+	string id = 1;
+	double value = 2;
+	double reference = 3;
+	LightUnit unit = 4;
+	RoomDTO room = 5;
+}
+
+message Lights{ 
+	   repeated LightDTO items = 1;
+}
+
+message NullableLightDTO{
+	oneof kind{
+		LightDTO light = 1;
+		google.protobuf.Empty null = 2; 
+	}
+}
+
+message CreateLightRequest{ 
+	string id = 1;	
+	double value = 2;
+	double reference = 3;
+	LightUnit unit = 4;
+	RoomDTO room = 5;
+}
+service Room {
+	rpc CreateRoom (CreateRoomRequest) returns (RoomDTO);
+	rpc GetAllRoom (google.protobuf.Empty) returns (Rooms);
+	rpc UpdateRoom(RoomDTO) returns (google.protobuf.Empty);
+	rpc AddRoom(RoomDTO) returns (google.protobuf.Empty);
+	rpc RemoveRoom(RoomDTO) returns (google.protobuf.Empty);
+	rpc DeleteRoom(DeleteRequestDTO) returns (google.protobuf.Empty);
+
+}
+
+message RoomDTO{
+	int32 number = 1;
+	bool isRentable = 2;
+	bool isOcupated = 3;
+	Price rentalPrice =4;
+	bool isClimatization = 5;
+	bool isIlumination = 6;
+	RoomType roomType = 7;
+	SmokeDTO smoke = 8;
+	string smokeId = 9;
+	TemperatureDTO temperature = 10;
+	string temperatureId =11;
+	LightDTO light = 12 ;
+	string lightId = 13;
+	string id = 14;
+
+}
+message Rooms {
+	repeated RoomDTO item = 1;
+}
+message NullableRoomDTO {
+	oneof kind{
+		RoomDTO room = 1;
+		google.protobuf.NullValue null = 2;
+	}
+}
+message CreateRoomRequest{
+	int32 number = 1;
+	bool isRentable = 2;
+	bool isOcupated = 3;
+	Price rentalPrice =4;
+	bool isClimatization = 5;
+	bool isIlumination = 6;
+	RoomType roomType = 7;
+	SmokeDTO smoke = 8;
+	string smokeId = 9;
+	TemperatureDTO temperature = 10;
+	string temperatureId =11;
+	LightDTO light = 12 ;
+	string lightId = 13;
+	string id = 14;
+	
+}
+service Smoke{
+	rpc CreateSmoke (CreateSmokeRequest) returns (SmokeDTO);
+	rpc GetSmoke (GetRequestDTO) returns (NullableSmokeDTO);
+	rpc GetAllSmoke (google.protobuf.Empty) returns (Smokes);
+	rpc UpdateSmoke (SmokeDTO) returns (google.protobuf.Empty);
+	rpc DeleteSmoke (DeleteRequestDTO) returns (google.protobuf.Empty);
+}
+
+message SmokeDTO{
+	string id = 1;
+	double value = 2;
+	double reference = 3;
+	SmokeUnit unit = 4;
+	RoomDTO room = 5;
+}
+
+message Smokes{ 
+	   repeated SmokeDTO items = 1;
+}
+
+message NullableSmokeDTO{
+	oneof kind{
+		SmokeDTO Smoke = 1;
+	    google.protobuf.Empty null = 2; 
+	}
+}
+
+message CreateSmokeRequest{ 
+	string id = 1;	
+	double value = 2;
+	double reference = 3;
+	SmokeUnit unit = 4;
+	RoomDTO room = 5;
+}
+service Temperature{
+	rpc CreateTemperature (CreateTemperatureRequest) returns (TemperatureDTO);
+	rpc GetTemperature (GetRequestDTO) returns (NullableTemperatureDTO);
+	rpc GetAllTemperature (google.protobuf.Empty) returns (Temperatures);
+	rpc UpdateTemperature (TemperatureDTO) returns (google.protobuf.Empty);
+	rpc DeleteTemperature (DeleteRequestDTO) returns (google.protobuf.Empty);
+}
+
+message TemperatureDTO{
+	string id = 1;
+	double value = 2;
+	double reference = 3;
+	TempUnit unit = 4;
+	RoomDTO room = 5;
+}
+
+message Temperatures{ 
+	   repeated TemperatureDTO items = 1;
+}
+
+message NullableTemperatureDTO{
+	oneof kind{
+		TemperatureDTO Temperature = 1;
+				google.protobuf.Empty null = 2; 
+	}
+}
+
+message CreateTemperatureRequest{ 
+	string id = 1;	
+	double value = 2;
+	double reference = 3;
+	TempUnit unit = 4;
+	RoomDTO room = 5;
+}
+service Variable{
+	rpc CreateVariable (CreateVariableRequest) returns (VariableDTO);
+	rpc GetVariable (GetRequestDTO) returns (NullableVariableDTO);
+	rpc GetAllVariable (google.protobuf.Empty) returns (Variables);
+	rpc UpdateVariable (VariableDTO) returns (google.protobuf.Empty);
+	rpc DeleteVariable (DeleteRequestDTO) returns (google.protobuf.Empty);
+}
+
+message VariableDTO{
+	string id = 1;
+	double value = 2;
+	double reference = 3;
+}
+
+message Variables{ 
+	   repeated VariableDTO
+items = 1;
+}
+
+message NullableVariableDTO{
+	oneof kind{
+		VariableDTO Variable = 1;
+	}
+}
+
+message CreateVariableRequest{ 
+	double value = 1;
+	double reference = 2;
 }
