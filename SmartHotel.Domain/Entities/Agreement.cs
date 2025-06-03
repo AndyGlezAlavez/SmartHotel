@@ -29,8 +29,8 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Correo del cliente.
         /// </summary>
-        public string Clientemail { get; set; } = string.Empty;
-
+        public string Clientemail { get; set; } = string.Empty; //Correo se puede hacer con un IBusinessRule y que reciba un sting y lo vaya checkeando
+        // Porque no esta el + @gmail.com¡¡¡¡
         /// <summary>
         /// Fecha de inicio de la reserva. 
         /// </summary>
