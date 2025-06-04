@@ -1,4 +1,7 @@
-﻿using SmartHotel.Domain.Common;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using SmartHotel.Domain.Common;
+using SmartHotel.Domain.Rules;
 using SmartHotel.Domain.Types;
 using System;
 using System.Collections.Generic;
@@ -29,7 +32,7 @@ namespace SmartHotel.Domain.Entities
 
         public Smoke(Guid id, double value, double reference, Room room) : base(id, value, reference)
         {
-            Unit = SmokeUnit.ppt;
+            Unit = SmokeUnit.Ppt;
             Room = room;
         }
 
@@ -38,15 +41,13 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         private Smoke(){ }
 
-
-
         /// <summary>
         /// Indica si la concentración de humo en la habitación supera el valor normal. 
         /// </summary>
         /// <returns></returns>
         public bool Danger()
         {
-            if (Unit  is SmokeUnit.ppt)
+            if (Unit is SmokeUnit.Ppt)
                 return Value > Reference;
             else
                 return Value > 1000000 * Reference;

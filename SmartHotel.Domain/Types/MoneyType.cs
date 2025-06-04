@@ -11,7 +11,7 @@ namespace SmartHotel.Domain.Types
         /// <summary>
         /// Moneda europea.
         /// </summary>
-        euro,
+        Euro,
         /// <summary>
         /// Moneda estadounidense.
         /// </summary>

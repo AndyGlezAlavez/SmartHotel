@@ -3,7 +3,7 @@ option csharp_namespace = "SmartHotel.GrpcProtos";
 
 package GrpcProtos ;
 
-message GetRequest{
+message GetRequestDTO{
 	string id = 1 ;
 }
 
