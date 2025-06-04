@@ -35,10 +35,9 @@ namespace SmartHotel.Persistence.Repositories
             return await _context.Agreements.FindAsync(id);
         }
 
-        async Task<IEnumerable<Agreement>> IAgreementRepository.GetAgreementsByUnitAsync(Guid unitId)
+        async Task<IEnumerable<Agreement>> IAgreementRepository.GetAgreementsByUnitAsync(Guid roomId)
         {
-            var room = await _context.Rooms.Include(u => u.Agreements).FirstAsync(u => u.Id == unitId);
-            return room.Agreements;
+           return await _context.Agreements.Where(a => a.RoomId == roomId).ToListAsync();
         }
 
         public void Update(Agreement agreement)

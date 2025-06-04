@@ -10,6 +10,7 @@ using SmartHotel.Domain.Common;
 using SmartHotel.Domain.Entities;
 using SmartHotel.Domain.Types;
 using SmartHotel.Domain.ValueObjects;
+using SmartHotel.Domain.Rules;
 
 namespace SmartHotel.Domain.Entities
 {
@@ -80,6 +81,10 @@ namespace SmartHotel.Domain.Entities
 
         public Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Room room, Guid id, Capacity capacity, Category category)
         {
+            var result = CheckRules(new EmailMustBeGmail(clientemail));
+            if (result.IsFailed) {
+            return result.ToResult<Agreement>();
+            }
             ClientName = clientname;
             Clientemail = clientemail;
             StartDate = startDate;
@@ -98,55 +103,47 @@ namespace SmartHotel.Domain.Entities
             //Logica para generar el precio
             switch (Price.MoneyType)
             {
-                case 0:
-                    Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 4.");
-                    break;
-                case (MoneyType)1:
+                case (MoneyType.Euro):
                     dias *= 100;
                     Console.WriteLine("Se seleccionó la opción *1");
                     break;
-                case (MoneyType)2:
+                case (MoneyType.USD):
                     Console.WriteLine("Se seleccionó la opción *1.2");
                     dias = dias * 100 * 1.2;
                     break;
-                case (MoneyType)3:
+                case (MoneyType.Peso):
                     Console.WriteLine("Se seleccionó la opción *380");
                     dias = dias * 100 * 380;
                     break;
-                case (MoneyType)4:
+                case (MoneyType.MLC):
                     Console.WriteLine("Se seleccionó la opción *1.5");
                     dias = dias * 100 * 1.5;
                     break;
                 default:
-                    Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 4.");
+                    Console.WriteLine("Opción no válida. Por favor ingrese un número entre 0 y 3.");
                     break;
             }
 
             // Logica para la capacidad de la habitacion
-
             switch (capacity)
             {
-                case 0:
-                    Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 3.");
-                    break;
-
-                    case (Capacity)1:
+                case (Capacity.Sencilla):
                     Console.WriteLine("Se seleccionó la habitacion sencilla");
                     break;
 
-                case (Capacity)2:
+                case (Capacity.Doble):
                     dias *= 1.5;
                     Console.WriteLine("Se seleccionó la habitacion doble");
                     break;
 
 
-                case (Capacity)3:
+                case (Capacity.Familiar):
                     dias *= 2;
                     Console.WriteLine("Se seleccionó la habitacion familiar");
                     break;
 
                 default:
-                    Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 3.");
+                    Console.WriteLine("Opción no válida. Por favor ingrese un número entre 0 y 2.");
                     break;
             }
 
@@ -154,37 +151,34 @@ namespace SmartHotel.Domain.Entities
 
             switch (category)
             {
-                case 0:
-                    Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 3.");
-                    break;
-
-                case (Category)1:
+                case (Category.Estandar):
                     Console.WriteLine("Se seleccionó la habitacion estandar");
                     break;
 
-                case (Category)2:
+                case (Category.Suit):
                     dias *= 2;
                     Console.WriteLine("Se seleccionó la habitacion suite");
                     break;
 
-
-                case (Category)3:
+                case (Category.VIP):
                     dias *= 5;
                     Console.WriteLine("Se seleccionó la habitacion vip");
                     break;
 
                 default:
-                    Console.WriteLine("Opción no válida. Por favor ingrese un número entre 1 y 3.");
+                    Console.WriteLine("Opción no válida. Por favor ingrese un número entre 0 y 2.");
                     break;
             }
             Price.Value = dias;
 
             // Logica para comprobar el precio
-            if (Price.Value > Room.RentalPrice.Value)
+            var resultado = CheckRules(new ComparationPrice(Price.Value, Room.RentalPrice.Value));
+            if (resultado.IsFailed)
             {
-                return Result.Fail<Agreement>("Debe pagar una monto mayor");
+                return result.ToResult<Agreement>();
             }
 
+            //var resuelto = CheckRules(new DateMustBeFree())
             // logica para ver si se puede rentar
             bool analisys = room.IsRentabled(StartDate, FinalDate);
             if (!analisys)

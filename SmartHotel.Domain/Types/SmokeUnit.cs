@@ -11,11 +11,11 @@ namespace SmartHotel.Domain.Types
         /// <summary>
         /// *trillion
         /// </summary>
-        ppt,
+        Ppt,
 
         /// <summary>
         /// *millon
         /// </summary>
-        ppm
+        Ppm
     }
 }
