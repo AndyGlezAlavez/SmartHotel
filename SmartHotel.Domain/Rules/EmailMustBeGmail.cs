@@ -16,5 +16,11 @@ namespace SmartHotel.Domain.Rules
                 return Result.Ok();
             return Result.Fail(new Error("Email must be a Gmail address"));
     }
+        public static Result<EmailMustBeGmail> Create(string Email) 
+    {
+           if (Email.EndsWith("@gmail.com"))
+                return Result.Ok();
+            return Result.Fail(new Error("Email must be a Gmail address"));
+        }
     }
 }

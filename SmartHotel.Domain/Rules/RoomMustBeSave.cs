@@ -31,5 +31,24 @@ namespace SmartHotel.Domain.Rules
                 return Result.Fail(new Error("Option not avaible"));
             }
         }
+
+        public static Result<RoomMustBeSave> Create(SmokeUnit Unit, double Reference, double Value)
+        {
+            switch (Unit)
+            {
+                case SmokeUnit.Ppt:
+                    if (Value < Reference)
+                        return Result.Ok();
+                    else
+                        return Result.Fail(new Error("The room es not safe"));
+                case SmokeUnit.Ppm:
+                    if (Value < 1000000 * Reference)
+                        return Result.Ok();
+                    else
+                        return Result.Fail(new Error("The room es not safe"));
+                default:
+                    return Result.Fail(new Error("Option not avaible"));
+            }
     }
+}
 }

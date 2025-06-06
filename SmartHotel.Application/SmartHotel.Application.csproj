@@ -8,13 +8,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Queries\" />
+    <Folder Include="Commands\Smoke\DeleteSmoke\" />
+    <Folder Include="Commands\Smoke\UpdateSmoke\" />
+    <Folder Include="Queries\Smoke\GetAllsSmoke\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentResults" Version="3.16.0" />
     <PackageReference Include="MediatR" Version="12.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmartHotel.Contracts\SmartHotel.Contracts.csproj" />
+    <ProjectReference Include="..\SmartHotel.Domain\SmartHotel.Domain.csproj" />
+    <ProjectReference Include="..\SmartHotel.GrpcProtos\SmartHotel.GrpcProtos.csproj" />
+    <ProjectReference Include="..\SmartHotel.gRPC\SmartHotel.gRPC.csproj" />
+    <ProjectReference Include="..\SmartHotel.Persistence\SmartHotel.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
