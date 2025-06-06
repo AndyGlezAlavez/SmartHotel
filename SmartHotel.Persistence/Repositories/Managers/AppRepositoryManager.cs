@@ -47,6 +47,15 @@ namespace SmartHotel.Persistence.Repositories.Managers
         {
             _context = context;
         }
-
+        private IUnitOfWork? _unitOfWork = null;
+        public IUnitOfWork UnitOfWork
+        {
+            get
+            {
+                _unitOfWork ??= new UnitOfWork(_context);
+                return _unitOfWork;
+            }
+        }
     }
 }
+

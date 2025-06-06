@@ -17,5 +17,11 @@ namespace SmartHotel.Domain.Rules
             return Result.Ok();
             return Result.Fail(new Error("Verify your payment, you have to pay more"));
         }
+        public static Result<ComparationPrice> Create(double Value, double Price)
+        {
+            if (Value < Price)
+                return Result.Ok();
+            return Result.Fail(new Error("Verify your payment, you have to pay more"));
+        }
     }
 }

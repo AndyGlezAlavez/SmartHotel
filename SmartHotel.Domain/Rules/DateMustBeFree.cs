@@ -17,5 +17,11 @@ namespace SmartHotel.Domain.Rules
                 return Result.Ok();
             return Result.Fail(new Error("Room is not free in this period"));
         }
+        public static Result<DateMustBeFree> Create(DateTime StartDate, DateTime FinalDate, List<Agreement> Agreements)
+        {
+            if (!Agreements.Any(a => StartDate < a.FinalDate && FinalDate > a.StartDate))
+                return Result.Ok();
+            return Result.Fail(new Error("Room is not free in this period"));
+        }
     }
 }

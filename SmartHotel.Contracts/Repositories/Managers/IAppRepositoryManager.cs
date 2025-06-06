@@ -11,5 +11,7 @@ namespace SmartHotel.Contracts.Repositories.Managers
         IRoomRepsoitory Room { get; }
         IVariableRepository Variable { get; }
         IAgreementRepository Agreement { get; }
+
+        IUnitOfWork UnitOfWork { get; }
     }
 }
