@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FluentResults;
+using MediatR;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SmartHotel.Domain.Common;
 using SmartHotel.Domain.Rules;
@@ -28,11 +29,13 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         public Room Room { get; set; }
 
+        public bool Danger { get; set; } = false;
+
         #endregion
 
-        public Smoke(Guid id, double value, double reference, Room room) : base(id, value, reference)
+        public Smoke(SmokeUnit unit, Guid id, double value, double reference, Room room) : base(id, value, reference)
         {
-            Unit = SmokeUnit.Ppt;
+            Unit = unit;
             Room = room;
         }
 
@@ -45,14 +48,21 @@ namespace SmartHotel.Domain.Entities
         /// Indica si la concentración de humo en la habitación supera el valor normal. 
         /// </summary>
         /// <returns></returns>
-        public bool Danger()
+        public Result<Smoke> Create(SmokeUnit unit, Guid id, double value, double reference, Room room)
         {
-            if (Unit is SmokeUnit.Ppt)
-                return Value > Reference;
-            else
-                return Value > 1000000 * Reference;
+            var result = CheckRules(new RoomMustBeSave(unit, value, reference));
+            if (result.IsFailed)
+            {
+                return result.ToResult<Smoke>();
+            }
+            Unit = unit;
+            Room = room;
+            Guid Id = id;
+            Value = value;
+            Reference = reference;
+            Danger = true;
+            return Result.Ok(new Smoke(Unit, Id, Value, Reference,Room));
         }
-
         }
         
     }

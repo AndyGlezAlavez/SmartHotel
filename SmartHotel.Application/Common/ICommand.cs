@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MediatR;
+using FluentResults; 
+
+namespace SmartHotel.Application.Common
+{
+    public interface ICommand : IRequest<Result> { } // Comandos sin respuesta
+    public interface ICommand<T> : IRequest<Result<T>> { }
+}
