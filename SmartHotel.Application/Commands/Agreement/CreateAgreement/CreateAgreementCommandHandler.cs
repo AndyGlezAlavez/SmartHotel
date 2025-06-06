@@ -22,9 +22,9 @@ namespace SmartHotel.Application.Commands.Agreement.CreateAgreement
 
         public async Task<Result> Handle(CreateAgreementCommand request, CancellationToken cancellationToken)
         {
-            /*Result<ComparationPrice> codeResult = ComparationPrice.Create(request.Price);
+           Result<ComparationPrice> codeResult = ComparationPrice.Create(request.Price.Value, request.Room.RentalPrice.Value); //Revisar esto¡¡¡¡ duda en Request.Price
             if (codeResult.IsFailed)
-                return codeResult.ToResult();*/
+                return codeResult.ToResult();
             Result<DateMustBeFree> codeResulted = DateMustBeFree.Create(request.StartDate, request.FinalDate, request.Room.Agreements);
             if (codeResulted.IsFailed)
                 return codeResulted.ToResult();
