@@ -147,6 +147,7 @@ message SmokeDTO{
 	double reference = 3;
 	SmokeUnit unit = 4;
 	RoomDTO room = 5;
+	bool danger = 6;
 }
 
 message Smokes{ 
@@ -166,6 +167,7 @@ message CreateSmokeRequest{
 	double reference = 3;
 	SmokeUnit unit = 4;
 	RoomDTO room = 5;
+	bool danger = 6;
 }
 service Temperature{
 	rpc CreateTemperature (CreateTemperatureRequest) returns (TemperatureDTO);

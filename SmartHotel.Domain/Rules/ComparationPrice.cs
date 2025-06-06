@@ -15,7 +15,7 @@ namespace SmartHotel.Domain.Rules
         {
             if (Value < Price)
             return Result.Ok();
-            return Result.Fail(new Error("Email mist be a Gmail address"));
+            return Result.Fail(new Error("Verify your payment, you have to pay more"));
         }
     }
 }

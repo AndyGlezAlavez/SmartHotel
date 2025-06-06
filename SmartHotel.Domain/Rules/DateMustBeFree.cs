@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Domain.Rules
 {
-    public sealed record DateMustBeFree(double Value, double Price) : IBusinessRule
+    public sealed record DateMustBeFree(DateTime StartDate, DateTime FinalDate, List<Agreement> Agreements) : IBusinessRule
     {
         public Result CheckRule()
         {
-            if (Value < Price)
+            if(!Agreements.Any(a => StartDate < a.FinalDate && FinalDate > a.StartDate))
                 return Result.Ok();
-            return Result.Fail(new Error("Email mist be a Gmail address"));
+            return Result.Fail(new Error("Room is not free in this period"));
         }
     }
 }

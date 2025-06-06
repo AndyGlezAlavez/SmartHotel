@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 using SmartHotel.Domain.Entities;
 using SmartHotel.Domain.Types;
 using System.ComponentModel.Design;
+using MediatR;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using SmartHotel.Domain.Rules;
+using FluentResults;
 
 namespace SmartHotel.Domain.Entities
 {
@@ -109,26 +113,22 @@ namespace SmartHotel.Domain.Entities
             LightId = Light.Id;
             Smoke = smoke;
             SmokeId = Smoke.Id;
-            IsRentable = !Smoke.Danger();
+            IsRentable = !Smoke.Danger;
             IsClimatizationOn = Temperature.TemperatureControl();
             IsIluminationOn = Light.LightControl();
             IsOcupated = false;
         }
-
-
-
-
-
-        /// <summary>
+         /// <summary>
         /// Devuelve si es posible rentar la habitación para los días deseados.
         /// </summary>
         /// <param name="startDate">Fecha de inicio deseada.</param>
         /// <param name="finalDate">Fecha de fin deseada.</param>
         /// <returns></returns>
+
         public bool IsRentabled(DateTime startDate, DateTime finalDate)  
 //La función recibe las fecha de inicio y fin deseadas para efectuar una reserva (es llamada mientras se intenta crear un nuevo acuerdo de reserva por la entidad ´Agreement´).  
         {
-            if (Smoke.Danger()) //Si la concentración de humo en la habitación solicitada supera el valor normal...
+            if (Smoke.Danger) //Si la concentración de humo en la habitación solicitada supera el valor normal...
                 return false;  //...directamente se indica que no es posible rentar esa habitación.
             
             else               //Si la concentración de humo en la habitación esta OK caemos aquí...
@@ -147,8 +147,6 @@ namespace SmartHotel.Domain.Entities
 //Ej: SOLICITUD: 15/5-20/5, RESERVA ANTES CONFIRMADA: 21/5-14/5. ESTO NO TIENE SENTIDO, no debe haber sido almacendada o intentarse almacenar una reservación donde la fecha de inicio sea posterior a la fecha de fin de la reserva. ES RESPONSABILIDAD DEL PROGRAMADOR QUE ESTO NO OCURRA DURANTE LA IMPLEMENTACIÓN DE ´Agreement´ antes de llegar a ´IsRentabled´. De ocurrir, como las dos condiciones no se están cumpliendo la función ´Any´ devolverá FALSE pero la función ´IsRentabled´ devolverá lo contrario (TRUE), indicando de que ES POSIBLE rentar esa habitación para las fechas que se están recibiendo.
         }
 
-
-
         /// <summary>
         /// Enciende/Apaga el sistema de iluminación de la habitación.
         /// </summary>
@@ -158,8 +156,6 @@ namespace SmartHotel.Domain.Entities
         {
             Light.TurnOn = turnOn;
         }
-
-
 
 
         /// <summary>
