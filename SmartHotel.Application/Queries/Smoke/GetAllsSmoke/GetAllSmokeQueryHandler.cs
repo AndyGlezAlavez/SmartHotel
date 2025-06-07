@@ -11,24 +11,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SmartHotel.Application.Queries.Smoke.GetAllsSmoke;
-/*
+
 namespace SmartHotel.Application.Queries.Smoke.GetAllsSmoke
 {
-    public class GetAllsSmokesQueryHandler
-        :IQueryHandler<GetAllsSmokesQuery, IEnumerable<SmartHotel.Domain.Entities.Smoke>>
+    public class GetAllSmokeQueryHandler
+        :IQueryHandler<GetAllSmokeQuery, IEnumerable<SmartHotel.Domain.Entities.Variable>>
         {
            private readonly IAppRepositoryManager _repositoryManager;
 
-            public GetAllsSmokesQueryHandler(
+            public GetAllSmokeQueryHandler(
                 IAppRepositoryManager repositoryManager)
             {
                 _repositoryManager = repositoryManager;
             }
 
-            public async Task<Result<IEnumerable<SmartHotel.Domain.Entities.Smoke>>> Handle(GetAllsSmokesQuery request, CancellationToken cancellationToken)
+            public async Task<Result<IEnumerable<SmartHotel.Domain.Entities.Variable>>> Handle(GetAllSmokeQuery request, CancellationToken cancellationToken)
             {
                 return Result.Ok(await _repositoryManager.Variable.GetVariablesAsync());
             }
         }
     }
-*/

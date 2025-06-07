@@ -8,6 +8,6 @@ using SmartHotel.Application.Common;
 namespace SmartHotel.Application.Queries.Smoke.GetAllsSmoke
 {
     
-        public sealed record GetAllsSmokesQuery()
-            : IQuery<IEnumerable<Domain.Entities.Smoke>>;
+        public sealed record GetAllSmokeQuery()
+            : IQuery<IEnumerable<Domain.Entities.Variable>>;
     }
