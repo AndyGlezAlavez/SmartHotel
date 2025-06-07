@@ -26,6 +26,7 @@ namespace SmartHotel.API.Mappers
                 // = Room.Agreements,
             };
         }
+
         public static Rooms Map(this IEnumerable<Domain.Entities.Room> list)
         {
             var dto = new Rooms();
