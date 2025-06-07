@@ -2,9 +2,8 @@
 
 namespace SmartHotel.API.Mappers
 {
-    public static class UnitMapperProfile
+    public static class VariableMapperProfile
     {
-        // Conversión de Unit a UnitDTO
         public static VariableDTO Map(this Domain.Entities.Variable variable)
         {
             return new VariableDTO()
