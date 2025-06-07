@@ -23,7 +23,7 @@ namespace SmartHotel.Application.Commands.Room.UpdateRoom
         }
         public async Task<Result> Handle(UpdateRoomCommand request, CancellationToken cancellationToken)
         {
-            //Si se puede actualizar una room y hacerla no apta a la renta, no agregar la relga de negocio
+            
             _repositoryManager.Room.Update(request.Room);
             SmartHotel.Domain.Entities.Room Room  = request.Room;
             if (Room == null) return Result.Fail("Update operation Fail");
