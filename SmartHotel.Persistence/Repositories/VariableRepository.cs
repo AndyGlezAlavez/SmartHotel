@@ -2,6 +2,7 @@
 using SmartHotel.Domain.Entities;
 using SmartHotel.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
+using MediatR;
 
 namespace SmartHotel.Persistence.Repositories
 {
@@ -34,7 +35,12 @@ namespace SmartHotel.Persistence.Repositories
             return await _context.Variables.FindAsync(id);
         }
 
-         public void Update(Variable variable)
+        public Task<IEnumerable<Variable>> GetVariablesAsync()
+        {
+            return Task.FromResult<IEnumerable<Variable>>(_context.Variables.ToList());
+        }
+
+        public void Update(Variable variable)
         {
             _context.Variables.Update(variable);
         }

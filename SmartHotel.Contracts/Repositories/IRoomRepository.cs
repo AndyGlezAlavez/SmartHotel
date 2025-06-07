@@ -23,6 +23,7 @@ namespace SmartHotel.Contracts.Repositories
         /// <summary>
         /// Actualiza una room.
         /// </summary>
+        Task<IEnumerable<Room>> GetRoomsAsync();
         void Update(Room room);
         /// <summary>
         /// Elimina una room a partir de su Id.

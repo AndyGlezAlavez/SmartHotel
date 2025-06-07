@@ -24,6 +24,10 @@ namespace SmartHotel.Persistence.Repositories
                 return;
             _context.Agreements.Remove(agreementRepository);
         }
+        public Task<IEnumerable<Agreement>> GetAgreementsAsync()
+        {
+            return Task.FromResult<IEnumerable<Agreement>>(_context.Agreements.ToList());
+        }
 
         public async Task AddAsync(Agreement agreement)
         {

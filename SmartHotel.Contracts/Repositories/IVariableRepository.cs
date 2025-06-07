@@ -23,6 +23,7 @@ namespace SmartHotel.Contracts.Repositories
         /// <summary>
         /// Obtiene todas las Variables a partir de la room a la que pertenecen.
         /// </summary>
+        Task<IEnumerable<Variable>> GetVariablesAsync();
         ///  Task<IEnumerable<Variable>> GetVariableByUnitAsync(Guid unitId); (Ver como se implementaria)
         /// <summary>
         /// Actualiza una variable.

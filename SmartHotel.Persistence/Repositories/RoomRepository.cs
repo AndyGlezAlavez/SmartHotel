@@ -33,7 +33,10 @@ namespace SmartHotel.Persistence.Repositories
         {
             return await _context.Rooms.FindAsync(id);
         }
-
+        public Task<IEnumerable<Room>> GetRoomsAsync()
+        {
+            return Task.FromResult<IEnumerable<Room>>(_context.Rooms.ToList());
+        }
         public void Update(Room room)
         {
             _context.Update (room);

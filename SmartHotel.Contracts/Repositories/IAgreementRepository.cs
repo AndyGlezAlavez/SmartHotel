@@ -23,6 +23,7 @@ namespace SmartHotel.Contracts.Repositories
         /// <summary>
         /// Obtiene todas los agreement a partir de la room a la que pertenecen.
         /// </summary>
+        Task<IEnumerable<Agreement>> GetAgreementsAsync();
         Task<IEnumerable<Agreement>> GetAgreementsByUnitAsync(Guid unitId);
         /// <summary>
         /// Actualiza la información de un agreement.
