@@ -16,8 +16,8 @@ namespace SmartHotel.API.Mappers
                 Id = smoke.Id.ToString(),
                 Reference = smoke.Reference,
                 Value = smoke.Value,
-                //Unit = smoke.Unit,
-                //Room = smoke.Room,
+                Unit = smoke.Map().Unit,
+                Room = smoke.Room.Map(),
             };
         }
 

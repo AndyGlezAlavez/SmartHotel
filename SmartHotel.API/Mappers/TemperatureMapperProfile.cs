@@ -16,8 +16,8 @@ namespace SmartHotel.API.Mappers
                 Id = temperature.Id.ToString(),
                 Reference = temperature.Reference,
                 Value = temperature.Value,
-                //Unit = temperature.Unit,
-                //Room = temperature.Room,
+                Unit = temperature.Map().Unit,
+                Room = temperature.Room.Map(),
                 };
         }
 

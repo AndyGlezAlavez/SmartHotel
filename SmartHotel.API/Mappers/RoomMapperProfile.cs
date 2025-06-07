@@ -14,16 +14,16 @@ namespace SmartHotel.API.Mappers
                 IsOcupated = Room.IsOcupated,
                 IsIlumination = Room.IsIluminationOn,
                 IsRentable = Room.IsRentable,
-                //Light = (LightDTO)Room.Light,
+                Light = (LightDTO)Room.Light.Map(),
                 LightId = Room.LightId.ToString(),
-                //Smoke = (SmokeDTO)Room.Smoke,
+                Smoke = (SmokeDTO)Room.Smoke.Map(),
                 SmokeId = Room.SmokeId.ToString(),
-                //Temperature = (TemperatureDTO)Room.Temperature,
+                Temperature = (TemperatureDTO)Room.Temperature.Map(),
                 TemperatureId = Room.TemperatureId.ToString(),
-                //RoomType = (RoomType)Room.RoomType,
-                //RentalPrice = (Price)Room.RentalPrice,
+                RoomType = (RoomType)Room.Map().RoomType,
+                RentalPrice = (Price)Room.Map().RentalPrice,
                 Number = Room.Number,
-                // = Room.Agreements,
+                //Agreements = Room.Agreements,
             };
         }
 
