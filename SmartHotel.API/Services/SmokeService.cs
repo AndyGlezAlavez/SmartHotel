@@ -36,11 +36,7 @@ namespace SmartHotel.API.Services
 
             return new SmokeDTO();
         }
-
-        public override Task<Empty> UpdateSmoke(SmokeDTO request, ServerCallContext context)
-        {
-            return base.UpdateSmoke(request, context);
-        }
+               
         
         public override async Task<Variables> GetVariablesAsync(GetRequestDTO request, ServerCallContext context)
         {
@@ -55,20 +51,14 @@ namespace SmartHotel.API.Services
 
             return result.Value.Map();
         }
-        
-        public override Task<Empty> AddAutomationDeviceToUnit(AutomationDeviceUnitRelationDTO request, ServerCallContext context)
-        {
-            return base.AddAutomationDeviceToUnit(request, context);
-        }
-
-        public override Task<Empty> RemoveAutomationDeviceFromUnit(AutomationDeviceUnitRelationDTO request, ServerCallContext context)
-        {
-            return base.RemoveAutomationDeviceFromUnit(request, context);
-        }
-*/   
+     */   
         public override Task<Empty> DeleteSmoke(DeleteRequestDTO request, ServerCallContext context)
         {
             return base.DeleteSmoke(request, context);
+        }
+        public override Task<Empty> UpdateSmoke(SmokeDTO request, ServerCallContext context)
+        {
+            return base.UpdateSmoke(request, context);
         }
     }
 }

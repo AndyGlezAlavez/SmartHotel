@@ -34,11 +34,6 @@ namespace SmartHotel.API.Services
 
             return new RoomDTO();
         }
-
-        public override Task<Empty> UpdateRoom(RoomDTO request, ServerCallContext context)
-        {
-            return base.UpdateRoom(request, context);
-        }
         
         public override async Task<Rooms> GetAllRoom(GetRequestDTO request, ServerCallContext context)
         {
@@ -64,6 +59,10 @@ namespace SmartHotel.API.Services
             return base.RemoveAutomationDeviceFromUnit(request, context);
         }
    */
+        public override Task<Empty> UpdateRoom(RoomDTO request, ServerCallContext context)
+        {
+            return base.UpdateRoom(request, context);
+        }
         public override Task<Empty> DeleteRoom(DeleteRequestDTO request, ServerCallContext context)
         {
             return base.DeleteRoom(request, context);

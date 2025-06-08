@@ -20,8 +20,4 @@
     <ProjectReference Include="..\SmartHotel.Persistence\SmartHotel.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Queries\Temperature\" />
-  </ItemGroup>
-
 </Project>
