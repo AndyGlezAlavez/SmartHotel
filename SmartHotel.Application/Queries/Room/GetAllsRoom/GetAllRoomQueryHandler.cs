@@ -15,7 +15,7 @@ using SmartHotel.Application.Queries.Room.GetAllsRoom;
 namespace SmartHotel.Application.Queries.Room.GetAllsRoom
 {
     public class GetAllRoomQueryHandler
-        : IQueryHandler<SmartHotel.Application.Queries.Room.GetAllsRoom.GetAllRomeQuery, IEnumerable<Domain.Entities.Room>>
+        : IQueryHandler<SmartHotel.Application.Queries.Room.GetAllsRoom.GetAllRoomQuery, IEnumerable<Domain.Entities.Room>>
     {
         private readonly IAppRepositoryManager _repositoryManager;
 
@@ -25,7 +25,7 @@ namespace SmartHotel.Application.Queries.Room.GetAllsRoom
             _repositoryManager = repositoryManager;
         }
 
-        public async Task<Result<IEnumerable<Domain.Entities.Room>>> Handle(SmartHotel.Application.Queries.Room.GetAllsRoom.GetAllRomeQuery request, CancellationToken cancellationToken)
+        public async Task<Result<IEnumerable<Domain.Entities.Room>>> Handle(SmartHotel.Application.Queries.Room.GetAllsRoom.GetAllRoomQuery request, CancellationToken cancellationToken)
         {
             return Result.Ok(await _repositoryManager.Room.GetRoomsAsync());
         }
