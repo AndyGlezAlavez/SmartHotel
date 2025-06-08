@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Application.Queries.Room.GetAllsRoom
 {
-    public sealed record GetAllRomeQuery()
+    public sealed record GetAllRoomQuery()
         : IQuery<IEnumerable<Domain.Entities.Room>>;
 }
 
