@@ -1,5 +1,6 @@
 ﻿using FluentResults;
 using SmartHotel.Application.Commands.Agreement.CreateAgreement;
+using SmartHotel.Application.Common;
 using SmartHotel.Contracts.Repositories.Managers;
 using SmartHotel.Domain.Rules;
 using SmartHotel.GrpcProtos;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Application.Commands.Agreement.CreateAgreement
 {
-    public class CreateAgreementCommandHandler
+    public class CreateAgreementCommandHandler : ICommandHandler<CreateAgreementCommand>
     {
         private readonly IAppRepositoryManager _repositoryManager;
         public CreateAgreementCommandHandler(IAppRepositoryManager repositoryManager)
@@ -22,9 +23,9 @@ namespace SmartHotel.Application.Commands.Agreement.CreateAgreement
 
         public async Task<Result> Handle(CreateAgreementCommand request, CancellationToken cancellationToken)
         {
-            /*Result<ComparationPrice> codeResult = ComparationPrice.Create(request.Price);
-            if (codeResult.IsFailed)
-                return codeResult.ToResult();*/
+            //Result<ComparationPrice> codeResult = ComparationPrice.Create(request.Price);
+            //if (codeResult.IsFailed)
+            //    return codeResult.ToResult();
             Result<DateMustBeFree> codeResulted = DateMustBeFree.Create(request.StartDate, request.FinalDate, request.Room.Agreements);
             if (codeResulted.IsFailed)
                 return codeResulted.ToResult();

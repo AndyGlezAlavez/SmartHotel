@@ -23,7 +23,7 @@ namespace SmartHotel.Domain.ValueObjects
         /// <summary>
         /// Símbolo de la moneda 
         /// </summary>
-        public MoneyType MoneyType { get; set; } = MoneyType.euro;
+        public MoneyType MoneyType { get; set; } = MoneyType.Euro;
 
         #endregion
        

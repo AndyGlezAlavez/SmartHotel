@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -6,9 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
-  </ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="*.proto" GrpcServices="Both" />
+	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentResults" Version="3.16.0" />
@@ -17,7 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SmartHotel.Contracts\SmartHotel.Contracts.csproj" />
     <ProjectReference Include="..\SmartHotel.GrpcProtos\SmartHotel.GrpcProtos.csproj" />
+    <ProjectReference Include="..\SmartHotel.Persistence\SmartHotel.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
