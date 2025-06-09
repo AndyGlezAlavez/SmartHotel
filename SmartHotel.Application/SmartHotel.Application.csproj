@@ -8,11 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Smoke\DeleteSmoke\" />
-    <Folder Include="Commands\Smoke\UpdateSmoke\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="FluentResults" Version="3.16.0" />
     <PackageReference Include="MediatR" Version="12.5.0" />
   </ItemGroup>
