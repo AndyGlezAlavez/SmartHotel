@@ -20,7 +20,7 @@ namespace SmartHotel.Application.Commands.Room.CreateRoom
 
         public async Task<Result> Handle(CreateRoomCommand request, CancellationToken cancellationToken)
         {
-            var room = new Domain.Entities.Room(Guid.NewGuid(), request.Number, request.RentalPrice, request.RoomType,request.Temperature,  request.Smoke, request.Light);
+            var room = new Domain.Entities.Room(Guid.NewGuid(), request.Number, request.RentalPrice, request.RoomType, request.Temperature,  request.Smoke, request.Light);
 
             await _repositoryManager.Room.AddAsync(room);
             await _repositoryManager.UnitOfWork.SaveChangesAsync(cancellationToken);

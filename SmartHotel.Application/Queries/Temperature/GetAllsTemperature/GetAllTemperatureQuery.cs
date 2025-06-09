@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 namespace SmartHotel.Application.Queries.Temperature.GetAllsTemperature
 {
     public sealed record GetAllTemperatureQuery()
-        : IQuery<IEnumerable<Domain.Entities.Variable>>;
+        : IQuery<IEnumerable<Domain.Entities.Temperature>>;
 }
 

@@ -15,7 +15,7 @@ using SmartHotel.Application.Queries.Smoke.GetAllsSmoke;
 namespace SmartHotel.Application.Queries.Smoke.GetAllsSmoke
 {
     public class GetAllSmokeQueryHandler
-        :IQueryHandler<GetAllSmokeQuery, IEnumerable<SmartHotel.Domain.Entities.Variable>>
+        :IQueryHandler<GetAllSmokeQuery, IEnumerable<SmartHotel.Domain.Entities.Smoke>>
         {
            private readonly IAppRepositoryManager _repositoryManager;
 
@@ -25,9 +25,9 @@ namespace SmartHotel.Application.Queries.Smoke.GetAllsSmoke
                 _repositoryManager = repositoryManager;
             }
 
-            public async Task<Result<IEnumerable<SmartHotel.Domain.Entities.Variable>>> Handle(GetAllSmokeQuery request, CancellationToken cancellationToken)
+            public async Task<Result<IEnumerable<SmartHotel.Domain.Entities.Smoke>>> Handle(GetAllSmokeQuery request, CancellationToken cancellationToken)
             {
-                return Result.Ok(await _repositoryManager.Variable.GetVariablesAsync());
+                return Result.Ok(); //Esto esta mal¡¡¡¡
             }
         }
     }

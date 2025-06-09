@@ -15,7 +15,7 @@ using SmartHotel.Application.Queries.Temperature.GetAllsTemperature;
 namespace SmartHotel.Application.Queries.Temperature.GetAllsTemperature
 {
     public class GetAllTemperatureQueryHandler
-        : IQueryHandler<GetAllTemperatureQuery, IEnumerable<SmartHotel.Domain.Entities.Variable>>
+        : IQueryHandler<GetAllTemperatureQuery, IEnumerable<SmartHotel.Domain.Entities.Temperature>>
     {
         private readonly IAppRepositoryManager _repositoryManager;
 
@@ -25,9 +25,9 @@ namespace SmartHotel.Application.Queries.Temperature.GetAllsTemperature
             _repositoryManager = repositoryManager;
         }
 
-        public async Task<Result<IEnumerable<SmartHotel.Domain.Entities.Variable>>> Handle(GetAllTemperatureQuery request, CancellationToken cancellationToken)
+        public async Task<Result<IEnumerable<SmartHotel.Domain.Entities.Temperature>>> Handle(GetAllTemperatureQuery request, CancellationToken cancellationToken)
         {
-            return Result.Ok(await _repositoryManager.Variable.GetVariablesAsync());
+            return Result.Ok();//Esto esta mal¡¡¡¡
         }
     }
 }
