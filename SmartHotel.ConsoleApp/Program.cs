@@ -1,8 +1,6 @@
 ﻿using FluentResults;
-using SmartHotel.Application.Commands;
 using SmartHotel.Contracts.Repositories.Managers;
 using System;
-using SmartHotel.Application.Common;
 using SmartHotel.Domain.Entities;
 using SmartHotel.Domain.Types;
 using SmartHotel.Domain.ValueObjects;

@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SmartHotel.ConsoleApp\SmartHotel.ConsoleApp.csproj" />
     <ProjectReference Include="..\SmartHotel.Contracts\SmartHotel.Contracts.csproj" />
     <ProjectReference Include="..\SmartHotel.Domain\SmartHotel.Domain.csproj" />
     <ProjectReference Include="..\SmartHotel.GrpcProtos\SmartHotel.GrpcProtos.csproj" />
