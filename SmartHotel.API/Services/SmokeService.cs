@@ -21,11 +21,11 @@ namespace SmartHotel.API.Services
         {
             _mediator = mediator;
         }
-        /*
+        
     public override async Task<SmokeDTO> CreateSmoke(CreateSmokeRequest request, ServerCallContext context)
     {
         var command = new CreateSmokeCommand(
-            request.Unit, request.Reference, request.Value, request.Room) ;
+            request.Unit.Map(), request.Reference, request.Value, request.Room.Map()) ;
 
         var result = await _mediator.Send(command);
 
@@ -36,7 +36,7 @@ namespace SmartHotel.API.Services
 
         return new SmokeDTO();
     }
-          */
+         
         public override Task<NullableSmokeDTO> GetSmoke(GetRequestDTO request, ServerCallContext context)
         {
             return base.GetSmoke(request, context);

@@ -31,7 +31,7 @@ namespace SmartHotel.Domain.ValueObjects
         /// <summary>
         /// Requerido por Entity Framework.
         /// </summary>
-        private Price() { }
+        public Price() { }
 
 
         /// <summary>

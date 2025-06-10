@@ -26,6 +26,24 @@ namespace SmartHotel.API.Mappers
                 //Agreements = Room.Agreements,
             };
         }
+        public static SmartHotel.Domain.Entities.Room Map(this GrpcProtos.RoomDTO Room)
+        {
+            return new SmartHotel.Domain.Entities.Room()
+            {
+                Id = Room.Map().Id,
+                IsClimatizationOn = Room.IsClimatization,
+                IsOcupated = Room.IsOcupated,
+                IsIluminationOn = Room.IsIlumination,
+                IsRentable = Room.IsRentable,
+                Light = Room.Light.Map(),
+                Smoke = Room.Smoke.Map(),
+                Temperature = Room.Temperature.Map(),
+                RoomType = Room.Map().RoomType,
+                RentalPrice = Room.Map().RentalPrice,
+                Number = Room.Number,
+                //Agreements = Room.Agreements,
+            };
+        }
 
         public static Rooms Map(this IEnumerable<Domain.Entities.Room> list)
         {

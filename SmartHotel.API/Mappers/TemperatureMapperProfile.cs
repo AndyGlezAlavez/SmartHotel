@@ -20,7 +20,17 @@ namespace SmartHotel.API.Mappers
                 Room = temperature.Room.Map(),
                 };
         }
-
+        public static Domain.Entities.Temperature Map(this GrpcProtos.TemperatureDTO temperatureDTO)
+        {
+            return new Domain.Entities.Temperature()
+            {
+                Id = temperatureDTO.Map().Id,
+                Reference = temperatureDTO.Reference,
+                Value = temperatureDTO.Value,
+                Unit = temperatureDTO.Map().Unit,
+                Room = temperatureDTO.Room.Map(),
+            };
+        }
         public static Temperatures Map(this IEnumerable<Domain.Entities.Temperature> list)
         {
             var dto = new Temperatures();

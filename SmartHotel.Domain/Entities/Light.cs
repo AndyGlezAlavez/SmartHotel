@@ -34,7 +34,7 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Requerido por Entity Framework.
         /// </summary>
-        private Light()  { }
+        public Light()  { }
 
 
         public Light(LightUnit unit, Guid id, double value, double reference, Room room) : base(id, value, reference)

@@ -19,11 +19,18 @@ namespace SmartHotel.API.Services
         {
             _mediator = mediator;
         }
-        /*
+        
         public override async Task<RoomDTO> CreateRoom(CreateRoomRequest request, ServerCallContext context)
         {
             var command = new CreateRoomCommand(
-                request.Id, request.Number, request.RentalPrice, request.RoomType, request.Temperature, request.Smoke, request.Light) ;
+                request.Id, 
+                request.Number,
+                request.RentalPrice.Map(),
+                request.RoomType.Map(),
+                request.Temperature.Map(),
+                request.Smoke.Map(),
+                request.Light.Map());
+            
 
             var result = await _mediator.Send(command);
 
@@ -34,7 +41,7 @@ namespace SmartHotel.API.Services
 
             return new RoomDTO();
         }
-        */
+        
         public override async Task<Rooms> GetAllRoom(Empty request, ServerCallContext context)
         {
             var query = new GetAllRoomQuery();

@@ -13,7 +13,6 @@ namespace SmartHotel.API.Mappers
                 Value = variable.Value,
             };
         }
-
         public static Variables Map(this IEnumerable<Domain.Entities.Variable> list)
         {
             var dto = new Variables();

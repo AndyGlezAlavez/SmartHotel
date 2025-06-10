@@ -20,7 +20,17 @@ namespace SmartHotel.API.Mappers
                 Room = light.Room.Map(),
             };
         }
-
+        public static Domain.Entities.Light Map(this GrpcProtos.LightDTO lightDTO)
+        {
+            return new Domain.Entities.Light()
+            {
+                Id = lightDTO.Map().Id,
+                Reference = lightDTO.Reference,
+                Value = lightDTO.Value,
+                Unit = lightDTO.Map().Unit,
+                Room = lightDTO.Room.Map(),
+            };
+        }
         public static Lights Map(this IEnumerable<Domain.Entities.Light> list)
         {
             var dto = new Lights();

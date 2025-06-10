@@ -28,7 +28,7 @@ namespace SmartHotel.Domain.ValueObjects
         /// <summary>
         /// Requerido por Entity Framework.
         /// </summary>
-        private RoomType() { }
+        public RoomType() { }
 
 
         /// <summary>
