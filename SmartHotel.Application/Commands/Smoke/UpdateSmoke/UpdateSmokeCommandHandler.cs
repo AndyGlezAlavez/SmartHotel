@@ -25,7 +25,7 @@ namespace SmartHotel.Application.Commands.Smoke.UpdateSmoke
         public async Task<Result> Handle(UpdateSmokeCommand request, CancellationToken cancellationToken)
         {
             //Si se puede actualizar una room y hacerla no apta a la renta, no agregar la relga de negocio
-            _repositoryManager.Variable.Update(request.Smoke);
+            _repositoryManager.Smoke.Update(request.Smoke);
             SmartHotel.Domain.Entities.Smoke smoke = request.Smoke;
             if (smoke == null) return Result.Fail("Update operation Fail");
             await _repositoryManager.UnitOfWork.SaveChangesAsync(cancellationToken);

@@ -19,7 +19,7 @@ namespace SmartHotel.Application.Commands.Temperature.DeleteTemperature
         }
         public async Task<Result> Handle(DeleteTemperatureCommand request, CancellationToken cancellationToken)
         {
-            _repositoryManager.Variable.DeleteById(request.ID);
+            _repositoryManager.Temperature.DeleteById(request.ID);
             await _repositoryManager.UnitOfWork.SaveChangesAsync(cancellationToken);
             return Result.Ok();
         }

@@ -20,7 +20,7 @@ namespace SmartHotel.Application.Commands.Temperature.UpdateTemperature
         public async Task<Result> Handle(UpdateTemperatureCommand request, CancellationToken cancellationToken)
         {
             
-            _repositoryManager.Variable.Update(request.Temperature);
+            _repositoryManager.Temperature.Update(request.Temperature);
             SmartHotel.Domain.Entities.Temperature Temperature = request.Temperature;
             if (Temperature == null) return Result.Fail("Update operation Fail");
             await _repositoryManager.UnitOfWork.SaveChangesAsync(cancellationToken);

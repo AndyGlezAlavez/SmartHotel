@@ -22,7 +22,7 @@ namespace SmartHotel.Application.Commands.Light.CreateLight
     {
         var light = new Domain.Entities.Light(request.LightUnit,Guid.NewGuid(), request.Value, request.Reference,  request.Room);
 
-        await _repositoryManager.Variable.AddAsync(light);
+        await _repositoryManager.Light.AddAsync(light);
         await _repositoryManager.UnitOfWork.SaveChangesAsync(cancellationToken);
 
         return Result.Ok();
