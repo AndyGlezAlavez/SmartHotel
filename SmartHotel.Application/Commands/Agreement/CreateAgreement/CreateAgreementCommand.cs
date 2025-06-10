@@ -15,7 +15,9 @@ namespace SmartHotel.Application.Commands.Agreement.CreateAgreement
                                                 DateTime StartDate,
                                                 DateTime FinalDate,
                                                 SmartHotel.Domain.Entities.Room Room,
-                                                Guid Id,
+                                                Guid Id, 
+                                                Capacity Capacity,
+                                                Category Category,
                                                 Price Price) : ICommand
 
     {

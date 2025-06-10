@@ -73,7 +73,13 @@ namespace SmartHotel.Domain.Entities
             RoomId = Room.Id;
         }
 
-        public Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Room room, Guid id)
+        public TimeSpan DuracionRenta()
+        {
+            return FinalDate - StartDate;
+
+        }
+
+        public Result<Agreement> Create(string clientname, string clientemail, DateTime startDate, DateTime finalDate, Room room, Guid id, Capacity capacity, Category category)
         {
             var result = CheckRules(new EmailMustBeGmail(clientemail));
             if (result.IsFailed) {
@@ -93,15 +99,103 @@ namespace SmartHotel.Domain.Entities
             RoomId = Room.Id;
             Guid Id = id;
 
-            var resultado = CheckRules(new ComparationPrice(StartDate,FinalDate, Price, Room));
+            // Obtener la duración de la renta en días.
+            TimeSpan duracion = DuracionRenta();
+
+            // Se utiliza la propiedad .Days para obtener los días completos.
+            double dias = duracion.Days;
+
+            //Logica para generar el precio
+            switch (Price.MoneyType)
+            {
+                case (MoneyType.Euro):
+                    dias *= 100;
+                    Console.WriteLine("You choose EURO");
+                    break;
+                case (MoneyType.USD):
+                    Console.WriteLine("You choose USD");
+                    dias = dias * 100 * 1.2;
+                    break;
+                case (MoneyType.Peso):
+                    Console.WriteLine("You choose MN");
+                    dias = dias * 100 * 380;
+                    break;
+                case (MoneyType.MLC):
+                    Console.WriteLine("You choose MLC");
+                    dias = dias * 100 * 1.5;
+                    break;
+                default:
+                    Console.WriteLine("Option not avaible. Please choose a number between 0 and 3.");
+                    break;
+            }
+
+            // Logica para la capacidad de la habitacion
+            switch (capacity)
+            {
+                case (Capacity.Sencilla):
+                    Console.WriteLine("You choose sencilla");
+                    break;
+
+                case (Capacity.Doble):
+                    dias *= 1.5;
+                    Console.WriteLine("You choose doble");
+                    break;
+
+
+                case (Capacity.Familiar):
+                    dias *= 2;
+                    Console.WriteLine("You choose familiar");
+                    break;
+
+                default:
+                    Console.WriteLine("Option not avaible. Please choose a number between 0 and 2.");
+                    break;
+            }
+
+            // Logica para la categoria de la habitacion
+
+            switch (category)
+            {
+                case (Category.Estandar):
+                    Console.WriteLine("You choose estandar");
+                    break;
+
+                case (Category.Suit):
+                    dias *= 2;
+                    Console.WriteLine("You choose suite");
+                    break;
+
+                case (Category.VIP):
+                    dias *= 5;
+                    Console.WriteLine("You choose vip");
+                    break;
+
+                default:
+                    Console.WriteLine("Option not avaible. Please choose a number between 0 and 2.");
+                    break;
+            }
+            Price.Value = dias;
+
+            // Logica para comprobar el precio
+            var resultado = CheckRules(new ComparationPrice(Price.Value, Room.RentalPrice.Value));
             if (resultado.IsFailed)
             {
                 return resultado.ToResult<Agreement>();
             }
+
+            //var resuelto = CheckRules(new DateMustBeFree())
+            // logica para ver si se puede rentar
+            /*          bool analisys = room.IsRentabled(StartDate, FinalDate);
+                      if (!analisys)
+                      {
+                          return Result.Fail<Agreement>("La habitacion se encuentra rentada en la fecha seleccionada");
+                      }
+                      else
+                      {*/
             Room.Agreements.Add(new Agreement (ClientName, Clientemail, StartDate, FinalDate, Room, Id)); //Agregando el acuerdo a la lista
 
                 return Result.Ok(new Agreement(ClientName, Clientemail, StartDate, FinalDate, Room, Id));
-           
+           // }
         }
     }
 }
