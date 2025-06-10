@@ -17,7 +17,8 @@ namespace SmartHotel.Application.Commands.Agreement.CreateAgreement
                                                 SmartHotel.Domain.Entities.Room Room,
                                                 Guid Id, 
                                                 Capacity Capacity,
-                                                Category Category) : ICommand
+                                                Category Category,
+                                                Price Price) : ICommand
 
     {
 

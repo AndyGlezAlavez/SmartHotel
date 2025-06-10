@@ -27,11 +27,11 @@ namespace SmartHotel.API
             var app = builder.Build();
 
             // Registrando servicios gRPC.
-            //app.MapGrpcService<SmartHotel.API.Services.AgreementService>();
+            app.MapGrpcService<SmartHotel.API.Services.AgreementService>();
             app.MapGrpcService<SmartHotel.API.Services.RoomService>();
             app.MapGrpcService<SmartHotel.API.Services.TemperatureService>();
             app.MapGrpcService<SmartHotel.API.Services.SmokeService>();
-            //app.MapGrpcService<SmartHotel.API.Services.LightService>();
+            app.MapGrpcService<SmartHotel.API.Services.LightService>();
 
             // Registrando repositorios en la inyección de dependencias.
             builder.Services.AddSingleton("User ID =postgres;Password=qwerty;Server=localhost;Port=5047;Database=SmartHotelDB;Include Error Detail=true;");
