@@ -19,11 +19,18 @@ namespace SmartHotel.API.Services
         {
             _mediator = mediator;
         }
-        /*
+        
         public override async Task<RoomDTO> CreateRoom(CreateRoomRequest request, ServerCallContext context)
         {
             var command = new CreateRoomCommand(
-                request.Id, request.Number, request.RentalPrice, request.Temperature, request.Smoke, request.Light.) ;
+                request.Id, 
+                request.Number,
+                request.RentalPrice.Map(),
+                request.RoomType.Map(),
+                request.Temperature.Map(),
+                request.Smoke.Map(),
+                request.Light.Map());
+            
 
             var result = await _mediator.Send(command);
 
@@ -35,7 +42,7 @@ namespace SmartHotel.API.Services
             return new RoomDTO();
         }
         
-        public override async Task<Rooms> GetAllRoom(GetRequestDTO request, ServerCallContext context)
+        public override async Task<Rooms> GetAllRoom(Empty request, ServerCallContext context)
         {
             var query = new GetAllRoomQuery();
 
@@ -48,17 +55,21 @@ namespace SmartHotel.API.Services
 
             return result.Value.Map();
         }
-
-        public override Task<Empty> AddAutomationDeviceToUnit(AutomationDeviceUnitRelationDTO request, ServerCallContext context)
+        
+        public override Task<Empty> AddAgreementToRoom(AgreementRoomRelationDTO request, ServerCallContext context)
         {
-            return base.AddAutomationDeviceToUnit(request, context);
+            return base.AddAgreementToRoom(request, context);
         }
 
-        public override Task<Empty> RemoveAutomationDeviceFromUnit(AutomationDeviceUnitRelationDTO request, ServerCallContext context)
+        public override Task<Empty> RemoveAgreementFromRoom(AgreementRoomRelationDTO request, ServerCallContext context)
         {
-            return base.RemoveAutomationDeviceFromUnit(request, context);
+            return base.RemoveAgreementFromRoom(request, context);
         }
-   */
+
+        public override Task<Empty> AddRoom(RoomDTO request, ServerCallContext context)
+        {
+            return base.AddRoom(request, context);
+        }
         public override Task<Empty> UpdateRoom(RoomDTO request, ServerCallContext context)
         {
             return base.UpdateRoom(request, context);

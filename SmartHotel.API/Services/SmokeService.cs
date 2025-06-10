@@ -21,24 +21,28 @@ namespace SmartHotel.API.Services
         {
             _mediator = mediator;
         }
-        /*
-        public override async Task<SmokeDTO> CreateSmoke(CreateSmokeRequest request, ServerCallContext context)
-        {
-            var command = new CreateSmokeCommand(
-                request.Unit, request.Reference, request.Value, request.Room) ;
-
-            var result = await _mediator.Send(command);
-
-            if (result.IsFailed)
-                throw new RpcException(
-                    new Status(StatusCode.InvalidArgument,
-                    result.Errors.First().Message));
-
-            return new SmokeDTO();
-        }
-               
         
-        public override async Task<Variables> GetVariablesAsync(GetRequestDTO request, ServerCallContext context)
+    public override async Task<SmokeDTO> CreateSmoke(CreateSmokeRequest request, ServerCallContext context)
+    {
+        var command = new CreateSmokeCommand(
+            request.Unit.Map(), request.Reference, request.Value, request.Room.Map()) ;
+
+        var result = await _mediator.Send(command);
+
+        if (result.IsFailed)
+            throw new RpcException(
+                new Status(StatusCode.InvalidArgument,
+                result.Errors.First().Message));
+
+        return new SmokeDTO();
+    }
+         
+        public override Task<NullableSmokeDTO> GetSmoke(GetRequestDTO request, ServerCallContext context)
+        {
+            return base.GetSmoke(request, context);
+        }
+
+        public override async Task<Smokes> GetAllSmoke(Empty request, ServerCallContext context)
         {
             var query = new GetAllSmokeQuery();
 
@@ -51,7 +55,7 @@ namespace SmartHotel.API.Services
 
             return result.Value.Map();
         }
-     */   
+       
         public override Task<Empty> DeleteSmoke(DeleteRequestDTO request, ServerCallContext context)
         {
             return base.DeleteSmoke(request, context);

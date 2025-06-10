@@ -42,7 +42,7 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Requerido por Entity Framework.
         /// </summary>
-        private Smoke(){ }
+        public Smoke(){ }
 
         /// <summary>
         /// Indica si la concentración de humo en la habitación supera el valor normal. 

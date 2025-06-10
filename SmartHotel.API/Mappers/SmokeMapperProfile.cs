@@ -1,7 +1,11 @@
-﻿using SmartHotel.GrpcProtos;
+﻿using Google.Protobuf.WellKnownTypes;
+using MediatR;
+using SmartHotel.Domain.Entities;
+using SmartHotel.GrpcProtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,6 +22,17 @@ namespace SmartHotel.API.Mappers
                 Value = smoke.Value,
                 Unit = smoke.Map().Unit,
                 Room = smoke.Room.Map(),
+            };
+        }
+        public static Domain.Entities.Smoke Map(this GrpcProtos.SmokeDTO smokeDTO)
+        {
+            return new Domain.Entities.Smoke() 
+            {
+                Id = smokeDTO.Map().Id,
+                Reference = smokeDTO.Reference,
+                Value = smokeDTO.Value,
+                Unit = smokeDTO.Map().Unit,
+                Room = smokeDTO.Room.Map(),
             };
         }
 

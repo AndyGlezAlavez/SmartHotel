@@ -10,7 +10,7 @@ using SmartHotel.Domain.Types;
 using SmartHotel.Domain.ValueObjects;
 namespace SmartHotel.Application.Commands.Room.CreateRoom
 {
-    public sealed record CreateRoomCommand(Guid Id, int Number, Price RentalPrice, RoomType RoomType, SmartHotel.Domain.Entities.Temperature Temperature, SmartHotel.Domain.Entities.Smoke Smoke, SmartHotel.Domain.Entities.Light Light) : ICommand
+    public sealed record CreateRoomCommand(string Id, int Number, Price RentalPrice, RoomType RoomType, SmartHotel.Domain.Entities.Temperature Temperature, SmartHotel.Domain.Entities.Smoke Smoke, SmartHotel.Domain.Entities.Light Light) : ICommand
     {
     }
 }

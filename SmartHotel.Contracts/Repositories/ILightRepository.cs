@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 namespace SmartHotel.Contracts.Repositories
 {
     /// <summary>
-    /// Define las funcionalidades de un repositorio de room.
+    /// Define las funcionalidades de un repositorio de light.
     /// </summary>
-    public interface IRoomRepository
+    public interface ILightRepository
     {
         /// <summary>
-        /// Añade una room a base de datos.
+        /// Añade una light a base de datos.
         /// </summary>
-        Task AddAsync(Room room);
+        Task AddAsync(Light light);
         /// <summary>
-        /// Obtiene una room a partir de su Id.
+        /// Obtiene una light a partir de su Id.
         /// </summary>
-        Task<Room> GetByIdAsync(Guid id);
+        Task<Light> GetByIdAsync(Guid id);
         /// <summary>
-        /// Actualiza una room.
+        /// Actualiza una light.
         /// </summary>
-        Task<IEnumerable<Room>> GetRoomsAsync();
-        void Update(Room room);
+        Task<IEnumerable<Light>> GetLightsAsync();
+        void Update(Light light);
         /// <summary>
-        /// Elimina una room a partir de su Id.
+        /// Elimina una light a partir de su Id.
         /// </summary>
         void DeleteById(Guid id);
     }

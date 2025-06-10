@@ -9,5 +9,5 @@ namespace SmartHotel.Application.Queries.Smoke.GetAllsSmoke
 {
     
         public sealed record GetAllSmokeQuery()
-            : IQuery<IEnumerable<Domain.Entities.Variable>>;
-}
+            : IQuery<IEnumerable<Domain.Entities.Smoke>>;
+    }

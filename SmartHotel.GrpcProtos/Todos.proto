@@ -86,8 +86,9 @@ service Room {
 	rpc UpdateRoom(RoomDTO) returns (google.protobuf.Empty);
 	rpc AddRoom(RoomDTO) returns (google.protobuf.Empty);
 	rpc RemoveRoom(RoomDTO) returns (google.protobuf.Empty);
+	rpc AddAgreementToRoom (AgreementRoomRelationDTO) returns (google.protobuf.Empty);
+	rpc RemoveAgreementFromRoom (AgreementRoomRelationDTO) returns (google.protobuf.Empty);
 	rpc DeleteRoom(DeleteRequestDTO) returns (google.protobuf.Empty);
-
 }
 
 message RoomDTO{
@@ -131,8 +132,12 @@ message CreateRoomRequest{
 	LightDTO light = 12 ;
 	string lightId = 13;
 	string id = 14;
-	
 }
+message AgreementRoomRelationDTO{
+	string RoomId = 1;
+	string AgreementId = 2;	
+}
+
 service Smoke{
 	rpc CreateSmoke (CreateSmokeRequest) returns (SmokeDTO);
 	rpc GetSmoke (GetRequestDTO) returns (NullableSmokeDTO);

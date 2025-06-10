@@ -22,6 +22,15 @@ namespace SmartHotel.gRPC.Services
         {
             return base.GetAllRoom(request, context);
         }
+        public override Task<Empty> AddAgreementToRoom(AgreementRoomRelationDTO request, ServerCallContext context)
+        {
+            return base.AddAgreementToRoom(request, context);
+        }
+
+        public override Task<Empty> RemoveAgreementFromRoom(AgreementRoomRelationDTO request, ServerCallContext context)
+        {
+            return base.RemoveAgreementFromRoom(request, context);
+        }
         public override Task<Empty> RemoveRoom(RoomDTO request, ServerCallContext context)
         {
             return base.RemoveRoom(request, context);

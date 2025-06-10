@@ -46,7 +46,8 @@ namespace SmartHotel.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Unit = table.Column<int>(type: "integer", nullable: false)
+                    Unit = table.Column<int>(type: "integer", nullable: false),
+                    Danger = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {

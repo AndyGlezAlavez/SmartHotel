@@ -12,7 +12,7 @@ using SmartHotel.Persistence.Contexts;
 namespace SmartHotel.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250524034152_Initial")]
+    [Migration("20250610004004_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -131,6 +131,9 @@ namespace SmartHotel.Persistence.Migrations
             modelBuilder.Entity("SmartHotel.Domain.Entities.Smoke", b =>
                 {
                     b.HasBaseType("SmartHotel.Domain.Entities.Variable");
+
+                    b.Property<bool>("Danger")
+                        .HasColumnType("boolean");
 
                     b.Property<int>("Unit")
                         .HasColumnType("integer");

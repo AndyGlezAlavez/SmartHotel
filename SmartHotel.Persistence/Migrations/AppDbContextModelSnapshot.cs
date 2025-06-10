@@ -130,6 +130,9 @@ namespace SmartHotel.Persistence.Migrations
                 {
                     b.HasBaseType("SmartHotel.Domain.Entities.Variable");
 
+                    b.Property<bool>("Danger")
+                        .HasColumnType("boolean");
+
                     b.Property<int>("Unit")
                         .HasColumnType("integer");
 

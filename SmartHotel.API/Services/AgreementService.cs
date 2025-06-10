@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartHotel.Application
+namespace SmartHotel.API.Services
 {
-    public class AssemblyReference
+    public class AgreementService
     {
     }
 }
