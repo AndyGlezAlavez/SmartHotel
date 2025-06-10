@@ -23,7 +23,7 @@ namespace SmartHotel.Application.Commands.Smoke.DeleteSmoke
         }
         public async Task<Result> Handle(DeleteSmokeCommand request, CancellationToken cancellationToken)
         {
-            _repositoryManager.Variable.DeleteById(request.ID);
+            _repositoryManager.Smoke.DeleteById(request.ID);
             await _repositoryManager.UnitOfWork.SaveChangesAsync(cancellationToken);
             return Result.Ok(); 
         }

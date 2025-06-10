@@ -27,7 +27,7 @@ namespace SmartHotel.Application.Commands.Smoke.CreateSmoke
                 return codeResult.ToResult();
             var smoke = new Domain.Entities.Smoke(request.SmokeUnit, Guid.NewGuid(), request.Value, request.Reference, request.Room);
 
-            await _repositoryManager.Variable.AddAsync(smoke);
+            await _repositoryManager.Smoke.AddAsync(smoke);
             await _repositoryManager.UnitOfWork.SaveChangesAsync(cancellationToken);
             
             return Result.Ok(); 

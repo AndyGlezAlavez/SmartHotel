@@ -23,7 +23,7 @@ namespace SmartHotel.Application.Commands.Temperature.CreateTemperature
         {
             var temperature = new Domain.Entities.Temperature( Guid.NewGuid(), request.Value, request.Reference, request.TempUnit,  request.Room);
 
-            await _repositoryManager.Variable.AddAsync(temperature);
+            await _repositoryManager.Temperature.AddAsync(temperature);
             await _repositoryManager.UnitOfWork.SaveChangesAsync(cancellationToken);
 
             return Result.Ok();
