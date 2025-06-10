@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 namespace SmartHotel.Contracts.Repositories
 {
     /// <summary>
-    /// Define las funcionalidades de un repositorio de room.
+    /// Define las funcionalidades de un repositorio de smoke.
     /// </summary>
-    public interface IRoomRepository
+    public interface ISmokeRepository
     {
         /// <summary>
-        /// Añade una room a base de datos.
+        /// Añade una smoke a base de datos.
         /// </summary>
-        Task AddAsync(Room room);
+        Task AddAsync(Smoke smoke);
         /// <summary>
-        /// Obtiene una room a partir de su Id.
+        /// Obtiene una smoke a partir de su Id.
         /// </summary>
-        Task<Room> GetByIdAsync(Guid id);
+        Task<Smoke> GetByIdAsync(Guid id);
         /// <summary>
-        /// Actualiza una room.
+        /// Actualiza una smoke.
         /// </summary>
-        Task<IEnumerable<Room>> GetRoomsAsync();
-        void Update(Room room);
+        Task<IEnumerable<Smoke>> GetSmokesAsync();
+        void Update(Smoke smoke);
         /// <summary>
-        /// Elimina una room a partir de su Id.
+        /// Elimina una smoke a partir de su Id.
         /// </summary>
         void DeleteById(Guid id);
     }

@@ -27,7 +27,7 @@ namespace SmartHotel.Application.Queries.Temperature.GetAllsTemperature
 
         public async Task<Result<IEnumerable<SmartHotel.Domain.Entities.Temperature>>> Handle(GetAllTemperatureQuery request, CancellationToken cancellationToken)
         {
-            return Result.Ok();//Esto esta mal¡¡¡¡
+            return Result.Ok(await _repositoryManager.Temperature.GetTemperaturesAsync());
         }
     }
 }

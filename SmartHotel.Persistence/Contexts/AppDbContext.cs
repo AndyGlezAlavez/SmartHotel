@@ -17,6 +17,10 @@ namespace SmartHotel.Persistence.Contexts
         public DbSet<Variable> Variables => Set<Variable>();
         public DbSet<Agreement> Agreements => Set<Agreement>();
         public DbSet<Room> Rooms => Set<Room>();
+        public DbSet<Smoke> Smokes => Set<Smoke>();
+        public DbSet<Temperature> Temperatures => Set<Temperature>();
+
+        public DbSet<Light> Lights => Set<Light>();
 
         #endregion
 

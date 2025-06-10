@@ -21,10 +21,38 @@ namespace SmartHotel.Persistence.Repositories.Managers
                 return _variable;
             }
         }
+        private ISmokeRepository? _smoke = null;
+        public ISmokeRepository Smoke
+        {
+            get
+            {
+                _smoke ??= new SmokeRepository(_context);
+                return _smoke;
+            }
+        }
 
+        private ITemperatureRepository? _temperature = null;
+        public ITemperatureRepository Temperature
+        {
+            get
+            {
+                _temperature ??= new TemperatureRepository(_context);
+                return _temperature;
+            }
+        }
 
-        private IRoomRepsoitory? _room = null;
-        public IRoomRepsoitory Room
+        private ILightRepository? _light = null;
+        public ILightRepository Light
+        {
+            get
+            {
+                _light ??= new LightRepository(_context);
+                return _light;
+            }
+        }
+
+        private IRoomRepository? _room = null;
+        public IRoomRepository Room
         {
             get
             {

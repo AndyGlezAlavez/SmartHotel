@@ -27,7 +27,7 @@ namespace SmartHotel.Application.Queries.Smoke.GetAllsSmoke
 
             public async Task<Result<IEnumerable<SmartHotel.Domain.Entities.Smoke>>> Handle(GetAllSmokeQuery request, CancellationToken cancellationToken)
             {
-                return Result.Ok(); //Esto esta mal¡¡¡¡
+                return Result.Ok(await _repositoryManager.Smoke.GetSmokesAsync()); 
             }
         }
     }

@@ -6,7 +6,7 @@ using SmartHotel.Contracts.Repositories;
 namespace SmartHotel.Persistence.Repositories
 {
     public class RoomRepository
-        : IRoomRepsoitory
+        : IRoomRepository
     {
         private readonly AppDbContext _context;
 
