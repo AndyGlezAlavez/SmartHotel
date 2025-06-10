@@ -19,7 +19,7 @@ namespace SmartHotel.Application.Commands.Light.UpdateLight
         }
         public async Task<Result> Handle(UpdateLightCommand request, CancellationToken cancellationToken)
         {
-            _repositoryManager.Variable.Update(request.Light);
+            _repositoryManager.Light.Update(request.Light);
             SmartHotel.Domain.Entities.Light light = request.Light;
             if (light == null) return Result.Fail("Update operation Fail");
             await _repositoryManager.UnitOfWork.SaveChangesAsync(cancellationToken);

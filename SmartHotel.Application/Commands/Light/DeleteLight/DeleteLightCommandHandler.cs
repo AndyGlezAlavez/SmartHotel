@@ -19,7 +19,7 @@ namespace SmartHotel.Application.Commands.Light.DeleteLight
         }
         public async Task<Result> Handle(DeleteLightCommand request, CancellationToken cancellationToken)
         {
-            _repositoryManager.Variable.DeleteById(request.ID);
+            _repositoryManager.Light.DeleteById(request.ID);
             await _repositoryManager.UnitOfWork.SaveChangesAsync(cancellationToken);
             return Result.Ok();
         }
