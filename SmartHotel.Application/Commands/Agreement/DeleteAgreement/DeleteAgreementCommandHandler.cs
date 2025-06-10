@@ -19,9 +19,9 @@ namespace SmartHotel.Application.Commands.Agreement.DeleteAgreement
 
         }
 
-        public async Task<Result> Handle(DeleteRoomCommand request, CancellationToken cancellationToken)
+        public async Task<Result> Handle(DeleteAgreementCommand request, CancellationToken cancellationToken)
         {
-            _repositoryManager.Room.DeleteById(request.ID);
+            _repositoryManager.Agreement.DeleteById(request.ID);
             await _repositoryManager.UnitOfWork.SaveChangesAsync(cancellationToken);
             return Result.Ok();
         }
