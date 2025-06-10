@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Application
 {
-    internal class AssemblyReference
+    public class AssemblyReference
     {
     }
 }
