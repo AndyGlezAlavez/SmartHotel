@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Application.Commands.Room.AddAgreementToRoom
 {
-    public sealed record AddAgreementToRoomCommand(SmartHotel.Domain.Entities.Agreement Agreement)
+    public sealed record AddAgreementToRoomCommand(SmartHotel.Domain.Entities.Room Room, SmartHotel.Domain.Entities.Agreement Agreement)
     {
     }
 }

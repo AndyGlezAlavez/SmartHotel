@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.Application.Commands.Room.RemoveAgreementFromRoom
 {
-    public sealed record RemoveAgreementFromRoomCommand (Guid Id)
+    public sealed record RemoveAgreementFromRoomCommand (SmartHotel.Domain.Entities.Room Room, SmartHotel.Domain.Entities.Agreement Agreement)
     {
     }
 }
