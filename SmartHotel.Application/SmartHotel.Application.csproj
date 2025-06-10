@@ -5,6 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <ApplicationManifest>Commands\Light\DeleteLight\DeleteLightCommandHandler.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +19,10 @@
     <ProjectReference Include="..\SmartHotel.GrpcProtos\SmartHotel.GrpcProtos.csproj" />
     <ProjectReference Include="..\SmartHotel.gRPC\SmartHotel.gRPC.csproj" />
     <ProjectReference Include="..\SmartHotel.Persistence\SmartHotel.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Queries\Agreement\" />
   </ItemGroup>
 
 </Project>
