@@ -53,13 +53,14 @@ namespace SmartHotel.ConsoleApp
                     Smoke = new GrpcProtos.SmokeDTO(),
                     Temperature = new GrpcProtos.TemperatureDTO(),
                     Light = new GrpcProtos.LightDTO(),
-                    Id = "14",
+                    Id = "1409649460458",
                 });
             }
             catch (RpcException ex)
             {
                 Console.WriteLine(ex.Message);
             }
+            Console.WriteLine("OK");
         }
     }
 }
