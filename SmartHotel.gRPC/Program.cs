@@ -3,6 +3,16 @@ using SmartHotel.gRPC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configurar Kestrel para usar HTTP/2 en el puerto 7293
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenLocalhost(7293, listenOptions =>
+    {
+        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2;
+    });
+});
+
+
 // Additional configuration is required to successfully run gRPC on macOS.
 // For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
 

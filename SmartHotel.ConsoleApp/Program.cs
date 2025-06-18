@@ -17,7 +17,7 @@ namespace SmartHotel.ConsoleApp
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("Presione una tecla para continuar.");
             Console.ReadKey();
@@ -29,7 +29,7 @@ namespace SmartHotel.ConsoleApp
             };
 
             var channel = GrpcChannel.ForAddress(
-                "http://localhost:5047",
+                "http://localhost:7293",
                 new GrpcChannelOptions { HttpHandler = httpHandler });
 
             if (channel is null)
