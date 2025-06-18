@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 using SmartHotel.Domain.Entities;
 using SmartHotel.Domain.Types;
 using System.ComponentModel.Design;
-using MediatR;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SmartHotel.Domain.Rules;
 using FluentResults;
 

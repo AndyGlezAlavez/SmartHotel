@@ -1,5 +1,4 @@
-﻿using FluentResults;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +10,7 @@ namespace SmartHotel.ConsoleApp
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("Presione una tecla para continuar.");
             Console.ReadKey();

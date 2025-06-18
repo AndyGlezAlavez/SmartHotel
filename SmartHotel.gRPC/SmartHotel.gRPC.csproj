@@ -19,7 +19,6 @@
   <ItemGroup>
     <ProjectReference Include="..\SmartHotel.Contracts\SmartHotel.Contracts.csproj" />
     <ProjectReference Include="..\SmartHotel.GrpcProtos\SmartHotel.GrpcProtos.csproj" />
-    <ProjectReference Include="..\SmartHotel.Persistence\SmartHotel.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
