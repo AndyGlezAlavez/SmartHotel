@@ -1,18 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SmartHotel.Application\SmartHotel.Application.csproj" />
-    <ProjectReference Include="..\SmartHotel.Contracts\SmartHotel.Contracts.csproj" />
-    <ProjectReference Include="..\SmartHotel.Domain\SmartHotel.Domain.csproj" />
     <ProjectReference Include="..\SmartHotel.GrpcProtos\SmartHotel.GrpcProtos.csproj" />
-    <ProjectReference Include="..\SmartHotel.gRPC\SmartHotel.gRPC.csproj" />
     <ProjectReference Include="..\SmartHotel.Persistence\SmartHotel.Persistence.csproj" />
   </ItemGroup>
 

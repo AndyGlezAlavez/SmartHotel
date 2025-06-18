@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.gRPC", "SmartHot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.GrpcProtos", "SmartHotel.GrpcProtos\SmartHotel.GrpcProtos.csproj", "{7EDD17E4-39E3-4EF4-818F-B5869F292DE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Application1", "SmartHotel.Application\SmartHotel.Application1.csproj", "{E69DA6B3-85B5-4D32-A166-6FEEB475EECD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Application", "SmartHotel.Application\SmartHotel.Application.csproj", "{E69DA6B3-85B5-4D32-A166-6FEEB475EECD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.API", "SmartHotel.API\SmartHotel.API.csproj", "{A6BBE0B5-A8E5-4D0A-9681-7E2495E380C8}"
 EndProject
