@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SmartHotel.Domain\SmartHotel.Domain.csproj" />
     <ProjectReference Include="..\SmartHotel.GrpcProtos\SmartHotel.GrpcProtos.csproj" />
     <ProjectReference Include="..\SmartHotel.Persistence\SmartHotel.Persistence.csproj" />
   </ItemGroup>
