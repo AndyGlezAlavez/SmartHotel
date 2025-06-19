@@ -86,7 +86,7 @@ namespace SmartHotel.Persistence.Contexts
             public AppDbContext CreateDbContext(string[] args)
             {
                 var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-                optionsBuilder.UseNpgsql("Host=localhost;Port=5047;Database=SmartHotelDB;Username=Servers;Password=AAM821988");
+                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=SmartHotelDB;Username=postgres;Password=AAM821988");
 
                 return new AppDbContext(optionsBuilder.Options);
             }
