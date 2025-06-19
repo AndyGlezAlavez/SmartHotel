@@ -9,8 +9,12 @@ namespace SmartHotel.Persistence.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "public");
+
             migrationBuilder.CreateTable(
                 name: "Variables",
+                schema: "public",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -24,6 +28,7 @@ namespace SmartHotel.Persistence.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Lights",
+                schema: "public",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -36,6 +41,7 @@ namespace SmartHotel.Persistence.Migrations
                     table.ForeignKey(
                         name: "FK_Lights_Variables_Id",
                         column: x => x.Id,
+                        principalSchema: "public",
                         principalTable: "Variables",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -43,6 +49,7 @@ namespace SmartHotel.Persistence.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Smokes",
+                schema: "public",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -55,6 +62,7 @@ namespace SmartHotel.Persistence.Migrations
                     table.ForeignKey(
                         name: "FK_Smokes_Variables_Id",
                         column: x => x.Id,
+                        principalSchema: "public",
                         principalTable: "Variables",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -62,6 +70,7 @@ namespace SmartHotel.Persistence.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Temperatures",
+                schema: "public",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -74,6 +83,7 @@ namespace SmartHotel.Persistence.Migrations
                     table.ForeignKey(
                         name: "FK_Temperatures_Variables_Id",
                         column: x => x.Id,
+                        principalSchema: "public",
                         principalTable: "Variables",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -81,6 +91,7 @@ namespace SmartHotel.Persistence.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Rooms",
+                schema: "public",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -103,18 +114,21 @@ namespace SmartHotel.Persistence.Migrations
                     table.ForeignKey(
                         name: "FK_Rooms_Lights_LightId",
                         column: x => x.LightId,
+                        principalSchema: "public",
                         principalTable: "Lights",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Rooms_Smokes_SmokeId",
                         column: x => x.SmokeId,
+                        principalSchema: "public",
                         principalTable: "Smokes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Rooms_Temperatures_TemperatureId",
                         column: x => x.TemperatureId,
+                        principalSchema: "public",
                         principalTable: "Temperatures",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -122,6 +136,7 @@ namespace SmartHotel.Persistence.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Agreements",
+                schema: "public",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -139,6 +154,7 @@ namespace SmartHotel.Persistence.Migrations
                     table.ForeignKey(
                         name: "FK_Agreements_Rooms_RoomId",
                         column: x => x.RoomId,
+                        principalSchema: "public",
                         principalTable: "Rooms",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -146,23 +162,27 @@ namespace SmartHotel.Persistence.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Agreements_RoomId",
+                schema: "public",
                 table: "Agreements",
                 column: "RoomId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rooms_LightId",
+                schema: "public",
                 table: "Rooms",
                 column: "LightId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rooms_SmokeId",
+                schema: "public",
                 table: "Rooms",
                 column: "SmokeId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rooms_TemperatureId",
+                schema: "public",
                 table: "Rooms",
                 column: "TemperatureId",
                 unique: true);
@@ -171,22 +191,28 @@ namespace SmartHotel.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Agreements");
+                name: "Agreements",
+                schema: "public");
 
             migrationBuilder.DropTable(
-                name: "Rooms");
+                name: "Rooms",
+                schema: "public");
 
             migrationBuilder.DropTable(
-                name: "Lights");
+                name: "Lights",
+                schema: "public");
 
             migrationBuilder.DropTable(
-                name: "Smokes");
+                name: "Smokes",
+                schema: "public");
 
             migrationBuilder.DropTable(
-                name: "Temperatures");
+                name: "Temperatures",
+                schema: "public");
 
             migrationBuilder.DropTable(
-                name: "Variables");
+                name: "Variables",
+                schema: "public");
         }
     }
 }

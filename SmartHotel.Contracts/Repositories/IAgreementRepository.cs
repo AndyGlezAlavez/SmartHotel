@@ -19,7 +19,7 @@ namespace SmartHotel.Contracts.Repositories
         /// <summary>
         /// Obtiene un agreement a partir de su Id.
         /// </summary>
-        Task<Agreement?> GetAgreementsByIdAsync(Guid id);
+        Task<Agreement> GetAgreementsByIdAsync(Guid id);
         /// <summary>
         /// Obtiene todas los agreement a partir de la room a la que pertenecen.
         /// </summary>

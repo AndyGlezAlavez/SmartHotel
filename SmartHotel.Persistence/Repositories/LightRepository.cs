@@ -30,9 +30,9 @@ namespace SmartHotel.Persistence.Repositories
             _context.Lights.Remove(light);
         }
 
-        public async Task<Light?> GetByIdAsync(Guid id)
+        public async Task<Light> GetByIdAsync(Guid id)
         {
-            return await _context.Lights.FindAsync(id);
+            return (await _context.Lights.FindAsync(id))!;
         }
 
         public Task<IEnumerable<Light>> GetLightsAsync()

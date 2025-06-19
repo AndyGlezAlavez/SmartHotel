@@ -19,7 +19,7 @@ namespace SmartHotel.Contracts.Repositories
         /// <summary>
         /// Obtiene una light a partir de su Id.
         /// </summary>
-        Task<Light?> GetByIdAsync(Guid id);
+        Task<Light> GetByIdAsync(Guid id);
         /// <summary>
         /// Actualiza una light.
         /// </summary>

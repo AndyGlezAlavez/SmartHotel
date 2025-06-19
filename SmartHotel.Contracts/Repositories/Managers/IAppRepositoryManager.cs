@@ -9,7 +9,7 @@ namespace SmartHotel.Contracts.Repositories.Managers
     public interface IAppRepositoryManager
     {
         IRoomRepository Room { get; }
-        IVariableRepository Variable { get; }
+        //IVariableRepository Variable { get; }
         IAgreementRepository Agreement { get; }
 
         ISmokeRepository Smoke { get; }

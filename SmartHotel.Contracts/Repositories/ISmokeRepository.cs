@@ -19,7 +19,7 @@ namespace SmartHotel.Contracts.Repositories
         /// <summary>
         /// Obtiene una smoke a partir de su Id.
         /// </summary>
-        Task<Smoke?> GetByIdAsync(Guid id);
+        Task<Smoke> GetByIdAsync(Guid id);
         /// <summary>
         /// Actualiza una smoke.
         /// </summary>

@@ -30,9 +30,9 @@ namespace SmartHotel.Persistence.Repositories
             _context.Temperatures.Remove(temperature);
         }
 
-        public async Task<Temperature?> GetByIdAsync(Guid id)
+        public async Task<Temperature> GetByIdAsync(Guid id)
         {
-            return await _context.Temperatures.FindAsync(id);
+            return (await _context.Temperatures.FindAsync(id))!;
         }
         
         public Task<IEnumerable<Temperature>> GetTemperaturesAsync()

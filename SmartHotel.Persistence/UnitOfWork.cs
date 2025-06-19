@@ -15,8 +15,6 @@ namespace SmartHotel.Persistence
         public UnitOfWork(AppDbContext context)
         {
             _context = context;
-            if(!context.Database.CanConnect())
-                context.Database.EnsureCreated();
         }
 
         public Task SaveChangesAsync(CancellationToken cancellationToken)

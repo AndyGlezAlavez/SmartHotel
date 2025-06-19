@@ -12,13 +12,14 @@ using SmartHotel.Persistence.Contexts;
 namespace SmartHotel.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250610004004_Initial")]
+    [Migration("20250619234420_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("public")
                 .HasAnnotation("ProductVersion", "6.0.29")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
@@ -51,7 +52,7 @@ namespace SmartHotel.Persistence.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("Agreements", (string)null);
+                    b.ToTable("Agreements", "public");
                 });
 
             modelBuilder.Entity("SmartHotel.Domain.Entities.Room", b =>
@@ -95,7 +96,7 @@ namespace SmartHotel.Persistence.Migrations
                     b.HasIndex("TemperatureId")
                         .IsUnique();
 
-                    b.ToTable("Rooms", (string)null);
+                    b.ToTable("Rooms", "public");
                 });
 
             modelBuilder.Entity("SmartHotel.Domain.Entities.Variable", b =>
@@ -112,7 +113,7 @@ namespace SmartHotel.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Variables", (string)null);
+                    b.ToTable("Variables", "public");
                 });
 
             modelBuilder.Entity("SmartHotel.Domain.Entities.Light", b =>
@@ -125,7 +126,7 @@ namespace SmartHotel.Persistence.Migrations
                     b.Property<int>("Unit")
                         .HasColumnType("integer");
 
-                    b.ToTable("Lights", (string)null);
+                    b.ToTable("Lights", "public");
                 });
 
             modelBuilder.Entity("SmartHotel.Domain.Entities.Smoke", b =>
@@ -138,7 +139,7 @@ namespace SmartHotel.Persistence.Migrations
                     b.Property<int>("Unit")
                         .HasColumnType("integer");
 
-                    b.ToTable("Smokes", (string)null);
+                    b.ToTable("Smokes", "public");
                 });
 
             modelBuilder.Entity("SmartHotel.Domain.Entities.Temperature", b =>
@@ -151,7 +152,7 @@ namespace SmartHotel.Persistence.Migrations
                     b.Property<int>("Unit")
                         .HasColumnType("integer");
 
-                    b.ToTable("Temperatures", (string)null);
+                    b.ToTable("Temperatures", "public");
                 });
 
             modelBuilder.Entity("SmartHotel.Domain.Entities.Agreement", b =>
@@ -175,7 +176,7 @@ namespace SmartHotel.Persistence.Migrations
 
                             b1.HasKey("AgreementId");
 
-                            b1.ToTable("Agreements");
+                            b1.ToTable("Agreements", "public");
 
                             b1.WithOwner()
                                 .HasForeignKey("AgreementId");
@@ -220,7 +221,7 @@ namespace SmartHotel.Persistence.Migrations
 
                             b1.HasKey("RoomId");
 
-                            b1.ToTable("Rooms");
+                            b1.ToTable("Rooms", "public");
 
                             b1.WithOwner()
                                 .HasForeignKey("RoomId");
@@ -239,7 +240,7 @@ namespace SmartHotel.Persistence.Migrations
 
                             b1.HasKey("RoomId");
 
-                            b1.ToTable("Rooms");
+                            b1.ToTable("Rooms", "public");
 
                             b1.WithOwner()
                                 .HasForeignKey("RoomId");

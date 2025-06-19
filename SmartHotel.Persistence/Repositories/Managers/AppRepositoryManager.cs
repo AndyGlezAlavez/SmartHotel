@@ -17,7 +17,7 @@ namespace SmartHotel.Persistence.Repositories.Managers
             Context = context;
         }
         public IRoomRepository Room { get; }
-        public IVariableRepository Variable { get; }
+        //public IVariableRepository Variable { get; }
         public ISmokeRepository Smoke { get; }
         public ITemperatureRepository Temperature { get; }
         public ILightRepository Light { get; }

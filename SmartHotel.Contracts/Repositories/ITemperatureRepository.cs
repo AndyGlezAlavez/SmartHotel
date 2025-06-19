@@ -19,7 +19,7 @@ namespace SmartHotel.Contracts.Repositories
         /// <summary>
         /// Obtiene una temperature a partir de su Id.
         /// </summary>
-        Task<Temperature?> GetByIdAsync(Guid id);
+        Task<Temperature> GetByIdAsync(Guid id);
         /// <summary>
         /// Actualiza una temperature.
         /// </summary>
