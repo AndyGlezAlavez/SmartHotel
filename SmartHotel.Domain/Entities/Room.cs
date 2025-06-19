@@ -39,7 +39,7 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Precio al que se alquila la habitación.
         /// </summary>
-        public Price RentalPrice { get; set; } //= (100.00, MoneyType.euro);
+        public Price RentalPrice { get; set; } = new Price();
 
         /// <summary>
         /// Está encendida la climatización.
@@ -54,12 +54,12 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Tipo de habitación.
         /// </summary>
-        public RoomType RoomType { get; set; } //= (Capacity.Sencilla, Category.Estandar);
+        public RoomType RoomType { get; set; } = new RoomType();
 
         /// <summary>
         /// Concentración de humo en la habitación.
         /// </summary>
-        public Smoke Smoke { get; set; }
+        public Smoke Smoke { get; set; } = new Smoke();
 
         /// <summary>
         /// Identificador de la concentración de humo en la habitación.
@@ -69,7 +69,7 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Temperatura en la habitación.
         /// </summary>
-        public Temperature Temperature { get; set; }
+        public Temperature Temperature { get; set; } = new Temperature();
 
         /// <summary>
         /// Identificador de la temperatura en la habitación.
@@ -79,7 +79,7 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Iluminación en la habitación.
         /// </summary>
-        public Light Light { get; set; }
+        public Light Light { get; set; } = new Light();
 
         /// <summary>
         /// Identificador de la iluminación en la habitación.

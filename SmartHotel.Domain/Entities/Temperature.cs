@@ -27,7 +27,7 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Habitación a la que pertenece la temperatura. 
         /// </summary>
-        public Room Room { get; set; }
+        public Room Room { get; set; } = new Room();
 
         #endregion
 

@@ -34,7 +34,7 @@ namespace SmartHotel.Persistence.Repositories
             await _context.Agreements.AddAsync(agreement);
         }
 
-        async Task<Agreement> IAgreementRepository.GetAgreementsByIdAsync(Guid id)
+        async Task<Agreement?> IAgreementRepository.GetAgreementsByIdAsync(Guid id)
         {
             return await _context.Agreements.FindAsync(id);
         }
