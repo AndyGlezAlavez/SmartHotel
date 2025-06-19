@@ -1,5 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SmartHotel.Contracts.Repositories.Managers;
 using SmartHotel.Persistence.Contexts;
@@ -21,7 +23,10 @@ namespace SmartHotel.API
                 AutoRegisterRequestProcessors = true,
             }
             .RegisterServicesFromAssemblies(typeof(Application.AssemblyReference).Assembly));
-
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddScoped<IAppRepositoryManager, AppRepositoryManager>();
+           
             var app = builder.Build();
 
             // Registrando servicios gRPC.
