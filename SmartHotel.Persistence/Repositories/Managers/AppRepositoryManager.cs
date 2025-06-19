@@ -10,7 +10,10 @@ namespace SmartHotel.Persistence.Repositories.Managers
         : IAppRepositoryManager
     {
         //public AppRepositoryManager(AppDbContext context);
-        public AppRepositoryManager(AppDbContext context) { }
+        public AppRepositoryManager(AppDbContext context)
+        {
+            Context = context;
+        }
         public IRoomRepository Room { get; }
         public IVariableRepository Variable { get; }
         public ISmokeRepository Smoke { get; }
@@ -19,6 +22,7 @@ namespace SmartHotel.Persistence.Repositories.Managers
         public IUnitOfWork UnitOfWork { get; }
 
         public IAgreementRepository Agreement { get; }
+        private readonly AppDbContext Context;
     }
 }
 

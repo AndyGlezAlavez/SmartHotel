@@ -37,10 +37,10 @@ namespace SmartHotel.Persistence.Contexts
         /// <param name="connectionString">
         /// Cadena de conexión.
         /// </param>
-        public AppDbContext(string connectionString)
+        /*public AppDbContext(string connectionString)
             : base(GetOptions(connectionString))
         {
-        }
+        }*/
 
         /// <summary>
         /// Inicializa un objeto <see cref="ApplicationContext"/>.
