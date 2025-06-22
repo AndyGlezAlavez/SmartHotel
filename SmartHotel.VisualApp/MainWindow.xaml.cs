@@ -74,7 +74,7 @@ namespace SmartHotel.VisualApp
                     selected.FinalDate = editWindow.AgreementEdited.FinalDate;
                     selected.ClientName = editWindow.AgreementEdited.ClientName;
 
-                    AgreementsGrid.Items.Refresh();
+                    //AgreementsGrid.Items.Refresh();
                 }
             }
         }
