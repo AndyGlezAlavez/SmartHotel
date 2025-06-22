@@ -33,7 +33,7 @@ namespace SmartHotel.VisualApp
             AgreementEdited = new AgreementDetails(agreement.StartDate, agreement.FinalDate, agreement.ClientName);
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             if (StartDatePicker.SelectedDate == null || FinalDatePicker.SelectedDate == null || string.IsNullOrWhiteSpace(ClientTextBox.Text))
             {

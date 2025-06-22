@@ -46,7 +46,7 @@
                 BorderBrush="#bbb" 
                 BorderThickness="1"
                 Cursor="Hand"
-                Click="btnSave_Click"/>
+                Click="BtnSave_Click"/>
     </Grid>
 
 </Window>
