@@ -10,7 +10,7 @@ using SmartHotel.Domain.Types;
 
 namespace SmartHotel.Application.Commands.Light.CreateLight
 {
-    public sealed record CreateLightCommand(LightUnit LightUnit, double Value, double Reference, SmartHotel.Domain.Entities.Room Room) : ICommand
+    public sealed record CreateLightCommand(LightUnit LightUnit, double Value, double Reference, SmartHotel.Domain.Entities.Room Room, string Id) : ICommand
     {
 
     }

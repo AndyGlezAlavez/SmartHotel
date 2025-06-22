@@ -17,7 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Application", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.API", "SmartHotel.API\SmartHotel.API.csproj", "{A6BBE0B5-A8E5-4D0A-9681-7E2495E380C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.ConsoleApp", "SmartHotel.ConsoleApp\SmartHotel.ConsoleApp.csproj", "{879E9DC9-8176-4A8E-AD94-51DDBDD64A4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.ConsoleApp", "SmartHotel.ConsoleApp\SmartHotel.ConsoleApp.csproj", "{879E9DC9-8176-4A8E-AD94-51DDBDD64A4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.VisualApp", "SmartHotel.VisualApp\SmartHotel.VisualApp.csproj", "{864176F1-44EA-4F9C-BE06-E88E27785B94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{879E9DC9-8176-4A8E-AD94-51DDBDD64A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{879E9DC9-8176-4A8E-AD94-51DDBDD64A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{879E9DC9-8176-4A8E-AD94-51DDBDD64A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{864176F1-44EA-4F9C-BE06-E88E27785B94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{864176F1-44EA-4F9C-BE06-E88E27785B94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{864176F1-44EA-4F9C-BE06-E88E27785B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{864176F1-44EA-4F9C-BE06-E88E27785B94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

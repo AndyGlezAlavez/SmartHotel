@@ -1,89 +1,30 @@
 ﻿using SmartHotel.Contracts.Repositories;
 using SmartHotel.Contracts.Repositories.Managers;
 using SmartHotel.Contracts;
-using SmartHotel.Persistence.Repositories;
-using SmartHotel.Persistence.Repositories.Managers;
 using SmartHotel.Persistence.Contexts;
 
 namespace SmartHotel.Persistence.Repositories.Managers
 {
+
     public class AppRepositoryManager
         : IAppRepositoryManager
     {
-        private readonly AppDbContext _context;
-
-        private IVariableRepository? _variable = null;
-        public IVariableRepository Variable
-        {
-            get
-            {
-                _variable ??= new VariableRepository(_context);
-                return _variable;
-            }
-        }
-        private ISmokeRepository? _smoke = null;
-        public ISmokeRepository Smoke
-        {
-            get
-            {
-                _smoke ??= new SmokeRepository(_context);
-                return _smoke;
-            }
-        }
-
-        private ITemperatureRepository? _temperature = null;
-        public ITemperatureRepository Temperature
-        {
-            get
-            {
-                _temperature ??= new TemperatureRepository(_context);
-                return _temperature;
-            }
-        }
-
-        private ILightRepository? _light = null;
-        public ILightRepository Light
-        {
-            get
-            {
-                _light ??= new LightRepository(_context);
-                return _light;
-            }
-        }
-
-        private IRoomRepository? _room = null;
-        public IRoomRepository Room
-        {
-            get
-            {
-                _room ??= new RoomRepository(_context);
-                return _room;
-            }
-        }
-
-        private IAgreementRepository? _agreement = null;
-        public IAgreementRepository Agreement
-        {
-            get
-            {
-                _agreement ??= new AgreementRepository(_context);
-                return _agreement;
-            }
-        }
-
+        //public AppRepositoryManager(AppDbContext context);
+#pragma warning disable CS8618 // Un campo que no acepta valores NULL debe contener un valor distinto de NULL al salir del constructor. Considere la posibilidad de agregar el modificador "required" o declararlo como un valor que acepta valores NULL.
         public AppRepositoryManager(AppDbContext context)
+#pragma warning restore CS8618 // Un campo que no acepta valores NULL debe contener un valor distinto de NULL al salir del constructor. Considere la posibilidad de agregar el modificador "required" o declararlo como un valor que acepta valores NULL.
         {
-            _context = context;
+            Context = context;
         }
-        private IUnitOfWork? _unitOfWork = null;
-        public IUnitOfWork UnitOfWork
-        {
-            get
-            {
-                _unitOfWork ??= new UnitOfWork(_context);
-                return _unitOfWork;
-            }
-        }
+        public IRoomRepository Room { get; }
+        public IVariableRepository Variable { get; }
+        public ISmokeRepository Smoke { get; }
+        public ITemperatureRepository Temperature { get; }
+        public ILightRepository Light { get; }
+        public IUnitOfWork UnitOfWork { get; }
+
+        public IAgreementRepository Agreement { get; }
+        private readonly AppDbContext Context;
     }
 }
 

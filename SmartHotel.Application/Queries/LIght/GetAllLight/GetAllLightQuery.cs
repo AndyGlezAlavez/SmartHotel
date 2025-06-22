@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartHotel.Application.Queries.LIght.GetAllLight
+namespace SmartHotel.Application.Queries.Light.GetAllLight
 {
     public sealed record GetAllLightQuery : IQuery<IEnumerable<Domain.Entities.Light>>
     {

@@ -1,16 +1,9 @@
-﻿using FluentResults;
-using SmartHotel.Contracts.Repositories.Managers;
-using System;
-using SmartHotel.Domain.Entities;
-using SmartHotel.Domain.Types;
-using SmartHotel.Domain.ValueObjects;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Grpc.Core;
 using Grpc.Net.Client;
-using Microsoft.EntityFrameworkCore;
 using SmartHotel.GrpcProtos;
 
 namespace SmartHotel.ConsoleApp
