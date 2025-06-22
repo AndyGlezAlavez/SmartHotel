@@ -43,12 +43,12 @@ namespace SmartHotel.Domain.Entities
         /// </summary>
         public DateTime FinalDate { get; set; }
 
-        public Price Price { get; set; } 
+        public Price Price { get; set; } = new Price();
 
         /// <summary>
         /// Habitación del acuerdo de reserva.
         /// </summary>
-        public Room Room { get; set; }
+        public Room Room { get; set; } = new Room();
 
         /// <summary>
         /// Identificador de la habitación del acuerdo de reserva.

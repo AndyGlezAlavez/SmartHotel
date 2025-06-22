@@ -1,6 +1,4 @@
 ﻿using FluentResults;
-using MediatR;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SmartHotel.Domain.Common;
 using SmartHotel.Domain.Rules;
 using SmartHotel.Domain.Types;

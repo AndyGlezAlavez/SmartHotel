@@ -29,9 +29,9 @@ namespace SmartHotel.VisualApp
             Agreement = new AgreementDetails(new DateTime(2001, 11, 06), new DateTime(01, 11, 09), "Ariel");
             Agreements = new ObservableCollection<AgreementDetails>()
             {
-                new AgreementDetails(new DateTime(2025, 11, 06), new DateTime(2025, 11, 09), "Andy"),
-                new AgreementDetails(new DateTime(2025, 11, 07), new DateTime(2025, 11, 15), "Dayron"),
-                new AgreementDetails(new DateTime(2025, 11, 10), new DateTime(2025, 11, 13), "Jose"),
+                new(new DateTime(2025, 11, 06), new DateTime(2025, 11, 09), "Andy"),
+                new(new DateTime(2025, 11, 07), new DateTime(2025, 11, 15), "Dayron"),
+                new(new DateTime(2025, 11, 10), new DateTime(2025, 11, 13), "Jose"),
             };
 
             //DataContext = this;
