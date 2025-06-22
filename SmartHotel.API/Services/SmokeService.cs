@@ -25,7 +25,7 @@ namespace SmartHotel.API.Services
     public override async Task<SmokeDTO> CreateSmoke(CreateSmokeRequest request, ServerCallContext context)
     {
         var command = new CreateSmokeCommand(
-            request.Unit.Map(), request.Reference, request.Value, request.Room.Map()) ;
+            request.Unit.Map(), request.Reference, request.Value, request.Room.Map(), request.Id) ;
 
         var result = await _mediator.Send(command);
 

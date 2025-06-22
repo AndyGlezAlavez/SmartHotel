@@ -11,7 +11,7 @@ using SmartHotel.Domain.Types;
 
 namespace SmartHotel.Application.Commands.Temperature.CreateTemperature
 {
-    public sealed record CreateTemperatureCommand(TempUnit TempUnit, double Value, double Reference, SmartHotel.Domain.Entities.Room Room) : ICommand
+    public sealed record CreateTemperatureCommand(TempUnit TempUnit, double Value, double Reference, SmartHotel.Domain.Entities.Room Room, string Id) : ICommand
     {
 
     }

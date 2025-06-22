@@ -2,11 +2,8 @@
 using Grpc.Core;
 using MediatR;
 using SmartHotel.API.Mappers;
-using SmartHotel.Application.Commands.Smoke.CreateSmoke;
-using SmartHotel.Application.Commands.Temperature.CreateTemperature;
+using SmartHotel.Application.Commands.Light.CreateLight;
 using SmartHotel.Application.Queries.Light.GetAllLight;
-using SmartHotel.Application.Queries.Smoke.GetAllsSmoke;
-using SmartHotel.Application.Queries.Temperature.GetAllsTemperature;
 using SmartHotel.GrpcProtos;
 using System;
 using System.Collections.Generic;
@@ -48,6 +45,20 @@ namespace SmartHotel.API.Services
                     result.Errors.First().Message));
 
             return result.Value.Map();
+        }
+        public override async Task<LightDTO> CreateLight(CreateLightRequest request, ServerCallContext context)
+        {
+            var command = new CreateLightCommand(
+                request.Unit.Map(), request.Reference, request.Value, request.Room.Map(), request.Id);
+
+            var result = await _mediator.Send(command);
+
+            if (result.IsFailed)
+                throw new RpcException(
+                    new Status(StatusCode.InvalidArgument,
+                    result.Errors.First().Message));
+
+            return new LightDTO();
         }
 
     }

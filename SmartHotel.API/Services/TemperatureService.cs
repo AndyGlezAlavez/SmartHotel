@@ -51,7 +51,7 @@ namespace SmartHotel.API.Services
         public override async Task<TemperatureDTO> CreateTemperature(CreateTemperatureRequest request, ServerCallContext context)
         {
             var command = new CreateTemperatureCommand(
-                request.Unit.Map(), request.Reference, request.Value, request.Room.Map());
+                request.Unit.Map(), request.Reference, request.Value, request.Room.Map(), request.Id);
 
             var result = await _mediator.Send(command);
 

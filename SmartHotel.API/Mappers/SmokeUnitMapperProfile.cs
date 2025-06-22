@@ -16,7 +16,7 @@ namespace SmartHotel.API.Mappers
         public static Domain.Types.SmokeUnit Map(this GrpcProtos.SmokeUnit smokeUnit)
         {
             return new Domain.Types.SmokeUnit()
-            {            };
+            { };
         }
     }
 }

@@ -10,7 +10,7 @@ using SmartHotel.Domain.Types;
 
 namespace SmartHotel.Application.Commands.Smoke.CreateSmoke
 {
-    public sealed record CreateSmokeCommand (SmokeUnit SmokeUnit, double Value,double Reference, SmartHotel.Domain.Entities.Room Room) : ICommand   { 
+    public sealed record CreateSmokeCommand (SmokeUnit SmokeUnit, double Value,double Reference, SmartHotel.Domain.Entities.Room Room, string Id) : ICommand   { 
         
     }
 }
