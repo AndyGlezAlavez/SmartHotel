@@ -41,9 +41,42 @@ namespace SmartHotel.VisualApp
             AgreementsGrid.ItemsSource = Agreements;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnNuevaReserva_Click(object sender, RoutedEventArgs e)
         {
+            var window = new NewAgreement();
+            if (window.ShowDialog() == true && window.AddAgreement != null)
+                Agreements.Add(window.AddAgreement);
+        }
 
+        private void BtnDeleteAgreement_Click(object sender, RoutedEventArgs e)
+        {
+            var selected = (AgreementDetails)AgreementsGrid.SelectedItem;
+            if (selected != null)
+            {
+                Agreements.Remove(selected);
+            }
+            else
+            {
+                MessageBox.Show("No hay seleccionada ninguna reserva para eliminar.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void AgreementsGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selected = (AgreementDetails)AgreementsGrid.SelectedItem;
+            if (selected != null)
+            {
+                var editWindow = new EditAgreementWindow(selected);
+                if (editWindow.ShowDialog() == true)
+                {
+                    //Actualicar la reservación seleccionada
+                    selected.StartDate = editWindow.AgreementEdited.StartDate;
+                    selected.FinalDate = editWindow.AgreementEdited.FinalDate;
+                    selected.ClientName = editWindow.AgreementEdited.ClientName;
+
+                    //AgreementsGrid.Items.Refresh();
+                }
+            }
         }
     }
 }

@@ -3,22 +3,87 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SmartHotel.VisualApp"
+        xmlns:local="clr-namespace:SmartHotel.VisualApp" 
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="600">
-    <Grid>
+        Title="MainWindow" Height="450" Width="700"
+        Background="#f4f4f4"    Foreground="#222"   FontFamily="Segoe UI">
 
-        <Grid.RowDefinitions>
+ 
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Título -->
+                <RowDefinition Height="*"/>
+                <!-- DataGrid -->
+                <RowDefinition Height="Auto"/>
+                <!-- Botones -->
+            </Grid.RowDefinitions>
+
+            <!-- Título -->
+            <TextBlock Text="RESERVACIONES"
+                   Grid.Row="0"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,10"/>
+
+            <!-- Tabla -->
+            <DataGrid x:Name="AgreementsGrid"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  Margin="0,0,0,10"
+                  Background="White"
+                  Foreground="#222"
+                  BorderBrush="#ccc"
+                  BorderThickness="1"
+                  RowHeight="32"
+                  ColumnHeaderHeight="32"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  MouseDoubleClick="AgreementsGrid_MouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Fecha Inicio" Binding="{Binding StartDate, StringFormat=d}" Width="*"/>
+                    <DataGridTextColumn Header="Fecha Fin" Binding="{Binding FinalDate, StringFormat=d}" Width="*"/>
+                    <DataGridTextColumn Header="Cliente" Binding="{Binding ClientName}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Botones -->
+            <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+                <Button Content="Nueva Reserva"
+                    Width="120"
+                    Margin="0,0,10,0"
+                    Padding="6"
+                    Click="BtnNuevaReserva_Click"/>
+                <Button Content="Eliminar Reserva"
+                    Width="130"
+                    Padding="6"
+                    Click="BtnDeleteAgreement_Click"/>
+            </StackPanel>
+        </Grid>
+    </Window>
+
+
+
+
+
+
+    <!--<Grid>-->
+
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Título centrado -->
+        --><!-- Título centrado --><!--
         <TextBlock Text="RESERVACIONES" FontSize="28" FontWeight="Bold" 
                    HorizontalAlignment="Center" Margin="0,10"/>
 
-        <!-- Lista de reservaciones -->
+        --><!-- Lista de reservaciones --><!--
         <DataGrid x:Name="AgreementsGrid"
                   Grid.Row="1"
                   AutoGenerateColumns="False"
@@ -31,19 +96,19 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <!-- Botones -->
+        --><!-- Botones --><!--
             <StackPanel Orientation="Horizontal"
                         Grid.Row="2"
                         HorizontalAlignment="Right"
                         Margin ="0, 10, 0, 0">
 
-                <Button Content="Nueva Reserva" Margin="5"/>
-            <Button Content="Eliminar Reserva" Margin="5"/>
+            <Button x:Name="BtnNuevaReserva" Content="Nueva Reserva" Margin="5" Click="BtnNuevaReserva_Click"/>
+            <Button x:Name="BtnEliminarReserva" Content="Eliminar Reserva"  Margin="5" Click="BtnEliminarReserva_Click"/>
         </StackPanel>
             
        
     </Grid>
-</Window>
+</Window>-->
 
 
 
