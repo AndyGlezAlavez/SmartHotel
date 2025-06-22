@@ -15,13 +15,13 @@
 
 
         <StackPanel>
-            <TextBlock Text="Fecha de Inicio"   Margin="0,0,0,5"    FontSize="14"/>
+            <TextBlock Text="Fecha de Inicio"   Margin="0,0,0,5"    />
             <DatePicker x:Name="StartDatePicker"
                         Background="White"
                         Foreground="#222"
                         BorderBrush="#ccc"  BorderThickness="1"/>
 
-            <TextBlock Text="Fecha de Fin"  Margin="0,10,0,5"   FontSize="14"/>
+            <TextBlock Text="Fecha de Fin"  Margin="0,10,0,5"/>
             <DatePicker x:Name="FinalDatePicker"
                         Background="White"
                         Foreground="#222"
@@ -31,8 +31,7 @@
             <TextBox x:Name="ClientNameTextBox"
                         Background="White"
                         Foreground="#222"
-                        BorderBrush="#ccc"  BorderThickness="1"
-                        Padding="4"/> 
+                        BorderBrush="#ccc"  BorderThickness="1"/> 
         </StackPanel>
 
         <Button Content="Guardar"
@@ -45,9 +44,8 @@
                 BorderBrush="#bbb"
                 BorderThickness="1"
                 Cursor="Hand"
-                Padding="6"
                 Click="Save_Click">
-            <Button.Style>
+            <!--<Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Template">
                         <Setter.Value>
@@ -64,7 +62,7 @@
                         </Setter.Value>
                     </Setter>
                 </Style>
-            </Button.Style>
+            </Button.Style>-->
         </Button>
 
            
