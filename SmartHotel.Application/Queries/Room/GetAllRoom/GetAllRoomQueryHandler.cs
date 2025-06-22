@@ -4,7 +4,7 @@ using SmartHotel.Contracts.Repositories.Managers;
 using SmartHotel.Domain.Entities;
 
 
-namespace SmartHotel.Application.Queries.Room.GetAllsRoom
+namespace SmartHotel.Application.Queries.Room.GetAllRoom
 {
     public class GetAllRoomQueryHandler
         : IQueryHandler<GetAllRoomQuery, IEnumerable<SmartHotel.Domain.Entities.Room>>

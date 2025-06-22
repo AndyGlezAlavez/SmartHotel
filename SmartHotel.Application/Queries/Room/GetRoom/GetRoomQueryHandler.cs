@@ -28,7 +28,7 @@ namespace SmartHotel.Application.Queries.Room.GetRoom
 
         public async Task<Result<SmartHotel.Domain.Entities.Room>> Handle(GetRoomQuery request, CancellationToken cancellationToken)
         {
-            return Result.Ok(await _repositoryManager.Room.GetByIdAsync(request.Id));
+            return (Result.Ok(await _repositoryManager.Room.GetByIdAsync(request.Id)))!;
         }
     }
 }

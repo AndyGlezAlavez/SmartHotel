@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartHotel.Application.Queries.Light.GetAllLight
+namespace SmartHotel.Application.Queries.Agreement.GetAllAgreement
 {
-    public sealed record GetAllLightQuery : IQuery<IEnumerable<Domain.Entities.Light>>
+    public sealed record GetAllAgreementQuery : IQuery<IEnumerable<Domain.Entities.Agreement>>
     {
     }
+
 }

@@ -1,6 +1,6 @@
 ﻿using SmartHotel.API.Services;
 using SmartHotel.Application.Commands.Room.CreateRoom;
-using SmartHotel.Application.Queries.Room.GetAllsRoom;
+using SmartHotel.Application.Queries.Room.GetAllRoom;
 using SmartHotel.GrpcProtos;
 using FluentResults;
 using Google.Protobuf.WellKnownTypes;
