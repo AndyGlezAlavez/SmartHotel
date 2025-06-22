@@ -11,27 +11,29 @@
 
     <Grid Margin="20">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" MinHeight="0"/>
         </Grid.RowDefinitions>
 
 
         <StackPanel>
-            <TextBlock Text="Fecha de Inicio"   Margin="0,0,0,5"/>
+            <TextBlock Text="Fecha de Inicio"   Margin="0,0,0,5" FontSize="12"/>
             <DatePicker x:Name="StartDatePicker"
                         Background="White"  Foreground="#222"
-                        BorderBrush="#ccc"  BorderThickness="1"/>
+                        BorderBrush="#ccc"  BorderThickness="1"
+                         FontSize="16"/>
 
-            <TextBlock Text="Fecha Fin" Margin="0,10,0,5"/>
+            <TextBlock Text="Fecha Fin" Margin="0,10,0,5" FontSize="12"/>
             <DatePicker x:Name="FinalDatePicker"
                         Background="White"  Foreground="#222"
-                        BorderBrush="#ccc"  BorderThickness="1"/>
+                        BorderBrush="#ccc"  BorderThickness="1"
+                        FontSize="16"/>
 
-            <TextBlock Text="Nombre del cliente"    Margin="0,10,0,5"/>
+            <TextBlock Text="Nombre del cliente"    Margin="0,10,0,5" FontSize="12"/>
             <TextBox x:Name="ClientTextBox"
                         Background="White"  Foreground="#222"
                         BorderBrush="#ccc"  BorderThickness="1"
-                        Padding="4"/>
+                        Padding="4" TextChanged="ClientTextBox_TextChanged" FontSize="16"/>
         </StackPanel>
 
         <Button Content="Guardar cambios"

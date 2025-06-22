@@ -48,5 +48,10 @@ namespace SmartHotel.VisualApp
             DialogResult = true;
             Close();
         }
+
+        private void ClientTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
