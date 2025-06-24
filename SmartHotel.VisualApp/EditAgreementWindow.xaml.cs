@@ -69,7 +69,7 @@ namespace SmartHotel.VisualApp
                 RoomComboBox.SelectedItem = null;
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             if (StartDatePicker.SelectedDate == null || FinalDatePicker.SelectedDate == null ||
                 string.IsNullOrWhiteSpace(ClientNameTextBox.Text) || RoomComboBox.SelectedItem == null)
@@ -89,7 +89,7 @@ namespace SmartHotel.VisualApp
             Close();
         }
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
             Close();
