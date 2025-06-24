@@ -19,9 +19,54 @@ namespace SmartHotel.VisualApp
     /// </summary>
     public partial class EditRoomWindow : Window
     {
-        public EditRoomWindow()
+        public RoomDetails EditedRoom { get; private set; }
+
+        public EditRoomWindow(RoomDetails roomToEdit)
         {
             InitializeComponent();
+
+            //Cargando datos en controles
+            RoomNumberTextBox.Text = roomToEdit.Number.ToString();
+            PriceTextBox.Text = roomToEdit.RentalPrice.Value.ToString("0.00");
+
+            CurrencyComboBox.ItemsSource = Enum.GetValues(typeof(MoneyType));
+            CurrencyComboBox.SelectedItem = roomToEdit.RentalPrice.TypeofMoney;
+
+            IsRentableCheckBox.IsChecked = roomToEdit.IsRentable;
+
+            //Actualizando habitación
+            EditedRoom = new RoomDetails(roomToEdit.Number, roomToEdit.IsRentable, new PriceDetails(roomToEdit.RentalPrice.Value, roomToEdit.RentalPrice.TypeofMoney));
+        }
+
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(RoomNumberTextBox.Text, out int number) &&
+                double.TryParse(PriceTextBox.Text, out double priceValue) && CurrencyComboBox.SelectedItem is MoneyType selectedItem)
+            {
+                EditedRoom.Number = number;
+                EditedRoom.RentalPrice.Value = priceValue;
+                EditedRoom.RentalPrice.TypeofMoney = selectedItem;
+                EditedRoom.IsRentable = IsRentableCheckBox.IsChecked == true;
+
+                DialogResult = true;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Verifica que el número y el precio sean válidos.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
         }
     }
 }
+
+
+
+

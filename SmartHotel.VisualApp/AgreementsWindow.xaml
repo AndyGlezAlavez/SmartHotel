@@ -61,6 +61,10 @@
             <Button Content="Nueva Reserva"  Click="BtnNuevaReserva_Click"  Margin="10,0"/>
             <Button Content="Eliminar Reserva"  Click="BtnDeleteAgreement_Click" Margin="10,0"/>
         </StackPanel>
+
+        <StackPanel Grid.Row="2"    Orientation="Horizontal"    HorizontalAlignment="Left">
+            <Button Content="Menú principal"    Margin="5"  Click="Menu_Click"/>
+        </StackPanel>
     </Grid>
 </Window>
 

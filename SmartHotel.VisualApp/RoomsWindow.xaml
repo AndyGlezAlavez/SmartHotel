@@ -34,5 +34,12 @@
             <Button Content="Nueva habitación"  Margin="5" Click="NewRoom_Click"/>
             <Button Content="Eliminar habitación"  Margin="5" Click="DeleteRoom_Click"/>
         </StackPanel>
+
+        <StackPanel Grid.Row="2"    Orientation="Horizontal"    HorizontalAlignment="Left">
+            <Button Content="Menú principal"    Margin="5"  Click="Menu_Click"/>
+        </StackPanel>
+
+        
+       
     </Grid>
 </Window>

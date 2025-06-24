@@ -30,7 +30,20 @@ namespace SmartHotel.VisualApp
 
         private void RoomsGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            var selected = (RoomDetails)RoomsGrid.SelectedItem;
+            if (selected != null)
+            {
+                var editWindow = new EditRoomWindow(selected);
+                if (editWindow.ShowDialog() == true)
+                {
+                    //Actualicar la habitación seleccionada
+                    selected.RentalPrice = editWindow.EditedRoom.RentalPrice;
+                    selected.Number = editWindow.EditedRoom.Number;
+                    selected.IsRentable = editWindow.EditedRoom.IsRentable;
 
+
+                }
+            }
         }
 
         private void NewRoom_Click(object sender, RoutedEventArgs e)
@@ -53,6 +66,13 @@ namespace SmartHotel.VisualApp
             {
                 MessageBox.Show("No hay seleccionada ninguna reserva para eliminar.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void Menu_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow menu = new MainWindow();
+            menu.Show();
+            this.Close();
         }
     }
 }
