@@ -39,7 +39,7 @@ namespace SmartHotel.VisualApp
                 Room2
             };
 
-            Agreement = new AgreementDetails(new DateTime(2001, 11, 06), new DateTime(01, 11, 09), "Ariel", Room2);
+            Agreement = new AgreementDetails(new DateTime(2025, 11, 06), new DateTime(2025, 11, 09), "Juan", Room2);
             Agreements = new ObservableCollection<AgreementDetails>()
             {
                 Agreement
