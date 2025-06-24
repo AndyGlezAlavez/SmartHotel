@@ -12,4 +12,10 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SmartHotel.API\SmartHotel.API.csproj" />
+    <ProjectReference Include="..\SmartHotel.Application\SmartHotel.Application.csproj" />
+    <ProjectReference Include="..\SmartHotel.gRPC\SmartHotel.gRPC.csproj" />
+  </ItemGroup>
+
 </Project>
