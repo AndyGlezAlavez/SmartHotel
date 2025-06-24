@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Http;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Grpc.Net.Client;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
+using SmartHotel.Domain.Entities;
+using SmartHotel.API.Services;
+using MediatR;
+using SmartHotel.gRPC.Services;
 
 namespace SmartHotel.VisualApp
 {
@@ -21,11 +18,24 @@ namespace SmartHotel.VisualApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        //public IMediator mediator;
+
         public AgreementDetails Agreement { get; set; }
         public ObservableCollection<AgreementDetails> Agreements { get; set; }
 
         public MainWindow()
         {
+            var httpHandler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+            };
+
+            using (var channel = GrpcChannel.ForAddress("https://localhost:7293", new GrpcChannelOptions
+            {
+                HttpHandler = httpHandler
+            }))
+            { }
+
             Agreement = new AgreementDetails(new DateTime(2001, 11, 06), new DateTime(01, 11, 09), "Ariel");
             Agreements = new ObservableCollection<AgreementDetails>()
             {
@@ -80,3 +90,4 @@ namespace SmartHotel.VisualApp
         }
     }
 }
+

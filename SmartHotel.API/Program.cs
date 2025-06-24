@@ -28,17 +28,23 @@ namespace SmartHotel.API
             builder.Services.AddScoped<AppDbContext>();
             builder.Services.AddSingleton("User ID =postgres;Password=AAM821988;Server=localhost;Port=5047;Database=SmartHotelDB;Include Error Detail=true;");
             builder.Services.AddScoped<IAppRepositoryManager, AppRepositoryManager>();
-            
+
             var app = builder.Build();
             // Registrando servicios gRPC.
             // app.MapGrpcService<Services.AgreementService>();
             app.MapGrpcService<Services.RoomService>();
             app.MapGrpcService<Services.TemperatureService>();
             app.MapGrpcService<Services.SmokeService>();
-           // app.MapGrpcService<Services.LightService>();
+            // app.MapGrpcService<Services.LightService>();
 
             // Registrando repositorios en la inyección de dependencias.
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                    policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
 
+            app.UseCors("AllowAll");
             app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 
             app.Run();
