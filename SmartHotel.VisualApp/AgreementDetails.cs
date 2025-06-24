@@ -18,11 +18,15 @@ namespace SmartHotel.VisualApp
         [ObservableProperty]
         private string _clientName;
 
-        public AgreementDetails(DateTime startDate, DateTime finalDate, string clientName)
+        [ObservableProperty]
+        private RoomDetails _room;
+
+        public AgreementDetails(DateTime startDate, DateTime finalDate, string clientName, RoomDetails room)
         {
             StartDate = startDate;
             FinalDate = finalDate;
             ClientName = clientName;
+            Room = room;
         }
     }
 }

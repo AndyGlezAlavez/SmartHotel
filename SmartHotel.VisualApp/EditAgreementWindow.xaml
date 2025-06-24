@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmartHotel.VisualApp"
         mc:Ignorable="d"
-        Title="EditAgreementWindow" Height="300" Width="400"
+        Title="EditAgreementWindow" Height="350" Width="400"
         Background="#f4f4f4"   Foreground="#222"    FontFamily="Segoe UI">
 
 
@@ -28,22 +28,21 @@
                         BorderBrush="#ccc"  BorderThickness="1"/>
 
             <TextBlock Text="Nombre del cliente"    Margin="0,10,0,5"/>
-            <TextBox x:Name="ClientTextBox"
+            <TextBox x:Name="ClientNameTextBox"
                         Background="White"  Foreground="#222"
                         BorderBrush="#ccc"  BorderThickness="1"/>
+
+            <TextBlock Text="Habitación"    Margin="0,10,0,5"/>
+            <ComboBox x:Name="RoomComboBox"  DisplayMemberPath="Number" Margin="0,0,0,10"/>
+
         </StackPanel>
 
-        <Button Content="Guardar cambios"
-                Grid.Row="1"
-                Margin="0,15,0,0"
-                HorizontalAlignment="Right"
-                FontWeight="SemiBold"
-                Background="#e0e0e0"
-                Foreground="#222"
-                BorderBrush="#bbb" 
-                BorderThickness="1"
-                Cursor="Hand"
-                Click="btnSave_Click"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
+            <Button Content="Guardar cambios"  Margin="5" Click="btnSave_Click"/>
+            <Button Content="Cancelar cambios"  Margin="5" Click="btnCancel_Click"/>
+        </StackPanel>
+
+   
     </Grid>
 
 </Window>

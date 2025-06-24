@@ -13,7 +13,7 @@ namespace SmartHotel.Domain.ValueObjects
     /// </summary>
     public class Price : ValueObject
     {
-        #region Properties
+        #region Properties  
 
         /// <summary>
         /// Valor del precio.
