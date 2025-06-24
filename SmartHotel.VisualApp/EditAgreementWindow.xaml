@@ -38,8 +38,8 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
-            <Button Content="Guardar cambios"  Margin="5" Click="btnSave_Click"/>
-            <Button Content="Cancelar cambios"  Margin="5" Click="btnCancel_Click"/>
+            <Button Content="Guardar cambios"  Margin="5" Click="BtnSave_Click"/>
+            <Button Content="Cancelar cambios"  Margin="5" Click="BtnCancel_Click"/>
         </StackPanel>
 
    
