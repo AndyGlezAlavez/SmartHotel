@@ -3,23 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Domain", "SmartHotel.Domain\SmartHotel.Domain.csproj", "{2FC2821C-4918-4C1A-BACA-B154466496B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.Domain", "SmartHotel.Domain\SmartHotel.Domain.csproj", "{2FC2821C-4918-4C1A-BACA-B154466496B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Persistence", "SmartHotel.Persistence\SmartHotel.Persistence.csproj", "{A5AF4DF4-5ECE-4DD9-A9A2-A03B6F6E9F0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.Persistence", "SmartHotel.Persistence\SmartHotel.Persistence.csproj", "{A5AF4DF4-5ECE-4DD9-A9A2-A03B6F6E9F0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Contracts", "SmartHotel.Contracts\SmartHotel.Contracts.csproj", "{937C3BEE-24FF-4745-9E92-D2DC10D6CE82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.Contracts", "SmartHotel.Contracts\SmartHotel.Contracts.csproj", "{937C3BEE-24FF-4745-9E92-D2DC10D6CE82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.gRPC", "SmartHotel.gRPC\SmartHotel.gRPC.csproj", "{E8ECBF54-1DC5-42C1-AA3F-81A4043022E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.gRPC", "SmartHotel.gRPC\SmartHotel.gRPC.csproj", "{E8ECBF54-1DC5-42C1-AA3F-81A4043022E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.GrpcProtos", "SmartHotel.GrpcProtos\SmartHotel.GrpcProtos.csproj", "{7EDD17E4-39E3-4EF4-818F-B5869F292DE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.GrpcProtos", "SmartHotel.GrpcProtos\SmartHotel.GrpcProtos.csproj", "{7EDD17E4-39E3-4EF4-818F-B5869F292DE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Application", "SmartHotel.Application\SmartHotel.Application.csproj", "{E69DA6B3-85B5-4D32-A166-6FEEB475EECD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.Application", "SmartHotel.Application\SmartHotel.Application.csproj", "{E69DA6B3-85B5-4D32-A166-6FEEB475EECD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.API", "SmartHotel.API\SmartHotel.API.csproj", "{A6BBE0B5-A8E5-4D0A-9681-7E2495E380C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.API", "SmartHotel.API\SmartHotel.API.csproj", "{A6BBE0B5-A8E5-4D0A-9681-7E2495E380C8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.ConsoleApp", "SmartHotel.ConsoleApp\SmartHotel.ConsoleApp.csproj", "{879E9DC9-8176-4A8E-AD94-51DDBDD64A4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.VisualApp", "SmartHotel.VisualApp\SmartHotel.VisualApp.csproj", "{864176F1-44EA-4F9C-BE06-E88E27785B94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.VisualApp", "SmartHotel.VisualApp\SmartHotel.VisualApp.csproj", "{864176F1-44EA-4F9C-BE06-E88E27785B94}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7EDD17E4-39E3-4EF4-818F-B5869F292DE7} = {7EDD17E4-39E3-4EF4-818F-B5869F292DE7}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
