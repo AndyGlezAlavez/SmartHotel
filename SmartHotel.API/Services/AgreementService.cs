@@ -14,11 +14,11 @@ using System.Threading.Tasks;
 
 namespace SmartHotel.API.Services
 {
-    public class AgrrementService : GrpcProtos.Agreement.AgreementBase
+    public class AgreementService : GrpcProtos.Agreement.AgreementBase
     {
         private readonly IMediator _mediator;
 
-        public AgrrementService(IMediator mediator)
+        public AgreementService(IMediator mediator)
         {
             _mediator = mediator;
         }

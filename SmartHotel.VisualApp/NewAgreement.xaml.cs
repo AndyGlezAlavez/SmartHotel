@@ -21,8 +21,8 @@ namespace SmartHotel.VisualApp
     public partial class NewAgreement : Window
     {
         public AgreementDetails AddAgreement { get; private set; }
-        private ObservableCollection<RoomDetails> originalRooms;
-        private ObservableCollection<AgreementDetails> existingReservations;
+        public ObservableCollection<RoomDetails> originalRooms;
+        public ObservableCollection<AgreementDetails> existingReservations;
         
         public NewAgreement(ObservableCollection<RoomDetails> availableRooms, ObservableCollection<AgreementDetails> reservations)
         {

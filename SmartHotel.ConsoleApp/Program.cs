@@ -10,50 +10,48 @@ namespace SmartHotel.ConsoleApp
 {
     internal class Program
     {
-        static void Main()
-        {
-            Console.WriteLine("Presione una tecla para continuar.");
-            Console.ReadKey();
-
-            var httpHandler = new HttpClientHandler
+            static async Task Main()
             {
-                ServerCertificateCustomValidationCallback =
-                    HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
-            };
+                Console.WriteLine("Presione una tecla para continuar.");
+                Console.ReadKey();
 
-            var channel = GrpcChannel.ForAddress(
-                "http://localhost:5047",
-                new GrpcChannelOptions { HttpHandler = httpHandler });
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback =
+                        HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
 
-            if (channel is null)
-            {
-                Console.WriteLine("Cannot connect");
-                return;
+                var channel = GrpcChannel.ForAddress(
+                    "http://localhost:5047",
+                    new GrpcChannelOptions { HttpHandler = httpHandler });
+
+                var client = new SmartHotel.GrpcProtos.Room.RoomClient(channel);
+
+                try
+                {
+                    var response = await client.CreateRoomAsync(new CreateRoomRequest
+                    {
+                        Number = 1,
+                        IsRentable = true,
+                        IsOcupated = false,
+                        RentalPrice = new GrpcProtos.Price(),
+                        IsClimatization = true,
+                        IsIlumination = false,
+                        RoomType = new GrpcProtos.RoomType(),
+                        Smoke = new GrpcProtos.SmokeDTO(),
+                        Temperature = new GrpcProtos.TemperatureDTO(),
+                        Light = new GrpcProtos.LightDTO(),
+                        Id = "1409649460458",
+                    });
+
+                    Console.WriteLine("Room created: " + response);
+                }
+                catch (RpcException ex)
+                {
+                    Console.WriteLine("gRPC error: " + ex.Status);
+                }
+
+                Console.WriteLine("OK");
             }
-
-            var client = new SmartHotel.GrpcProtos.Room.RoomClient(channel);
-
-            try
-            {
-                client.CreateRoom(new CreateRoomRequest() { 
-                    Number = 1,
-                    IsRentable = true, 
-                    IsOcupated = false, 
-                    RentalPrice = new GrpcProtos.Price(),
-                    IsClimatization = true,
-                    IsIlumination = false,
-                    RoomType = new GrpcProtos.RoomType(),
-                    Smoke = new GrpcProtos.SmokeDTO(),
-                    Temperature = new GrpcProtos.TemperatureDTO(),
-                    Light = new GrpcProtos.LightDTO(),
-                    Id = "1409649460458",
-                });
-            }
-            catch (RpcException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            Console.WriteLine("OK");
         }
     }
-}

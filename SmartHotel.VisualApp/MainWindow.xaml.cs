@@ -29,19 +29,13 @@ namespace SmartHotel.VisualApp
         {
             InitializeComponent();
 
-            var httpHandler = new HttpClientHandler();
-            httpHandler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
-
-            
-
-            var channel = GrpcChannel.ForAddress("http://localhost:7293",
+            var httpHandler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+            };
+            _ = GrpcChannel.ForAddress("https://localhost:5047",
                 new GrpcChannelOptions { HttpHandler = httpHandler });
 
-            if (channel is null)
-            {
-                Console.WriteLine("Cannot connect");
-                return;
-            }
         }
 
         private void Agreements_Click(object sender, RoutedEventArgs e)

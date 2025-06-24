@@ -12,14 +12,16 @@ namespace SmartHotel.Persistence
     {
         private readonly AppDbContext _context;
 
-        public UnitOfWork(AppDbContext context)
-        {
-            _context = context;
-            if(!context.Database.CanConnect())
-                context.Database.EnsureCreated();
-        }
+            public UnitOfWork(AppDbContext context)
+            {
+                _context = context;
 
-        public Task SaveChangesAsync(CancellationToken cancellationToken)
+                // Opcional: lanzar excepción si no se puede conectar
+                if (!_context.Database.CanConnect())
+                    throw new InvalidOperationException("No se pudo conectar a la base de datos.");
+            }
+
+            public Task SaveChangesAsync(CancellationToken cancellationToken)
         {
             return _context.SaveChangesAsync(cancellationToken);
         }
