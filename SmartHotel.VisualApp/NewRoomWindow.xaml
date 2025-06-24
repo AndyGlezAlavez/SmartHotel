@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmartHotel.VisualApp"
         mc:Ignorable="d"
-        Title="NewRoomWindow" Height="320" Width="400">
+        Title="NewRoomWindow" Height="500" Width="400">
 
 
     <Grid Margin="20">

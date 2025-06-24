@@ -9,8 +9,8 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResize"
         SizeToContent="Manual"
-        MinWidth="300"
-        MinHeight="200">
+        Width="500"
+        Height="300">
 
     
 
