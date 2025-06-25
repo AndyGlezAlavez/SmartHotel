@@ -100,12 +100,9 @@ message RoomDTO{
 	bool isIlumination = 6;
 	RoomType roomType = 7;
 	SmokeDTO smoke = 8;
-	string smokeId = 9;
-	TemperatureDTO temperature = 10;
-	string temperatureId =11;
-	LightDTO light = 12 ;
-	string lightId = 13;
-	string id = 14;
+	TemperatureDTO temperature = 9;
+	LightDTO light = 10 ;
+	string id = 11;
 
 }
 message Rooms {
@@ -126,12 +123,9 @@ message CreateRoomRequest{
 	bool isIlumination = 6;
 	RoomType roomType = 7;
 	SmokeDTO smoke = 8;
-	string smokeId = 9;
-	TemperatureDTO temperature = 10;
-	string temperatureId =11;
-	LightDTO light = 12 ;
-	string lightId = 13;
-	string id = 14;
+	TemperatureDTO temperature = 9;
+	LightDTO light = 10 ;
+	string id = 11;
 }
 message AgreementRoomRelationDTO{
 	string RoomId = 1;

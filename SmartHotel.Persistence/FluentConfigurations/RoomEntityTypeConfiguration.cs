@@ -19,6 +19,9 @@ namespace SmartHotel.Persistence.FluentConfigurations
             builder.HasOne(r => r.Smoke).WithOne(s => s.Room).HasForeignKey<Room>(r => r.SmokeId);
             builder.HasOne(r => r.Light).WithOne(s => s.Room).HasForeignKey<Room>(r => r.LightId);
             builder.HasOne(r => r.Temperature).WithOne(s => s.Room).HasForeignKey<Room>(r => r.TemperatureId);
+            builder.HasMany(r => r.Agreements)
+            .WithOne(a => a.Room) // ← si Agreement tiene una propiedad de navegación Room
+            .HasForeignKey(a => a.RoomId);
         }
     }
 }

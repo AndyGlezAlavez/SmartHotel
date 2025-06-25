@@ -25,5 +25,6 @@ namespace SmartHotel.VisualApp
             IsRentable = isRentable;
             RentalPrice = rentalPrice;
         }
+
     }
 }

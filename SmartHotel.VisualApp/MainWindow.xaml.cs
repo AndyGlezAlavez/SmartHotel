@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Grpc.Core;
 using Grpc.Net.Client;
+using SmartHotel.GrpcProtos;
 
 namespace SmartHotel.VisualApp
 {
@@ -24,6 +25,7 @@ namespace SmartHotel.VisualApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static GrpcChannel Channel { get; private set; }
 
         public MainWindow()
         {
@@ -33,11 +35,11 @@ namespace SmartHotel.VisualApp
             {
                 ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
             };
-            _ = GrpcChannel.ForAddress("https://localhost:5047",
+
+            Channel = GrpcChannel.ForAddress("https://localhost:5047",
                 new GrpcChannelOptions { HttpHandler = httpHandler });
-
         }
-
+        
         private void Agreements_Click(object sender, RoutedEventArgs e)
         {
             var reservationsWindow = new AgreementsWindow();
@@ -47,7 +49,7 @@ namespace SmartHotel.VisualApp
 
         private void Rooms_Click(object sender, RoutedEventArgs e)
         {
-            var roomsWindow = new RoomsWindow(); 
+            var roomsWindow = new RoomsWindow();
             roomsWindow.Show();
             this.Close();
         }

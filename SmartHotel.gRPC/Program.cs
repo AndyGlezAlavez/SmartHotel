@@ -1,6 +1,9 @@
 using SmartHotel.Persistence.Contexts;
 using SmartHotel.gRPC.Services;
 using Microsoft.EntityFrameworkCore;
+using SmartHotel.Contracts.Repositories;
+using SmartHotel.Persistence.Repositories;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,13 +18,18 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 //app.MapGrpcService<GreeterService>();
 
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
+
 app.MapGrpcService<AgreementsService>();
 app.MapGrpcService<RoomService>();
 app.MapGrpcService<TemperatureService>();
 app.MapGrpcService<SmokeService>();
 app.MapGrpcService<LightService>();
-
-
 
 app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using SmartHotel.GrpcProtos;
+
 namespace SmartHotel.VisualApp
 {
     /// <summary>
@@ -24,7 +26,6 @@ namespace SmartHotel.VisualApp
         public EditRoomWindow(RoomDetails roomToEdit)
         {
             InitializeComponent();
-
             //Cargando datos en controles
             RoomNumberTextBox.Text = roomToEdit.Number.ToString();
             PriceTextBox.Text = roomToEdit.RentalPrice.Value.ToString("0.00");
@@ -36,6 +37,20 @@ namespace SmartHotel.VisualApp
 
             //Actualizando habitación
             EditedRoom = new RoomDetails(roomToEdit.Number, roomToEdit.IsRentable, new PriceDetails(roomToEdit.RentalPrice.Value, roomToEdit.RentalPrice.TypeofMoney));
+            var roomClient = new Room.RoomClient(MainWindow.Channel);
+            var dto = new RoomDTO
+            {
+                
+                Number = EditedRoom.Number,
+                IsRentable = EditedRoom.IsRentable,
+                RentalPrice = new Price
+                {
+                    Value = EditedRoom.RentalPrice.Value,
+                },
+
+                // Completa los demás campos si existen (como IsOcupated, RoomType, etc.)
+            };
+
         }
 
 
@@ -43,6 +58,7 @@ namespace SmartHotel.VisualApp
         {
             if (int.TryParse(RoomNumberTextBox.Text, out int number) &&
                 double.TryParse(PriceTextBox.Text, out double priceValue) && CurrencyComboBox.SelectedItem is MoneyType selectedItem)
+
             {
                 EditedRoom.Number = number;
                 EditedRoom.RentalPrice.Value = priceValue;
@@ -50,6 +66,7 @@ namespace SmartHotel.VisualApp
                 EditedRoom.IsRentable = IsRentableCheckBox.IsChecked == true;
 
                 DialogResult = true;
+                
                 Close();
             }
             else
