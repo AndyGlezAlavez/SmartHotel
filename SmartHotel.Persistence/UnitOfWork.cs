@@ -21,7 +21,7 @@ namespace SmartHotel.Persistence
                     throw new InvalidOperationException("No se pudo conectar a la base de datos.");
             }
 
-            public Task SaveChangesAsync(CancellationToken cancellationToken)
+        public Task SaveChangesAsync(CancellationToken cancellationToken)
         {
             return _context.SaveChangesAsync(cancellationToken);
         }

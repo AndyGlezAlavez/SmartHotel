@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Grpc.Core;
+using SmartHotel.GrpcProtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static SmartHotel.GrpcProtos.Room;
 
 namespace SmartHotel.VisualApp
 {
@@ -28,7 +31,6 @@ namespace SmartHotel.VisualApp
             CurrencyComboBox.SelectedIndex = 0;
 
         }
-
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             if (int.TryParse(RoomNumberTextBox.Text, out int number) &&
@@ -36,21 +38,58 @@ namespace SmartHotel.VisualApp
             {
                 //var currency = Enum.TryParse<MoneyType>(selectedItem.Content.ToString(), out var moneyType)
                 //    ? moneyType : MoneyType.USD;
-
-
-
+                var roomClient = new Room.RoomClient(MainWindow.Channel);
                 
+
                 var price = new PriceDetails(priceValue, selectedItem);
                 CreatedRoom = new RoomDetails(number, IsRentableCheckBox.IsChecked == true, price);
+                CreatedRoom.Number = number;
+                CreatedRoom.RentalPrice.Value = priceValue;
+                CreatedRoom.RentalPrice.TypeofMoney = selectedItem;
+                CreatedRoom.IsRentable = IsRentableCheckBox.IsChecked == true;
                 DialogResult = true;
+                var dto = new RoomDTO
+                {
+                    Number = CreatedRoom.Number,
+                    IsRentable = CreatedRoom.IsRentable,
+                    RentalPrice = new Price
+                    {
+                        Value = CreatedRoom.RentalPrice.Value,
+                        MoneyType = (MoneyTipe)CreatedRoom.RentalPrice.TypeofMoney,
+                    },
+
+                    // Completa los demás campos si existen (como IsOcupated, RoomType, etc.)
+                };
+                _ =  roomClient.CreateRoomAsync(new CreateRoomRequest
+                {
+                    Number = CreatedRoom.Number,
+                    IsRentable = true,
+                    IsOcupated = false,
+                    RentalPrice = new Price
+                    {
+                        Value = CreatedRoom.RentalPrice.Value,
+                        MoneyType = (MoneyTipe)CreatedRoom.RentalPrice.TypeofMoney,
+                    },
+                });
+
+                try
+                {
+                    roomClient.UpdateRoomAsync(dto);
+                    //DialogResult = true;
+                    Close();
+                }
+                catch (RpcException ex)
+                {
+                    MessageBox.Show($"Error al guardar en el servidor: {ex.Status.Detail}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                 Close();
             }
             else
             {
                 MessageBox.Show("Verifica que el número y el precio sean válidos.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-
+            Close();
+            }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;

@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Grpc.Core;
+using Microsoft.AspNetCore.Mvc;
+using SmartHotel.API;
+using SmartHotel.API.Services;
+using SmartHotel.Application;
 
 using SmartHotel.GrpcProtos;
 using static SmartHotel.GrpcProtos.Room;
@@ -39,20 +43,6 @@ namespace SmartHotel.VisualApp
 
             //Actualizando habitación
             EditedRoom = new RoomDetails(roomToEdit.Number, roomToEdit.IsRentable, new PriceDetails(roomToEdit.RentalPrice.Value, roomToEdit.RentalPrice.TypeofMoney));
-            
-            var dto = new RoomDTO
-            {
-                
-                Number = EditedRoom.Number,
-                IsRentable = EditedRoom.IsRentable,
-                RentalPrice = new Price
-                {
-                    Value = EditedRoom.RentalPrice.Value,
-                },
-
-                // Completa los demás campos si existen (como IsOcupated, RoomType, etc.)
-            };
-
         }
 
 
@@ -79,11 +69,23 @@ namespace SmartHotel.VisualApp
                         Value = EditedRoom.RentalPrice.Value,
                         MoneyType = (MoneyTipe)EditedRoom.RentalPrice.TypeofMoney,
                     },
+                
                     // Completa los demás campos si existen (como IsOcupated, RoomType, etc.)
                 };
-                try
+                _ = await roomClient.CreateRoomAsync(new CreateRoomRequest
                 {
-                    await roomClient.UpdateRoomAsync(dto);
+                    Number = EditedRoom.Number,
+                    IsRentable = true,
+                    IsOcupated = false,
+                    RentalPrice = new Price
+                    {
+                        Value = EditedRoom.RentalPrice.Value,
+                        MoneyType = (MoneyTipe)EditedRoom.RentalPrice.TypeofMoney,
+                    },
+                });
+
+                try
+                {   await roomClient.UpdateRoomAsync(dto);
                     MessageBox.Show("Habitación actualizada con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                     DialogResult = true;
                     Close();

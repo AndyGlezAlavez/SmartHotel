@@ -31,11 +31,11 @@ namespace SmartHotel.API
             
             var app = builder.Build();
             // Registrando servicios gRPC.
-            // app.MapGrpcService<Services.AgreementService>();
+            app.MapGrpcService<Services.AgreementService>();
             app.MapGrpcService<Services.RoomService>();
             app.MapGrpcService<Services.TemperatureService>();
             app.MapGrpcService<Services.SmokeService>();
-           // app.MapGrpcService<Services.LightService>();
+            app.MapGrpcService<Services.LightService>();
 
             // Registrando repositorios en la inyección de dependencias.
 

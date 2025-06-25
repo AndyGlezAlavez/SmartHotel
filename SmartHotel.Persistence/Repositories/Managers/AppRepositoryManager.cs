@@ -15,8 +15,19 @@ namespace SmartHotel.Persistence.Repositories.Managers
 #pragma warning restore CS8618 // Un campo que no acepta valores NULL debe contener un valor distinto de NULL al salir del constructor. Considere la posibilidad de agregar el modificador "required" o declararlo como un valor que acepta valores NULL.
         {
             Context = context;
+            Agreement = new AgreementRepository(context);
+            UnitOfWork = new UnitOfWork(context);
         }
-        public IRoomRepository Room { get; }
+
+        private IRoomRepository? _rooms = null;
+        public IRoomRepository Room { get 
+            { 
+                if(_rooms is not null)
+                    return _rooms;
+                _rooms = new RoomRepository(Context);
+                return _rooms;
+            } 
+        }
         public IVariableRepository Variable { get; }
         public ISmokeRepository Smoke { get; }
         public ITemperatureRepository Temperature { get; }
