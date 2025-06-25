@@ -77,6 +77,7 @@ namespace SmartHotel.VisualApp
                     RentalPrice = new Price
                     {
                         Value = EditedRoom.RentalPrice.Value,
+                        MoneyType = (MoneyTipe)EditedRoom.RentalPrice.TypeofMoney,
                     },
                     // Completa los demás campos si existen (como IsOcupated, RoomType, etc.)
                 };
