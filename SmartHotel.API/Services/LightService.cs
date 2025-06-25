@@ -7,6 +7,7 @@ using SmartHotel.Application.Commands.Temperature.CreateTemperature;
 using SmartHotel.Application.Queries.Light.GetAllLight;
 using SmartHotel.Application.Queries.Smoke.GetAllsSmoke;
 using SmartHotel.Application.Queries.Temperature.GetAllsTemperature;
+using SmartHotel.gRPC.Mappers;
 using SmartHotel.GrpcProtos;
 using System;
 using System.Collections.Generic;

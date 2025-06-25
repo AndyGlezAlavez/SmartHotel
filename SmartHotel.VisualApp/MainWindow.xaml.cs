@@ -36,7 +36,7 @@ namespace SmartHotel.VisualApp
                 ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
             };
 
-            Channel = GrpcChannel.ForAddress("https://localhost:5047",
+            Channel = GrpcChannel.ForAddress("http://localhost:5047",
                 new GrpcChannelOptions { HttpHandler = httpHandler });
         }
         

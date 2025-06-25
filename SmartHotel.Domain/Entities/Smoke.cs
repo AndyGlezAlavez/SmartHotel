@@ -25,7 +25,7 @@ namespace SmartHotel.Domain.Entities
         /// <summary>
         /// Habitación a la que pertenece la concentración de humo.
         /// </summary>
-        public Room Room { get; set; } = new Room();
+        public Room Room { get; set; }
 
         public bool Danger { get; set; } = false;
 

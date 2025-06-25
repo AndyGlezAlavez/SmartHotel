@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Grpc.Core;
 using Grpc.Net.Client;
-using SmartHotel.API.Mappers;
 using SmartHotel.Contracts.Repositories;
 using SmartHotel.Domain.Entities;
 using SmartHotel.GrpcProtos;

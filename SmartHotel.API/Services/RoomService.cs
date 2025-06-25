@@ -7,7 +7,7 @@ using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SmartHotel.API.Mappers;
+using SmartHotel.gRPC.Mappers;
 
 namespace SmartHotel.API.Services
 {

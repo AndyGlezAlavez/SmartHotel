@@ -1,27 +1,65 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using Grpc.Core;
+﻿using SmartHotel.Application.Commands.Room.CreateRoom;
+using SmartHotel.Application.Queries.Room.GetAllRoom;
 using SmartHotel.GrpcProtos;
+using FluentResults;
+using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using SmartHotel.gRPC.Mappers;
 
 namespace SmartHotel.gRPC.Services
 {
     public class RoomService : Room.RoomBase
     {
-        public override Task<Empty> AddRoom(RoomDTO request, ServerCallContext context)
+        private readonly IMediator _mediator;
+
+        public RoomService(IMediator mediator)
         {
-            return base.AddRoom(request, context);
+            _mediator = mediator;
         }
-        public override Task<RoomDTO> CreateRoom(CreateRoomRequest request, ServerCallContext context)
+        
+        public override async Task<RoomDTO> CreateRoom(CreateRoomRequest request, ServerCallContext context)
         {
-            return base.CreateRoom(request, context);
+            var command = new CreateRoomCommand(
+                request.Id, 
+                request.Number,
+                request.RentalPrice.Map(),
+                request.RoomType.Map(),
+                request.Temperature.Map(),
+                request.Smoke.Map(),
+                request.Light.Map());
+            try
+            {
+                var result = await _mediator.Send(command);
+                if (result.IsFailed)
+                    throw new RpcException(
+                        new Status(StatusCode.InvalidArgument,
+                        result.Errors.First().Message));
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
+
+            return new RoomDTO();
         }
-        public override Task<Empty> DeleteRoom(DeleteRequestDTO request, ServerCallContext context)
+        
+        public override async Task<Rooms> GetAllRoom(Empty request, ServerCallContext context)
         {
-            return base.DeleteRoom(request, context);
+            var query = new GetAllRoomQuery();
+
+            var result = await _mediator.Send(query);
+
+            if (result.IsFailed)
+                throw new RpcException(
+                    new Status(StatusCode.InvalidArgument,
+                    result.Errors.First().Message));
+
+            return result.Value.Map();
         }
-        public override Task<Rooms> GetAllRoom(Empty request, ServerCallContext context)
-        {
-            return base.GetAllRoom(request, context);
-        }
+        
         public override Task<Empty> AddAgreementToRoom(AgreementRoomRelationDTO request, ServerCallContext context)
         {
             return base.AddAgreementToRoom(request, context);
@@ -31,13 +69,18 @@ namespace SmartHotel.gRPC.Services
         {
             return base.RemoveAgreementFromRoom(request, context);
         }
-        public override Task<Empty> RemoveRoom(RoomDTO request, ServerCallContext context)
+
+        public override Task<Empty> AddRoom(RoomDTO request, ServerCallContext context)
         {
-            return base.RemoveRoom(request, context);
+            return base.AddRoom(request, context);
         }
         public override Task<Empty> UpdateRoom(RoomDTO request, ServerCallContext context)
         {
             return base.UpdateRoom(request, context);
+        }
+        public override Task<Empty> DeleteRoom(DeleteRequestDTO request, ServerCallContext context)
+        {
+            return base.DeleteRoom(request, context);
         }
     }
 }

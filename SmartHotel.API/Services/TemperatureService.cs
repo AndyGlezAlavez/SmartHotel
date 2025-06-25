@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using SmartHotel.API.Mappers;
 using SmartHotel.Application.Queries.Temperature.GetAllsTemperature;
 using SmartHotel.Application.Commands.Smoke.CreateSmoke;
+using SmartHotel.gRPC.Mappers;
 
 namespace SmartHotel.API.Services
 {

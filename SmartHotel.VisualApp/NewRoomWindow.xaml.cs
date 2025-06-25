@@ -1,19 +1,7 @@
 ﻿using Grpc.Core;
 using SmartHotel.GrpcProtos;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using static SmartHotel.GrpcProtos.Room;
 
 namespace SmartHotel.VisualApp
 {
@@ -39,7 +27,7 @@ namespace SmartHotel.VisualApp
                 //var currency = Enum.TryParse<MoneyType>(selectedItem.Content.ToString(), out var moneyType)
                 //    ? moneyType : MoneyType.USD;
                 var roomClient = new Room.RoomClient(MainWindow.Channel);
-                
+
 
                 var price = new PriceDetails(priceValue, selectedItem);
                 CreatedRoom = new RoomDetails(number, IsRentableCheckBox.IsChecked == true, price);
@@ -60,7 +48,7 @@ namespace SmartHotel.VisualApp
 
                     // Completa los demás campos si existen (como IsOcupated, RoomType, etc.)
                 };
-                _ =  roomClient.CreateRoomAsync(new CreateRoomRequest
+                var roomDtoResponse = roomClient.CreateRoom(new CreateRoomRequest
                 {
                     Number = CreatedRoom.Number,
                     IsRentable = true,
@@ -70,11 +58,38 @@ namespace SmartHotel.VisualApp
                         Value = CreatedRoom.RentalPrice.Value,
                         MoneyType = (MoneyTipe)CreatedRoom.RentalPrice.TypeofMoney,
                     },
+                    RoomType = new RoomType
+                    {
+                        Category = (Category)Category.Vip,
+                        Capacity = (Capacity)Capacity.Double,
+                    },
+                    Light = new LightDTO
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Value = 3,
+                        Reference = 4,
+                        Unit = LightUnit.Lux,
+                    },
+                    Temperature = new TemperatureDTO
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Value = 3,
+                        Reference = 4,
+                        Unit = TempUnit.Farenheit,
+                    },
+                    Smoke = new SmokeDTO
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Value = 3,
+                        Reference = 4,
+                        Unit = SmokeUnit.Ppt,
+                    },
+                    Id = Guid.NewGuid().ToString(),
                 });
 
                 try
                 {
-                    roomClient.UpdateRoomAsync(dto);
+                    //roomClient.UpdateRoomAsync(dto);
                     //DialogResult = true;
                     Close();
                 }
@@ -89,7 +104,7 @@ namespace SmartHotel.VisualApp
                 MessageBox.Show("Verifica que el número y el precio sean válidos.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             Close();
-            }
+        }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;

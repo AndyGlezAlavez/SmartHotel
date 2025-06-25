@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using SmartHotel.GrpcProtos;
-namespace SmartHotel.API.Mappers
+
+namespace SmartHotel.gRPC.Mappers
 {
     public static class RoomMapperProfile
     {
@@ -13,20 +14,20 @@ namespace SmartHotel.API.Mappers
                 IsOcupated = Room.IsOcupated,
                 IsIlumination = Room.IsIluminationOn,
                 IsRentable = Room.IsRentable,
-                Light = (LightDTO)Room.Light.Map(),
-                Smoke = (SmokeDTO)Room.Smoke.Map(),
-                Temperature = (TemperatureDTO)Room.Temperature.Map(),
-                RoomType = (RoomType)Room.Map().RoomType,
-                RentalPrice = (Price)Room.Map().RentalPrice,
+                Light = Room.Light.Map(),
+                Smoke = Room.Smoke.Map(),
+                Temperature = Room.Temperature.Map(),
+                RoomType = Room.RoomType.Map(),
+                RentalPrice = Room.RentalPrice.Map(),
                 Number = Room.Number,
                 //Agreements = Room.Agreements,
             };
         }
-        public static SmartHotel.Domain.Entities.Room Map(this GrpcProtos.RoomDTO Room)
+        public static Domain.Entities.Room Map(this RoomDTO Room)
         {
-            return new SmartHotel.Domain.Entities.Room()
+            return new Domain.Entities.Room()
             {
-                Id = Room.Map().Id,
+                Id = new Guid (Room.Id),
                 IsClimatizationOn = Room.IsClimatization,
                 IsOcupated = Room.IsOcupated,
                 IsIluminationOn = Room.IsIlumination,
@@ -34,8 +35,8 @@ namespace SmartHotel.API.Mappers
                 Light = Room.Light.Map(),
                 Smoke = Room.Smoke.Map(),
                 Temperature = Room.Temperature.Map(),
-                RoomType = Room.Map().RoomType,
-                RentalPrice = Room.Map().RentalPrice,
+                RoomType = Room.RoomType.Map(),
+                RentalPrice = Room.RentalPrice.Map(),
                 Number = Room.Number,
                 //Agreements = Room.Agreements,
             };

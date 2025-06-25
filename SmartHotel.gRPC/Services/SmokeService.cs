@@ -1,26 +1,63 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using Grpc.Core;
+﻿using SmartHotel.Application.Commands.Smoke.CreateSmoke;
+using SmartHotel.Application.Queries.Smoke.GetAllsSmoke;
 using SmartHotel.GrpcProtos;
+using SmartHotel.Domain.Entities;
+using SmartHotel.Domain.Types;
+using FluentResults;
+using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using SmartHotel.gRPC.Mappers;
 
 namespace SmartHotel.gRPC.Services
 {
-    public class SmokeService : Smoke.SmokeBase
+    public class SmokeService : GrpcProtos.Smoke.SmokeBase
     {
-        public override Task<SmokeDTO> CreateSmoke(CreateSmokeRequest request, ServerCallContext context)
+        private readonly IMediator _mediator;
+
+        public SmokeService(IMediator mediator)
         {
-            return base.CreateSmoke(request, context);
+            _mediator = mediator;
         }
-        public override Task<Empty> DeleteSmoke(DeleteRequestDTO request, ServerCallContext context)
-        {
-            return base.DeleteSmoke(request, context);
-        }
-        public override Task<Smokes> GetAllSmoke(Empty request, ServerCallContext context)
-        {
-            return base.GetAllSmoke(request, context);
-        }
+        
+    public override async Task<SmokeDTO> CreateSmoke(CreateSmokeRequest request, ServerCallContext context)
+    {
+        var command = new CreateSmokeCommand(
+            request.Unit.Map(), request.Reference, request.Value, request.Room.Map()) ;
+
+        var result = await _mediator.Send(command);
+
+        if (result.IsFailed)
+            throw new RpcException(
+                new Status(StatusCode.InvalidArgument,
+                result.Errors.First().Message));
+
+        return new SmokeDTO();
+    }
+         
         public override Task<NullableSmokeDTO> GetSmoke(GetRequestDTO request, ServerCallContext context)
         {
             return base.GetSmoke(request, context);
+        }
+
+        public override async Task<Smokes> GetAllSmoke(Empty request, ServerCallContext context)
+        {
+            var query = new GetAllSmokeQuery();
+
+            var result = await _mediator.Send(query);
+
+            if (result.IsFailed)
+                throw new RpcException(
+                    new Status(StatusCode.InvalidArgument,
+                    result.Errors.First().Message));
+
+            return result.Value.Map();
+        }
+       
+        public override Task<Empty> DeleteSmoke(DeleteRequestDTO request, ServerCallContext context)
+        {
+            return base.DeleteSmoke(request, context);
         }
         public override Task<Empty> UpdateSmoke(SmokeDTO request, ServerCallContext context)
         {

@@ -29,7 +29,7 @@ namespace SmartHotel.Persistence.Contexts
         /// <summary>
         /// Requerido por EntityFrameworkCore para migraciones.
         /// </summary>
-        public AppDbContext()
+        protected AppDbContext()
         {
         }
 
@@ -39,10 +39,10 @@ namespace SmartHotel.Persistence.Contexts
         /// <param name="connectionString">
         /// Cadena de conexión.
         /// </param>
-        /*public AppDbContext(string connectionString)
+        public AppDbContext(string connectionString)
             : base(GetOptions(connectionString))
         {
-        }*/
+        }
 
         /// <summary>
         /// Inicializa un objeto <see cref="ApplicationContext"/>.
@@ -59,11 +59,7 @@ namespace SmartHotel.Persistence.Contexts
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseNpgsql();
-            //Mayby delete
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseNpgsql("Server=.;Database=SmartHotel;Trusted_Connection=True;");
-            }
+           
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -81,16 +77,16 @@ namespace SmartHotel.Persistence.Contexts
 
         #endregion
 
-        public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
-        {
-            public AppDbContext CreateDbContext(string[] args)
-            {
-                var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=SmartHotelDB;Username=postgres;Password=AAM821988");
+        //public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
+        //{
+        //    public AppDbContext CreateDbContext(string[] args)
+        //    {
+        //        var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+        //        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=SmartHotelDB;Username=postgres;Password=AAM821988");
 
-                return new AppDbContext(optionsBuilder.Options);
-            }
-        }
+        //        return new AppDbContext(optionsBuilder.Options);
+        //    }
+        //}
 
 
 

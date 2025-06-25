@@ -2,13 +2,19 @@
 using Grpc.Core;
 using MediatR;
 using SmartHotel.Application.Commands.Agreement.CreateAgreement;
+using SmartHotel.Application.Queries.Agreement.GetAgreement;
 using SmartHotel.Application.Queries.Agreement.GetAllAgreement;
 using SmartHotel.gRPC.Mappers;
 using SmartHotel.GrpcProtos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SmartHotel.API.Services
+namespace SmartHotel.gRPC.Services
 {
-    public class AgreementService : GrpcProtos.Agreement.AgreementBase
+    public class AgreementService : Agreement.AgreementBase
     {
         private readonly IMediator _mediator;
 

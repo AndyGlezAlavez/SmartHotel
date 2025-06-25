@@ -1,24 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Grpc.Core;
-using Microsoft.AspNetCore.Mvc;
-using SmartHotel.API;
-using SmartHotel.API.Services;
-using SmartHotel.Application;
-
+﻿using Grpc.Core;
 using SmartHotel.GrpcProtos;
-using static SmartHotel.GrpcProtos.Room;
+using System;
+using System.Windows;
 
 namespace SmartHotel.VisualApp
 {
@@ -69,7 +52,7 @@ namespace SmartHotel.VisualApp
                         Value = EditedRoom.RentalPrice.Value,
                         MoneyType = (MoneyTipe)EditedRoom.RentalPrice.TypeofMoney,
                     },
-                
+
                     // Completa los demás campos si existen (como IsOcupated, RoomType, etc.)
                 };
                 _ = await roomClient.CreateRoomAsync(new CreateRoomRequest
@@ -85,7 +68,8 @@ namespace SmartHotel.VisualApp
                 });
 
                 try
-                {   await roomClient.UpdateRoomAsync(dto);
+                {
+                    await roomClient.UpdateRoomAsync(dto);
                     MessageBox.Show("Habitación actualizada con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                     DialogResult = true;
                     Close();
