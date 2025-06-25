@@ -11,8 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Grpc.Core;
 
 using SmartHotel.GrpcProtos;
+using static SmartHotel.GrpcProtos.Room;
 
 namespace SmartHotel.VisualApp
 {
@@ -37,7 +39,7 @@ namespace SmartHotel.VisualApp
 
             //Actualizando habitación
             EditedRoom = new RoomDetails(roomToEdit.Number, roomToEdit.IsRentable, new PriceDetails(roomToEdit.RentalPrice.Value, roomToEdit.RentalPrice.TypeofMoney));
-            var roomClient = new Room.RoomClient(MainWindow.Channel);
+            
             var dto = new RoomDTO
             {
                 
@@ -54,19 +56,41 @@ namespace SmartHotel.VisualApp
         }
 
 
-        private void Save_Click(object sender, RoutedEventArgs e)
+        private async void Save_Click(object sender, RoutedEventArgs e)
         {
             if (int.TryParse(RoomNumberTextBox.Text, out int number) &&
                 double.TryParse(PriceTextBox.Text, out double priceValue) && CurrencyComboBox.SelectedItem is MoneyType selectedItem)
 
             {
+
+                var roomClient = new Room.RoomClient(MainWindow.Channel);
                 EditedRoom.Number = number;
                 EditedRoom.RentalPrice.Value = priceValue;
                 EditedRoom.RentalPrice.TypeofMoney = selectedItem;
                 EditedRoom.IsRentable = IsRentableCheckBox.IsChecked == true;
 
                 DialogResult = true;
-                
+                var dto = new RoomDTO
+                {
+                    Number = EditedRoom.Number,
+                    IsRentable = EditedRoom.IsRentable,
+                    RentalPrice = new Price
+                    {
+                        Value = EditedRoom.RentalPrice.Value,
+                    },
+                    // Completa los demás campos si existen (como IsOcupated, RoomType, etc.)
+                };
+                try
+                {
+                    await roomClient.UpdateRoomAsync(dto);
+                    MessageBox.Show("Habitación actualizada con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    DialogResult = true;
+                    Close();
+                }
+                catch (RpcException ex)
+                {
+                    MessageBox.Show($"Error al guardar en el servidor: {ex.Status.Detail}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                 Close();
             }
             else
