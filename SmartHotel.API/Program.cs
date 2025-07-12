@@ -26,7 +26,7 @@ namespace SmartHotel.API
             builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddScoped<AppDbContext>();
-            builder.Services.AddSingleton("User ID =postgres;Password=AAM821988;Server=localhost;Port=5047;Database=SmartHotelDB;Include Error Detail=true;");
+            builder.Services.AddSingleton("User ID =postgres;Password=;Server=localhost;Port=5047;Database=SmartHotelDB;Include Error Detail=true;");
             builder.Services.AddScoped<IAppRepositoryManager, AppRepositoryManager>();
 
             var app = builder.Build();
